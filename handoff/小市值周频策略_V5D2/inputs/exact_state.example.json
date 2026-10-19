@@ -1,0 +1,25 @@
+{
+  "kind": "EXACT_ACCOUNT",
+  "payload": {
+    "detail_version": "V5D2",
+    "projection_revision": "TEST_ONLY-ONE-YUAN",
+    "last_committed_seq": 2,
+    "equity": "75001",
+    "units": {
+      "num": "300004",
+      "den": "3"
+    },
+    "nav": {
+      "num": "3",
+      "den": "4"
+    },
+    "hwm": {
+      "num": "1",
+      "den": "1"
+    },
+    "dd": {
+      "num": "1",
+      "den": "4"
+    }
+  }
+}

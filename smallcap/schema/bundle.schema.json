@@ -1,0 +1,2195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Small-cap V5D2 input bundle (structure, not source certification)",
+  "description": "Standalone schema; semantic checks listed in 03_接口与输入契约 and 01_详细设计 are mandatory.",
+  "type": "object",
+  "properties": {
+    "bundle_version": {
+      "const": "V5D2"
+    },
+    "baseline": {
+      "$ref": "#/$defs/Baseline"
+    },
+    "execution_technical": {
+      "$ref": "#/$defs/ExecutionTechnical"
+    },
+    "study": {
+      "$ref": "#/$defs/Study"
+    },
+    "profiles": {
+      "type": "object",
+      "properties": {
+        "factor": {
+          "$ref": "#/$defs/FactorPackageProfile"
+        },
+        "universe": {
+          "$ref": "#/$defs/UniverseProfile"
+        },
+        "rules": {
+          "$ref": "#/$defs/RuleBookProfile"
+        },
+        "fees": {
+          "$ref": "#/$defs/FeesProfile"
+        },
+        "sources": {
+          "$ref": "#/$defs/SourcesProfile"
+        },
+        "bootstrap": {
+          "$ref": "#/$defs/BootstrapProfile"
+        },
+        "benchmark": {
+          "$ref": "#/$defs/BenchmarkProfile"
+        }
+      },
+      "required": [
+        "factor",
+        "universe",
+        "rules",
+        "fees",
+        "sources",
+        "bootstrap",
+        "benchmark"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "bundle_version",
+    "baseline",
+    "execution_technical",
+    "study",
+    "profiles"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Decimal": {
+      "type": "string",
+      "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+    },
+    "Date": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": ".*(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "Scope": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "TEST_ONLY",
+            "HISTORICAL_RESEARCH",
+            "FORWARD_MANUAL",
+            "DEPLOYMENT_CHECK"
+          ]
+        },
+        "start_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "end_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "markets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "SH",
+              "SZ"
+            ]
+          },
+          "minItems": 0
+        },
+        "account_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "purpose",
+        "start_date",
+        "end_date",
+        "markets",
+        "account_ref",
+        "description"
+      ],
+      "additionalProperties": false
+    },
+    "Baseline": {
+      "type": "object",
+      "properties": {
+        "pool_limit": {
+          "const": 400
+        },
+        "slots": {
+          "const": 30
+        },
+        "retain_rank": {
+          "const": 45
+        },
+        "listing_age_sessions": {
+          "const": 250
+        },
+        "min_raw_close": {
+          "const": "2"
+        },
+        "min_adv20": {
+          "const": "10000000"
+        },
+        "joint_coverage": {
+          "const": "0.80"
+        },
+        "package_healthy_ratio": {
+          "const": "0.95"
+        },
+        "max_consecutive_coverage_bad": {
+          "const": 2
+        },
+        "unknown_healthy_weeks": {
+          "const": 2
+        },
+        "financial_age_months": {
+          "const": 15
+        },
+        "stock_target": {
+          "const": "0.60"
+        },
+        "stock_trigger": {
+          "const": "0.65"
+        },
+        "center": {
+          "const": "0.02"
+        },
+        "band_low": {
+          "const": "0.015"
+        },
+        "band_high": {
+          "const": "0.025"
+        },
+        "single_trigger": {
+          "const": "0.05"
+        },
+        "industry_limit": {
+          "const": "0.20"
+        },
+        "blocked_exit_trigger": {
+          "const": "0.10"
+        },
+        "dd_warning": {
+          "const": "0.20"
+        },
+        "dd_retire": {
+          "const": "0.25"
+        },
+        "dd_limit": {
+          "const": "0.30"
+        },
+        "startup_min_names": {
+          "const": 24
+        },
+        "startup_min_stock_ratio": {
+          "const": "0.50"
+        },
+        "daily_capacity_ratio": {
+          "const": "0.01"
+        },
+        "commission_rate": {
+          "const": "0.00025"
+        },
+        "minimum_commission": {
+          "const": "5"
+        },
+        "base_slippage": {
+          "const": "0.001"
+        },
+        "high_slippage": {
+          "const": "0.003"
+        },
+        "cutoff_time": {
+          "const": "20:00:00"
+        },
+        "window_start": {
+          "const": "10:00:00"
+        },
+        "window_end": {
+          "const": "10:30:00"
+        },
+        "timezone": {
+          "const": "Asia/Shanghai"
+        }
+      },
+      "required": [
+        "pool_limit",
+        "slots",
+        "retain_rank",
+        "listing_age_sessions",
+        "min_raw_close",
+        "min_adv20",
+        "joint_coverage",
+        "package_healthy_ratio",
+        "max_consecutive_coverage_bad",
+        "unknown_healthy_weeks",
+        "financial_age_months",
+        "stock_target",
+        "stock_trigger",
+        "center",
+        "band_low",
+        "band_high",
+        "single_trigger",
+        "industry_limit",
+        "blocked_exit_trigger",
+        "dd_warning",
+        "dd_retire",
+        "dd_limit",
+        "startup_min_names",
+        "startup_min_stock_ratio",
+        "daily_capacity_ratio",
+        "commission_rate",
+        "minimum_commission",
+        "base_slippage",
+        "high_slippage",
+        "cutoff_time",
+        "window_start",
+        "window_end",
+        "timezone"
+      ],
+      "additionalProperties": false
+    },
+    "ExecutionTechnical": {
+      "type": "object",
+      "properties": {
+        "max_new_orders_per_security_side_window": {
+          "const": 3
+        },
+        "order_wait_seconds": {
+          "const": 60
+        },
+        "retry_min_seconds": {
+          "const": 60
+        },
+        "quote_max_age_seconds": {
+          "const": 3
+        },
+        "account_max_age_seconds": {
+          "const": 5
+        },
+        "price_protection_nominal": {
+          "const": "0.003"
+        },
+        "protection_rounding": {
+          "const": "OUTWARD_TICK"
+        }
+      },
+      "required": [
+        "max_new_orders_per_security_side_window",
+        "order_wait_seconds",
+        "retry_min_seconds",
+        "quote_max_age_seconds",
+        "account_max_age_seconds",
+        "price_protection_nominal",
+        "protection_rounding"
+      ],
+      "additionalProperties": false
+    },
+    "FactorSpec": {
+      "type": "object",
+      "properties": {
+        "factor_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "implementation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "HIGHER_BETTER",
+            "LOWER_BETTER"
+          ]
+        },
+        "output_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output_quantum": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "input_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "formula_definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validity_rules": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "max_report_age_months": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 15
+        },
+        "golden_case_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "source_scope_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "factor_id",
+        "implementation_id",
+        "direction",
+        "output_unit",
+        "output_quantum",
+        "input_fields",
+        "formula_definition",
+        "validity_rules",
+        "max_report_age_months",
+        "golden_case_ids",
+        "source_scope_ref"
+      ],
+      "additionalProperties": false
+    },
+    "FactorPackage": {
+      "type": "object",
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "TEST_ONLY",
+            "INVESTMENT_CANDIDATE"
+          ]
+        },
+        "factors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FactorSpec"
+          },
+          "minItems": 1
+        },
+        "aggregation": {
+          "const": "EQUAL_WEIGHT"
+        },
+        "preprocessing": {
+          "const": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1"
+        },
+        "joint_rule": {
+          "const": "ALL_FACTORS_VALID"
+        },
+        "neutralization": {
+          "const": "NONE"
+        }
+      },
+      "required": [
+        "package_id",
+        "version",
+        "purpose",
+        "factors",
+        "aggregation",
+        "preprocessing",
+        "joint_rule",
+        "neutralization"
+      ],
+      "additionalProperties": false
+    },
+    "Permission": {
+      "type": "object",
+      "properties": {
+        "board": {
+          "type": "string",
+          "enum": [
+            "MAIN_SH",
+            "MAIN_SZ",
+            "CHINEXT",
+            "STAR"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "ALLOWED",
+            "DENIED",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "board",
+        "status",
+        "evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "Universe": {
+      "type": "object",
+      "properties": {
+        "universe_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stock_markets": {
+          "const": [
+            "SH",
+            "SZ"
+          ]
+        },
+        "exclude_financial": {
+          "const": true
+        },
+        "etf_security_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "stock_scope_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity_history_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "industry_history_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Permission"
+          },
+          "minItems": 1
+        },
+        "mutual_exclusivity_checked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "universe_id",
+        "stock_markets",
+        "exclude_financial",
+        "etf_security_ids",
+        "stock_scope_ref",
+        "identity_history_ref",
+        "industry_history_ref",
+        "permissions",
+        "mutual_exclusivity_checked"
+      ],
+      "additionalProperties": false
+    },
+    "QuantityGrid": {
+      "type": "object",
+      "properties": {
+        "buy_min": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "buy_step": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sell_min": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sell_step": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "allow_full_odd_exit": {
+          "type": "boolean"
+        },
+        "max_order_quantity": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "buy_min",
+        "buy_step",
+        "sell_min",
+        "sell_step",
+        "allow_full_odd_exit",
+        "max_order_quantity"
+      ],
+      "additionalProperties": false
+    },
+    "PriceRule": {
+      "type": "object",
+      "properties": {
+        "tick": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "EXCHANGE_BOUNDS",
+            "PERCENT_REFERENCE",
+            "NONE"
+          ]
+        },
+        "reference_field": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "up_percent": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "down_percent": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bound_data_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "bound_rounding": {
+          "type": "string",
+          "enum": [
+            "HALF_UP_TICK",
+            "PROVIDED_EXACT",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "intraday_band_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "tick",
+        "method",
+        "reference_field",
+        "up_percent",
+        "down_percent",
+        "bound_data_ref",
+        "bound_rounding",
+        "intraday_band_id"
+      ],
+      "additionalProperties": false
+    },
+    "TradeRule": {
+      "type": "object",
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "SH",
+            "SZ"
+          ]
+        },
+        "board": {
+          "type": "string",
+          "minLength": 1
+        },
+        "security_scope_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "public_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": ".*(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+        },
+        "quantity_grid": {
+          "$ref": "#/$defs/QuantityGrid"
+        },
+        "price_rule": {
+          "$ref": "#/$defs/PriceRule"
+        },
+        "settlement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "marketcap_floor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "marketcap_floor_status": {
+          "type": "string",
+          "enum": [
+            "VALUE",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "rule_id",
+        "market",
+        "board",
+        "security_scope_ref",
+        "effective_from",
+        "effective_to",
+        "public_at",
+        "quantity_grid",
+        "price_rule",
+        "settlement_id",
+        "marketcap_floor",
+        "marketcap_floor_status",
+        "evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "Settlement": {
+      "type": "object",
+      "properties": {
+        "settlement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cash_core_mode": {
+          "const": "TRADE_CASH_BOOK"
+        },
+        "buy_sellable_delay_sessions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "buy_sellable_release_time": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sell_proceeds_trade_delay_sessions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sell_proceeds_withdraw_delay_sessions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sell_proceeds_release_time": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tax_acquisition_date_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tax_delivery_date_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fee_settlement_timing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "settlement_id",
+        "cash_core_mode",
+        "buy_sellable_delay_sessions",
+        "buy_sellable_release_time",
+        "sell_proceeds_trade_delay_sessions",
+        "sell_proceeds_withdraw_delay_sessions",
+        "sell_proceeds_release_time",
+        "tax_acquisition_date_field",
+        "tax_delivery_date_field",
+        "fee_settlement_timing",
+        "evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "RuleBook": {
+      "type": "object",
+      "properties": {
+        "rulebook_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TradeRule"
+          },
+          "minItems": 1
+        },
+        "settlements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Settlement"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "rulebook_id",
+        "rules",
+        "settlements"
+      ],
+      "additionalProperties": false
+    },
+    "FeeRule": {
+      "type": "object",
+      "properties": {
+        "fee_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fee_kind": {
+          "type": "string",
+          "enum": [
+            "COMMISSION",
+            "STAMP",
+            "TRANSFER",
+            "REGULATORY",
+            "OTHER_CONFIRMED"
+          ]
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "market": {
+          "type": "string",
+          "enum": [
+            "SH",
+            "SZ",
+            "BOTH"
+          ]
+        },
+        "side": {
+          "type": "string",
+          "enum": [
+            "BUY",
+            "SELL",
+            "BOTH"
+          ]
+        },
+        "base_kind": {
+          "type": "string",
+          "enum": [
+            "NOTIONAL",
+            "SHARES",
+            "PAR_VALUE"
+          ]
+        },
+        "rate": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "minimum": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "included_in_commission": {
+          "type": "boolean"
+        },
+        "charge_unit": {
+          "type": "string",
+          "enum": [
+            "ORDER_CUMULATIVE",
+            "FILL",
+            "ACCOUNT_DAY",
+            "ENTITLEMENT"
+          ]
+        },
+        "round_quantum": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "round_mode": {
+          "type": "string",
+          "enum": [
+            "HALF_UP",
+            "FLOOR",
+            "CEILING"
+          ]
+        },
+        "settlement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "fee_id",
+        "fee_kind",
+        "effective_from",
+        "effective_to",
+        "market",
+        "side",
+        "base_kind",
+        "rate",
+        "minimum",
+        "maximum",
+        "included_in_commission",
+        "charge_unit",
+        "round_quantum",
+        "round_mode",
+        "settlement_id",
+        "evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "TaxTier": {
+      "type": "object",
+      "properties": {
+        "max_calendar_months_inclusive": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rate": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        }
+      },
+      "required": [
+        "max_calendar_months_inclusive",
+        "rate"
+      ],
+      "additionalProperties": false
+    },
+    "DividendTaxRule": {
+      "type": "object",
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "Inclusive lower bound for EQUITY_RECORD_DATE; normalized using verified applicability evidence."
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "Exclusive upper bound for EQUITY_RECORD_DATE, not payment or disposal date."
+        },
+        "security_class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dividend_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "initial_withholding_rate": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "tiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaxTier"
+          },
+          "minItems": 1
+        },
+        "tax_base_definition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "acquisition_inheritance_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rounding_unit": {
+          "type": "string",
+          "enum": [
+            "ENTITLEMENT",
+            "LOT",
+            "ACCOUNT_DAY"
+          ]
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selection_date_basis": {
+          "const": "EQUITY_RECORD_DATE"
+        }
+      },
+      "required": [
+        "rule_id",
+        "effective_from",
+        "effective_to",
+        "security_class",
+        "dividend_type",
+        "initial_withholding_rate",
+        "tiers",
+        "tax_base_definition",
+        "acquisition_inheritance_rule",
+        "rounding_unit",
+        "evidence_ref",
+        "selection_date_basis"
+      ],
+      "additionalProperties": false
+    },
+    "Fees": {
+      "type": "object",
+      "properties": {
+        "fee_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "TEST_ONLY",
+            "RESEARCH",
+            "BROKER_CONFIRMED"
+          ]
+        },
+        "fee_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FeeRule"
+          },
+          "minItems": 1
+        },
+        "dividend_tax_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DividendTaxRule"
+          },
+          "minItems": 1
+        },
+        "research_commission_rate": {
+          "const": "0.00025"
+        },
+        "research_minimum_commission": {
+          "const": "5"
+        },
+        "broker_contract_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "fee_profile_id",
+        "purpose",
+        "fee_rules",
+        "dividend_tax_rules",
+        "research_commission_rate",
+        "research_minimum_commission",
+        "broker_contract_ref"
+      ],
+      "additionalProperties": false
+    },
+    "FieldMapping": {
+      "type": "object",
+      "properties": {
+        "canonical_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider": {
+          "type": "string",
+          "enum": [
+            "QMT",
+            "TUSHARE",
+            "BROKER_STATEMENT",
+            "TEST"
+          ]
+        },
+        "endpoint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "multiply": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "basis_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "historical_semantics": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "canonical_field",
+        "provider",
+        "endpoint",
+        "source_field",
+        "source_unit",
+        "canonical_unit",
+        "multiply",
+        "basis_id",
+        "historical_semantics",
+        "scope_ref",
+        "evidence_ref"
+      ],
+      "additionalProperties": false
+    },
+    "Sources": {
+      "type": "object",
+      "properties": {
+        "source_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "const": [
+            "QMT",
+            "TUSHARE"
+          ]
+        },
+        "qmt_maintenance_research": {
+          "type": "boolean"
+        },
+        "account_source": {
+          "const": "BROKER_CONFIRMED_ONLY"
+        },
+        "mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FieldMapping"
+          },
+          "minItems": 1
+        },
+        "substitution_policy": {
+          "const": "EXPLICIT_SAME_BASIS_ONLY"
+        }
+      },
+      "required": [
+        "source_profile_id",
+        "priority",
+        "qmt_maintenance_research",
+        "account_source",
+        "mappings",
+        "substitution_policy"
+      ],
+      "additionalProperties": false
+    },
+    "Bootstrap": {
+      "type": "object",
+      "properties": {
+        "bootstrap_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "REPLAY_ALL_CASH",
+            "EXISTING_MANUAL_ACCOUNT"
+          ]
+        },
+        "cash_amount": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "positions_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cash_ownership_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "broker_snapshot_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "open_orders_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tax_lots_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "corporate_entitlements_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "previous_state_ref": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retirement_history_checked": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "bootstrap_id",
+        "mode",
+        "cash_amount",
+        "positions_ref",
+        "cash_ownership_ref",
+        "broker_snapshot_ref",
+        "open_orders_ref",
+        "tax_lots_ref",
+        "corporate_entitlements_ref",
+        "previous_state_ref",
+        "retirement_history_checked"
+      ],
+      "additionalProperties": false
+    },
+    "Benchmark": {
+      "type": "object",
+      "properties": {
+        "benchmark_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selection_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selected_before_results_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": ".*(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+        },
+        "securities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "cash_policy_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fee_profile_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "listing_history_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "price_basis_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "window_policy": {
+          "const": "COMMON_ACTUAL_LIFETIME"
+        }
+      },
+      "required": [
+        "benchmark_id",
+        "selection_reason",
+        "selected_before_results_at",
+        "securities",
+        "cash_policy_ref",
+        "fee_profile_ref",
+        "listing_history_ref",
+        "price_basis_ref",
+        "window_policy"
+      ],
+      "additionalProperties": false
+    },
+    "FactorPackageProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FactorPackage"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/FactorPackage"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "UniverseProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Universe"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/Universe"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "RuleBookProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuleBook"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/RuleBook"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FeesProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Fees"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/Fees"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "SourcesProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Sources"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/Sources"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BootstrapProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Bootstrap"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/Bootstrap"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "BenchmarkProfile": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_PROVIDED",
+            "DECLARED",
+            "SAMPLE_CHECKED",
+            "VERIFIED_FOR_SCOPE"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/Scope"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "payload": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Benchmark"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "status",
+        "scope",
+        "source_refs",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_PROVIDED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "payload": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "payload": {
+                "$ref": "#/$defs/Benchmark"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Study": {
+      "type": "object",
+      "properties": {
+        "study_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "detail_version": {
+          "const": "V5D2"
+        },
+        "end_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "capital_mode": {
+          "type": "string",
+          "enum": [
+            "DEFAULT_TWO",
+            "ACTUAL_ONE"
+          ]
+        },
+        "capitals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+          },
+          "minItems": 1
+        },
+        "start_years": {
+          "const": [
+            2011,
+            2016,
+            2021,
+            2024
+          ]
+        },
+        "roles": {
+          "const": [
+            "B0",
+            "B1",
+            "B2"
+          ]
+        },
+        "scenarios": {
+          "const": [
+            "S0",
+            "S1",
+            "S2",
+            "S3"
+          ]
+        },
+        "execution_mode": {
+          "type": "string",
+          "enum": [
+            "REPLAY_DAILY_PROXY",
+            "REPLAY_MINUTE_WINDOW",
+            "FORWARD_MANUAL"
+          ]
+        },
+        "fact_snapshot_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "purpose": {
+          "type": "string",
+          "enum": [
+            "ENGINEERING_ONLY",
+            "RESEARCH",
+            "DEPLOYMENT_CANDIDATE"
+          ]
+        }
+      },
+      "required": [
+        "study_id",
+        "detail_version",
+        "end_date",
+        "capital_mode",
+        "capitals",
+        "start_years",
+        "roles",
+        "scenarios",
+        "execution_mode",
+        "fact_snapshot_id",
+        "purpose"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "capital_mode": {
+                "const": "DEFAULT_TWO"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "capitals": {
+                "const": [
+                  "100000",
+                  "500000"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "capitals": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+                },
+                "minItems": 1,
+                "maxItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ExactRatio": {
+      "type": "object",
+      "properties": {
+        "num": {
+          "type": "string",
+          "pattern": "^(?:0|-?[1-9][0-9]*)$"
+        },
+        "den": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        }
+      },
+      "required": [
+        "num",
+        "den"
+      ],
+      "additionalProperties": false,
+      "description": "Canonical arbitrary-precision ratio; gcd(abs(num),den)=1 and zero=0/1 are mandatory semantic checks. Not JSON numeric literals."
+    },
+    "ExactAccountSnapshot": {
+      "type": "object",
+      "properties": {
+        "detail_version": {
+          "const": "V5D2"
+        },
+        "projection_revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_committed_seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "equity": {
+          "type": "string",
+          "pattern": "^-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?$"
+        },
+        "units": {
+          "$ref": "#/$defs/ExactRatio"
+        },
+        "nav": {
+          "$ref": "#/$defs/ExactRatio"
+        },
+        "hwm": {
+          "$ref": "#/$defs/ExactRatio"
+        },
+        "dd": {
+          "$ref": "#/$defs/ExactRatio"
+        }
+      },
+      "required": [
+        "detail_version",
+        "projection_revision",
+        "last_committed_seq",
+        "equity",
+        "units",
+        "nav",
+        "hwm",
+        "dd"
+      ],
+      "additionalProperties": false,
+      "description": "Exact numerical projection slice only, not a complete production-account serialization; semantic validation recomputes NAV and DD."
+    },
+    "DividendEntitlementBinding": {
+      "type": "object",
+      "properties": {
+        "entitlement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tax_profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selected_rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "record_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "rule_selection_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "selection_date_basis": {
+          "const": "EQUITY_RECORD_DATE"
+        }
+      },
+      "required": [
+        "entitlement_id",
+        "tax_profile_id",
+        "selected_rule_id",
+        "record_date",
+        "rule_selection_date",
+        "selection_date_basis"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

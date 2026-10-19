@@ -1,0 +1,25 @@
+{
+  "scope": "Original V5D1 scripts rerun in a separate local conversation copy; original files untouched. These successes do not refute the reproduced semantic errors.",
+  "original_oracle": {
+    "passed": 278,
+    "failed": 0
+  },
+  "original_document_checks": {
+    "passed": 308,
+    "failed": 0
+  },
+  "baseline_md_byte_identical": true,
+  "baseline_reader_change": "navigation links only; article text unchanged",
+  "unchanged_input_sections": {
+    "engineering_inputs.example.json": {
+      "baseline": true,
+      "execution_technical": true,
+      "profiles": true
+    },
+    "external_inputs.template.json": {
+      "baseline": true,
+      "execution_technical": true,
+      "profiles": true
+    }
+  }
+}

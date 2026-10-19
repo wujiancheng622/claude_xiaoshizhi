@@ -1,0 +1,116 @@
+{
+  "purpose": "TEST_ONLY",
+  "status": "DECLARED",
+  "not_a_complete_tax_schedule": true,
+  "policy_case_notes": "09-07 and 09-09 rows only demonstrate record-date selection; missing dates remain unsupported. Synthetic 2020 boundary rows only test interval arithmetic.",
+  "rules": [
+    {
+      "rule_id": "OLD_SAMPLE_0907",
+      "effective_from": "2015-09-07",
+      "effective_to": "2015-09-08",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0.05",
+      "tiers": [
+        {
+          "max_calendar_months_inclusive": 1,
+          "rate": "0.20"
+        },
+        {
+          "max_calendar_months_inclusive": 12,
+          "rate": "0.10"
+        },
+        {
+          "max_calendar_months_inclusive": null,
+          "rate": "0.05"
+        }
+      ],
+      "tax_base_definition": "TEST_ONLY gross cash dividend per record-date eligible share",
+      "acquisition_inheritance_rule": "ORDINARY_ACQUISITION_NO_CORPORATE_CONVERSION",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "TEST_ONLY; official rule-selection evidence in 05 review",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+    },
+    {
+      "rule_id": "NEW_SAMPLE_0909",
+      "effective_from": "2015-09-09",
+      "effective_to": "2015-09-10",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0",
+      "tiers": [
+        {
+          "max_calendar_months_inclusive": 1,
+          "rate": "0.20"
+        },
+        {
+          "max_calendar_months_inclusive": 12,
+          "rate": "0.10"
+        },
+        {
+          "max_calendar_months_inclusive": null,
+          "rate": "0"
+        }
+      ],
+      "tax_base_definition": "TEST_ONLY gross cash dividend per record-date eligible share",
+      "acquisition_inheritance_rule": "ORDINARY_ACQUISITION_NO_CORPORATE_CONVERSION",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "TEST_ONLY; official rule-selection evidence in 05 review",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+    },
+    {
+      "rule_id": "ENGINEERING_OLD",
+      "effective_from": "2019-01-01",
+      "effective_to": "2020-01-01",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0.05",
+      "tiers": [
+        {
+          "max_calendar_months_inclusive": 1,
+          "rate": "0.20"
+        },
+        {
+          "max_calendar_months_inclusive": 12,
+          "rate": "0.10"
+        },
+        {
+          "max_calendar_months_inclusive": null,
+          "rate": "0.05"
+        }
+      ],
+      "tax_base_definition": "TEST_ONLY gross cash dividend per record-date eligible share",
+      "acquisition_inheritance_rule": "ORDINARY_ACQUISITION_NO_CORPORATE_CONVERSION",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "TEST_ONLY; official rule-selection evidence in 05 review",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+    },
+    {
+      "rule_id": "ENGINEERING_NEW",
+      "effective_from": "2020-01-01",
+      "effective_to": "2021-01-01",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0",
+      "tiers": [
+        {
+          "max_calendar_months_inclusive": 1,
+          "rate": "0.20"
+        },
+        {
+          "max_calendar_months_inclusive": 12,
+          "rate": "0.10"
+        },
+        {
+          "max_calendar_months_inclusive": null,
+          "rate": "0"
+        }
+      ],
+      "tax_base_definition": "TEST_ONLY gross cash dividend per record-date eligible share",
+      "acquisition_inheritance_rule": "ORDINARY_ACQUISITION_NO_CORPORATE_CONVERSION",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "TEST_ONLY; official rule-selection evidence in 05 review",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+    }
+  ]
+}

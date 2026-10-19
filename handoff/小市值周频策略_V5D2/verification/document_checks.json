@@ -1,0 +1,353 @@
+{
+  "detail_version": "V5D2",
+  "scope": "Cross-artifact structure, reader parity, schema/templates, normalization and exact-state/tax examples. NOT production acceptance.",
+  "passed_groups": 67,
+  "failed_groups": 0,
+  "planned_production_cases": 338,
+  "planned_status": "NOT_RUN",
+  "golden_groups": 32,
+  "checks": [
+    {
+      "name": "case_inventory",
+      "status": "PASS",
+      "detail": {
+        "original": 312,
+        "added": 26,
+        "total": 338
+      }
+    },
+    {
+      "name": "nineteen_groups",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "manifest_matches_text",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "production_cases_NOT_RUN",
+      "status": "PASS",
+      "detail": 338
+    },
+    {
+      "name": "22_design_sections",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "11_interface_sections",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "risk_scope_rule_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "exact_ratio_and_snapshot_defined",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tax_rule_basis_shared",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "flat_reduce_not_increase",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "7_html_readers",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_body_01_详细设计_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_01_详细设计_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_01_详细设计_V5D2.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "reader_body_02_测试设计与验收用例_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_02_测试设计与验收用例_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_02_测试设计与验收用例_V5D2.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "all_cases_render_as_table_rows",
+      "status": "PASS",
+      "detail": {
+        "rendered": 338,
+        "expected": 338
+      }
+    },
+    {
+      "name": "reader_body_03_接口与输入契约_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_03_接口与输入契约_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_03_接口与输入契约_V5D2.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "reader_body_04_校核与外部输入_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_04_校核与外部输入_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_04_校核与外部输入_V5D2.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "reader_body_05_逐项复核与修订裁决_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_05_逐项复核与修订裁决_V5D2.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_05_逐项复核与修订裁决_V5D2.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "reader_body_README.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_README.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_README.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "reader_body_基线_概要设计_V5_20261016.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_unique_anchors_基线_概要设计_V5_20261016.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "reader_links_基线_概要设计_V5_20261016.md",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "both_schemas_structurally_valid",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bundle_accepts_external_inputs.template.json",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "profile_mapping_external_inputs.template.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "template_no_faked_verified_external_inputs.template.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "bundle_accepts_engineering_inputs.example.json",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "profile_mapping_engineering_inputs.example.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "template_no_faked_verified_engineering_inputs.example.json",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_stock_budget",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_dd_retire",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_start_years",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_scenarios",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_bool_quantity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_numeric_money",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_verified_empty_profile",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_extra_bundle_key",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_bad_date",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_live_mode",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_daily_alias",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_minute_alias",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_flat_study_ref",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "schema_rejects_old_version",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "exact_snapshot_schema_and_semantics",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "ratio_numeric_json_rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "unreduced_ratio_domain_rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inconsistent_ratio_cache_rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tax_fixtures_valid_shape",
+      "status": "PASS",
+      "detail": 4
+    },
+    {
+      "name": "tax_missing_selection_basis_rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tax_pay_date_rejected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "tax_binding_wire_matches_selection",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "golden_inventory",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "G19_all_have_explicit_inputs_expected",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "fixed_revision_chains_executed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "inherited_local_checks_executed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "legacy_error_still_reproducible",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

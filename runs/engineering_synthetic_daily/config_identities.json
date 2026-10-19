@@ -1,0 +1,1112 @@
+{
+ "B0/100000/perm-default/B0_SIZE/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "MAIN_SH",
+   "MAIN_SZ"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "100000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "TEST_ALL",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "TEST",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-test-synthetic",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-COMMISSION-BOTH-BOTH-2000-01-01",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BOTH-SELL-2000-01-01",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-TRANSFER-BOTH-BOTH-2000-01-01",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "TEST_ONLY",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": null,
+  "role": "B0"
+ },
+ "B0/500000/perm-default/B0_SIZE/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "MAIN_SH",
+   "MAIN_SZ"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "500000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "TEST_ALL",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "TEST",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-test-synthetic",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-COMMISSION-BOTH-BOTH-2000-01-01",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BOTH-SELL-2000-01-01",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-TRANSFER-BOTH-BOTH-2000-01-01",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "TEST_ONLY",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": null,
+  "role": "B0"
+ },
+ "B1/100000/perm-default/TEST_ONLY_RANK/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "MAIN_SH",
+   "MAIN_SZ"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "100000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "TEST_ALL",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "TEST",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-test-synthetic",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-COMMISSION-BOTH-BOTH-2000-01-01",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BOTH-SELL-2000-01-01",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-TRANSFER-BOTH-BOTH-2000-01-01",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "TEST_ONLY",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "TEST_SEQUENCE",
+     "formula_definition": "直接返回用例提供的测试分数；不是投资因子。",
+     "golden_case_ids": [
+      "G05-01",
+      "G05-02",
+      "G05-03"
+     ],
+     "implementation_id": "TEST_ONLY_VALUE_FROM_FIXTURE",
+     "input_fields": [
+      "fixture_value"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "0.000001",
+     "output_unit": "fixture_score",
+     "source_scope_ref": "TEST_FIXTURE",
+     "validity_rules": [
+      "必须有限、as-of有效"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "TEST_ONLY",
+   "version": "1"
+  },
+  "role": "B1"
+ },
+ "B1/500000/perm-default/TEST_ONLY_RANK/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "MAIN_SH",
+   "MAIN_SZ"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "500000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "TEST_ALL",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "TEST",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-test-synthetic",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-COMMISSION-BOTH-BOTH-2000-01-01",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BOTH-SELL-2000-01-01",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-TRANSFER-BOTH-BOTH-2000-01-01",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "TEST_ONLY",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "TEST_SEQUENCE",
+     "formula_definition": "直接返回用例提供的测试分数；不是投资因子。",
+     "golden_case_ids": [
+      "G05-01",
+      "G05-02",
+      "G05-03"
+     ],
+     "implementation_id": "TEST_ONLY_VALUE_FROM_FIXTURE",
+     "input_fields": [
+      "fixture_value"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "0.000001",
+     "output_unit": "fixture_score",
+     "source_scope_ref": "TEST_FIXTURE",
+     "validity_rules": [
+      "必须有限、as-of有效"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "TEST_ONLY",
+   "version": "1"
+  },
+  "role": "B1"
+ },
+ "B2/100000/perm-default/TEST_ONLY_RANK/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "MAIN_SH",
+   "MAIN_SZ"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "100000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "TEST_ALL",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "TEST",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-test-synthetic",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-COMMISSION-BOTH-BOTH-2000-01-01",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BOTH-SELL-2000-01-01",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-TRANSFER-BOTH-BOTH-2000-01-01",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "TEST_ONLY",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "TEST_SEQUENCE",
+     "formula_definition": "直接返回用例提供的测试分数；不是投资因子。",
+     "golden_case_ids": [
+      "G05-01",
+      "G05-02",
+      "G05-03"
+     ],
+     "implementation_id": "TEST_ONLY_VALUE_FROM_FIXTURE",
+     "input_fields": [
+      "fixture_value"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "0.000001",
+     "output_unit": "fixture_score",
+     "source_scope_ref": "TEST_FIXTURE",
+     "validity_rules": [
+      "必须有限、as-of有效"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "TEST_ONLY",
+   "version": "1"
+  },
+  "role": "B2"
+ },
+ "B2/500000/perm-default/TEST_ONLY_RANK/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "MAIN_SH",
+   "MAIN_SZ"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "500000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "TEST_ALL",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "TEST",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-test-synthetic",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-COMMISSION-BOTH-BOTH-2000-01-01",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BOTH-SELL-2000-01-01",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "TEST_ONLY",
+     "fee_id": "T-TRANSFER-BOTH-BOTH-2000-01-01",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "TEST-SETTLE",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "TEST_ONLY",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "TEST_SEQUENCE",
+     "formula_definition": "直接返回用例提供的测试分数；不是投资因子。",
+     "golden_case_ids": [
+      "G05-01",
+      "G05-02",
+      "G05-03"
+     ],
+     "implementation_id": "TEST_ONLY_VALUE_FROM_FIXTURE",
+     "input_fields": [
+      "fixture_value"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "0.000001",
+     "output_unit": "fixture_score",
+     "source_scope_ref": "TEST_FIXTURE",
+     "validity_rules": [
+      "必须有限、as-of有效"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "TEST_ONLY",
+   "version": "1"
+  },
+  "role": "B2"
+ }
+}

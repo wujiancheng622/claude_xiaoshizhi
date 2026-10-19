@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V5D2 exact projection and dividend binding exchange fragments",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "EXACT_ACCOUNT"
+        },
+        "payload": {
+          "$ref": "bundle.schema.json#/$defs/ExactAccountSnapshot"
+        }
+      },
+      "required": [
+        "kind",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "DIVIDEND_BINDING"
+        },
+        "payload": {
+          "$ref": "bundle.schema.json#/$defs/DividendEntitlementBinding"
+        }
+      },
+      "required": [
+        "kind",
+        "payload"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

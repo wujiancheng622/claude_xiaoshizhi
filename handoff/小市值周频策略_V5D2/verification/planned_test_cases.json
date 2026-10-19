@@ -1,0 +1,4007 @@
+{
+  "count": 338,
+  "cases": [
+    {
+      "id": "G01-01",
+      "group": "G01",
+      "case_columns": [
+        "加载完整V5D2常量",
+        "validate",
+        "所有值与V5一致，无默认98%或90%仓位混入"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-02",
+      "group": "G01",
+      "case_columns": [
+        "把stock_target改0.7但版本仍V5D2",
+        "validate",
+        "`BASELINE_MISMATCH`，不运行原版本"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-03",
+      "group": "G01",
+      "case_columns": [
+        "ETF/股票范围存在同一ID",
+        "bootstrap",
+        "拒绝共享运行；不生成同股分摊表"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-04",
+      "group": "G01",
+      "case_columns": [
+        "因子包缺失，给定TEST_ONLY夹具",
+        "回放骨架",
+        "可产生工程输出；资格始终ENGINEERING_ONLY"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-05",
+      "group": "G01",
+      "case_columns": [
+        "实际金额与权限均空",
+        "plan",
+        "不编造50万元或科创权限；对应外部输入阻断"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-06",
+      "group": "G01",
+      "case_columns": [
+        "所有财务值齐全但含未来available_at",
+        "compute",
+        "拒绝未来依赖，不标正常"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-07",
+      "group": "G01",
+      "case_columns": [
+        "金额NaN、股数True或小数",
+        "deserialize",
+        "类型错误；不能转换为1股或0元"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-08",
+      "group": "G01",
+      "case_columns": [
+        "同一期RuleBook出现两行重叠",
+        "validate",
+        "`RULE_AMBIGUOUS`；不能按文件先后取一行"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-09",
+      "group": "G01",
+      "case_columns": [
+        "研究费用表有一段历史空档",
+        "A0",
+        "缺失区间标证据不足，不套今天费率"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G01-10",
+      "group": "G01",
+      "case_columns": [
+        "调用未授权LIVE_ORDER",
+        "dispatch",
+        "无任何真实报撤单调用；明确拒绝"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-01",
+      "group": "G02",
+      "case_columns": [
+        "同口径QMT=10.00、TS=10.00，均有效",
+        "select",
+        "QMT、来源轨迹完整"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-02",
+      "group": "G02",
+      "case_columns": [
+        "QMT只有当前股本，查询历史市值；TS历史有效",
+        "select",
+        "TS补充，理由HISTORICAL_SEMANTICS_UNAVAILABLE"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-03",
+      "group": "G02",
+      "case_columns": [
+        "QMT缺该日，TS同口径已核验",
+        "select",
+        "显式SUBSTITUTE；不是静默拼接"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-04",
+      "group": "G02",
+      "case_columns": [
+        "QMT过期报价，TS新鲜历史日值",
+        "实时报单",
+        "历史日值不能代实时对手盘；不报单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-05",
+      "group": "G02",
+      "case_columns": [
+        "QMT负收盘价、TS正价且已核验",
+        "select",
+        "错值拒用，可显式替代，不因QMT优先保留负价"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-06",
+      "group": "G02",
+      "case_columns": [
+        "双方有效但10元与11元冲突",
+        "select",
+        "SOURCE_CONFLICT；不平均、不自动取收益更好者"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-07",
+      "group": "G02",
+      "case_columns": [
+        "QMT展示量化0.01，TS量化0.001，舍入区间相交",
+        "select",
+        "采用QMT中心值；保留舍入解释"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-08",
+      "group": "G02",
+      "case_columns": [
+        "单位错：TS amount=10000千元",
+        "normalize",
+        "10,000,000元；不能当10,000元"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-09",
+      "group": "G02",
+      "case_columns": [
+        "TS vol=35手",
+        "normalize",
+        "3,500股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-10",
+      "group": "G02",
+      "case_columns": [
+        "TS total_mv=120000万元",
+        "normalize",
+        "1,200,000,000元"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-11",
+      "group": "G02",
+      "case_columns": [
+        "两复权序列锚不同但字段同名",
+        "merge",
+        "BASIS_MISMATCH；不能直接拼接"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-12",
+      "group": "G02",
+      "case_columns": [
+        "QMT账户余额缺失、TS有市值",
+        "bootstrap",
+        "TS不能补账户现金；账户事实未知"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-13",
+      "group": "G02",
+      "case_columns": [
+        "QMT恢复修正最早2021周度分数",
+        "impact",
+        "从最早受影响决策前重放到D，不只改当周分数"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-14",
+      "group": "G02",
+      "case_columns": [
+        "QMT差异只有未使用字段",
+        "impact",
+        "记录无影响，不触发无关全量回放"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-15",
+      "group": "G02",
+      "case_columns": [
+        "随机重排来源记录行",
+        "repeat",
+        "来源裁决与数值不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G02-16",
+      "group": "G02",
+      "case_columns": [
+        "同事件合计分红1.4与分项1.0/0.4混在来源中",
+        "normalize",
+        "必须按事件条款去重/合并；不能全部相加2.8"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-01",
+      "group": "G03",
+      "case_columns": [
+        "财报报告期2025-12-31，公告2026-04-17",
+        "2025末计算",
+        "不可见，不用end_date过滤冒充as-of"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-02",
+      "group": "G03",
+      "case_columns": [
+        "公告只有周五日期",
+        "周五20点信号",
+        "下一市场日09:30前不可用"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-03",
+      "group": "G03",
+      "case_columns": [
+        "公告有可信周五19:00时刻",
+        "周五20点",
+        "可用；周五20:01公告不可用"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-04",
+      "group": "G03",
+      "case_columns": [
+        "TTM的Q1先公开，上年全年更晚公开",
+        "TTM",
+        "max依赖时刻为更晚全年公开时刻"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-05",
+      "group": "G03",
+      "case_columns": [
+        "YTD=30、上年全年120、上年同期20",
+        "TTM",
+        "130，独立四季求和同口径一致"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-06",
+      "group": "G03",
+      "case_columns": [
+        "当年Q2累计80、Q1累计30",
+        "单季",
+        "50；缺Q1则未知，不把80当单季"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-07",
+      "group": "G03",
+      "case_columns": [
+        "同期两版本更正5月1日公开",
+        "4月/5月查询",
+        "4月用旧；5月后用新；不倒填"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-08",
+      "group": "G03",
+      "case_columns": [
+        "同键同时间不同值但无版本关系",
+        "as-of",
+        "冲突；不得按输入顺序择一"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-09",
+      "group": "G03",
+      "case_columns": [
+        "未来追加2027财报",
+        "重跑2025信号",
+        "所有2025输出不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-10",
+      "group": "G03",
+      "case_columns": [
+        "latest period已公开但必要字段非法",
+        "compute",
+        "模型不适用，不退回旧期“较好”数据"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-11",
+      "group": "G03",
+      "case_columns": [
+        "最新尚未公告的新报告期",
+        "compute",
+        "不当已披露缺失；仍使用真正可见的最新期"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-12",
+      "group": "G03",
+      "case_columns": [
+        "报告期加15月当天/次日",
+        "freshness",
+        "当天有效；次日过期，包更严格时从严"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-13",
+      "group": "G03",
+      "case_columns": [
+        "无时区报价",
+        "normalize",
+        "时间语义不明，不进入执行"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-14",
+      "group": "G03",
+      "case_columns": [
+        "信号周包含节假日",
+        "schedule",
+        "用真实最后市场日；不固定星期五"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-15",
+      "group": "G03",
+      "case_columns": [
+        "数据终点是星期三但本周未结束",
+        "week_end",
+        "不制造完整周度截止"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-16",
+      "group": "G03",
+      "case_columns": [
+        "10:00才收到新事实",
+        "日线09:30代理",
+        "不影响09:30成交、数量或选股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-17",
+      "group": "G03",
+      "case_columns": [
+        "登记日15:00存在已提交订单的收盘成交",
+        "日终登记",
+        "先记当日成交，再锁登记股数；不能遗漏这批权益"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G03-18",
+      "group": "G03",
+      "case_columns": [
+        "公司行动晚到且生效早于已有真实成交",
+        "恢复",
+        "用实际成交和修正事件重投影，不重造历史订单；保留当时决策记录"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-01",
+      "group": "G04",
+      "case_columns": [
+        "500只确认合格、无评分输入",
+        "build_pool",
+        "按MV及代码取400，结果不依赖因子"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-02",
+      "group": "G04",
+      "case_columns": [
+        "两股同MV",
+        "sort",
+        "代码顺序固定；重排行不改变边界"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-03",
+      "group": "G04",
+      "case_columns": [
+        "后来退市证券在历史时点合格",
+        "history",
+        "保留历史资格；不按最终退市日提前删股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-04",
+      "group": "G04",
+      "case_columns": [
+        "上市索引差249/250",
+        "eligible",
+        "249失败，250通过"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-05",
+      "group": "G04",
+      "case_columns": [
+        "原价1.99/2.00",
+        "eligible",
+        "前者失败，后者通过"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-06",
+      "group": "G04",
+      "case_columns": [
+        "ADV20=9,999,999/10,000,000",
+        "eligible",
+        "前者失败，后者通过"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-07",
+      "group": "G04",
+      "case_columns": [
+        "19天有额、1天确认停牌",
+        "ADV",
+        "停牌0且仍除20"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-08",
+      "group": "G04",
+      "case_columns": [
+        "19天有额、1天来源缺失",
+        "ADV",
+        "UNKNOWN，不当0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-09",
+      "group": "G04",
+      "case_columns": [
+        "规则标该历史时期市值底线NOT_APPLICABLE",
+        "eligible",
+        "不套未来门槛；此条件通过"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-10",
+      "group": "G04",
+      "case_columns": [
+        "底线规则缺失",
+        "eligible",
+        "RULE_UNKNOWN，不等于NOT_APPLICABLE"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-11",
+      "group": "G04",
+      "case_columns": [
+        "399只确认合格+1只潜在未知",
+        "build_pool",
+        "不健康，不能把399当完整范围"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-12",
+      "group": "G04",
+      "case_columns": [
+        "已满400，未知股MV已证实大于第400键",
+        "health",
+        "可记录无关未知，不阻断池"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-13",
+      "group": "G04",
+      "case_columns": [
+        "已满400，未知股MV缺失或可能较小",
+        "health",
+        "POOL_UNCERTAIN，暂停普通信号"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-14",
+      "group": "G04",
+      "case_columns": [
+        "一个已确认价格不合格且其他字段未知",
+        "predicate",
+        "FALSE，不必因其无关未知阻断全池"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-15",
+      "group": "G04",
+      "case_columns": [
+        "池形成后因子有80只缺失",
+        "score",
+        "不从第401以后补80只"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G04-16",
+      "group": "G04",
+      "case_columns": [
+        "0只合格",
+        "coverage",
+        "EMPTY_ECONOMIC_POOL；禁止0/0=100%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-01",
+      "group": "G05",
+      "case_columns": [
+        "单项[10,20,20,40]正向",
+        "score",
+        "[−1,0,0,1]，并列均分"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-02",
+      "group": "G05",
+      "case_columns": [
+        "同输入反向",
+        "score",
+        "[1,0,0,−1]；不反两次"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-03",
+      "group": "G05",
+      "case_columns": [
+        "一项全部7",
+        "score",
+        "全0，原包权重不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-04",
+      "group": "G05",
+      "case_columns": [
+        "只有一只有效",
+        "score",
+        "分数0，不除以n−1=0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-05",
+      "group": "G05",
+      "case_columns": [
+        "两项方向相反、等权后全同",
+        "plan",
+        "FLAT_SCORE，不新增/补买/排名替换；合格老仓>2.5%保留减持至固定2%金额；报价变化不反向买入；风险照常"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-06",
+      "group": "G05",
+      "case_columns": [
+        "320/400联合有效",
+        "coverage",
+        "80%健康；319/400不健康"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-07",
+      "group": "G05",
+      "case_columns": [
+        "三项各90%，分别缺40只不重叠",
+        "intersection",
+        "联合280/400=70%，不能取平均90%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-08",
+      "group": "G05",
+      "case_columns": [
+        "A项400有值，B项320有值",
+        "score",
+        "两项都只在共同320只上排名"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-09",
+      "group": "G05",
+      "case_columns": [
+        "一股缺一项",
+        "score",
+        "不在J；不按剩余项重权"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-10",
+      "group": "G05",
+      "case_columns": [
+        "合法负利润与极端正值",
+        "preprocessing",
+        "原值保留且映射有界百分位；不winsorize或填0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-11",
+      "group": "G05",
+      "case_columns": [
+        "全局故障跨两周",
+        "counters",
+        "个别计数不增、不清，不批量抛售"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-12",
+      "group": "G05",
+      "case_columns": [
+        "健康缺失、故障、故障、健康缺失、健康恢复",
+        "counters",
+        "1,1,1,2,0；第4周安排普通退出"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-13",
+      "group": "G05",
+      "case_columns": [
+        "健康批次确认分母非法",
+        "counters",
+        "本周模型不适用退出，不等两周"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-14",
+      "group": "G05",
+      "case_columns": [
+        "100应评估周健康95/94",
+        "package",
+        "95通过比例，94失败"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-15",
+      "group": "G05",
+      "case_columns": [
+        "健康比例98%但连续3周坏（总周数足够）",
+        "package",
+        "连续性失败，不被高平均覆盖抵消"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-16",
+      "group": "G05",
+      "case_columns": [
+        "若干周UNASSESSED",
+        "package",
+        "不删除分母；证据不足"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-17",
+      "group": "G05",
+      "case_columns": [
+        "200组正单调变换与输入重排",
+        "metamorphic",
+        "排名和同分规则不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G05-18",
+      "group": "G05",
+      "case_columns": [
+        "更换包但相同规范评分输入",
+        "backbone",
+        "账户/执行常量不改变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-01",
+      "group": "G06",
+      "case_columns": [
+        "全现金、400有效",
+        "first plan",
+        "固定前30；行业受限的候选在信号时跳过"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-02",
+      "group": "G06",
+      "case_columns": [
+        "老仓名次30/45/46",
+        "B1",
+        "30、45保留，46普通退出"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-03",
+      "group": "G06",
+      "case_columns": [
+        "同名单老仓31",
+        "B2",
+        "普通退出；B1可保留"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-04",
+      "group": "G06",
+      "case_columns": [
+        "老仓市值序位399→401、综合分仍高",
+        "plan",
+        "离池普通退出，不评分豁免"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-05",
+      "group": "G06",
+      "case_columns": [
+        "29保留+1确定冻结旧仓",
+        "plan/execute",
+        "没有额外新槽，不买第31只"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-06",
+      "group": "G06",
+      "case_columns": [
+        "计划卖旧股后来失败",
+        "execute",
+        "重新计实际槽；不执行对应新增"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-07",
+      "group": "G06",
+      "case_columns": [
+        "一股部分卖出仍1股",
+        "slots",
+        "仍占1槽；卖完且终态才释放"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-08",
+      "group": "G06",
+      "case_columns": [
+        "在途新买已部分成交",
+        "slots",
+        "并集计一次，不算两个槽"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-09",
+      "group": "G06",
+      "case_columns": [
+        "只有10只可买",
+        "weights",
+        "每只仍2%，不是6%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-10",
+      "group": "G06",
+      "case_columns": [
+        "截止E=100000，执行E=110000",
+        "targets",
+        "单股普通目标仍2000，不自动2200"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-11",
+      "group": "G06",
+      "case_columns": [
+        "截止value=1500或2500",
+        "band",
+        "HOLD_SHARES；1499.99/2500.01才TARGET_AMOUNT"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-12",
+      "group": "G06",
+      "case_columns": [
+        "TARGET_AMOUNT隔夜价涨导致超目标",
+        "sizing",
+        "可由补买变减持；HOLD_SHARES不变成补买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-13",
+      "group": "G06",
+      "case_columns": [
+        "已因风险减卖后普通目标仍较高",
+        "same batch",
+        "禁买集合生效，不能同批买回"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-14",
+      "group": "G06",
+      "case_columns": [
+        "信号后转入资金",
+        "execute",
+        "旧普通买入CAPITAL_CHANGED；不扩大资金目标"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-15",
+      "group": "G06",
+      "case_columns": [
+        "行业计划退出失败",
+        "preview",
+        "实际行业仓计入；不得按假想退出买同业新股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G06-16",
+      "group": "G06",
+      "case_columns": [
+        "因缺资金买不到最后几只",
+        "execute",
+        "留现金，不添加固定名单之外证券"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-01",
+      "group": "G07",
+      "case_columns": [
+        "实际260股、目标500股、主板100步长",
+        "普通买入",
+        "只新增200，不买240"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-02",
+      "group": "G07",
+      "case_columns": [
+        "同缺口240、科创最低200逐股",
+        "普通买入",
+        "240合法（使用相应日期RuleBook）"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-03",
+      "group": "G07",
+      "case_columns": [
+        "科创缺口199",
+        "buy",
+        "不报；不向上凑200超普通目标"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-04",
+      "group": "G07",
+      "case_columns": [
+        "持260可卖260、主板保守子集",
+        "exit",
+        "允许全部260；普通部分取100/200，不拆零凑目标"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-05",
+      "group": "G07",
+      "case_columns": [
+        "q260但当天新买不可卖",
+        "sell",
+        "free_sell=0，不用总股数代替"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-06",
+      "group": "G07",
+      "case_columns": [
+        "mature1000、broker_can_sell700、冻结300已在两边映射",
+        "free_sell",
+        "700，不再减成400"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-07",
+      "group": "G07",
+      "case_columns": [
+        "再有批准未报100股",
+        "free_sell",
+        "600，预批准也占用"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-08",
+      "group": "G07",
+      "case_columns": [
+        "E100000、股票66000、价10、例费0.1%+5",
+        "风险降60%",
+        "600股不足；100股步长最低700股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-09",
+      "group": "G07",
+      "case_columns": [
+        "上例最多可卖500股",
+        "risk",
+        "卖到合法可行上限，目标未达、限制保持"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-10",
+      "group": "G07",
+      "case_columns": [
+        "后续行业卖出费用使先前单股2%再超线",
+        "merge",
+        "全局费用闭合复核；不能保留假完成"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-11",
+      "group": "G07",
+      "case_columns": [
+        "冻结A5000股，交易B支付25元",
+        "ledger",
+        "A仍5000股；E减少25，不能按比例缩A"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-12",
+      "group": "G07",
+      "case_columns": [
+        "10万元、30股每股目标2000、价10、每单5费、零滑点夹具",
+        "startup sizing",
+        "顺序最大合法分配为前29只200股、末只100股；股票59000、佣金150，E99850"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-13",
+      "group": "G07",
+      "case_columns": [
+        "24股、原始股票额50000/本金100000",
+        "startup",
+        "适配通过边界；费用后风险仍另校验"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-14",
+      "group": "G07",
+      "case_columns": [
+        "23股但股票额60000",
+        "startup",
+        "不适配，不能算现金赢家"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-15",
+      "group": "G07",
+      "case_columns": [
+        "startup26股但原始股票额49999.99",
+        "startup",
+        "不适配"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-16",
+      "group": "G07",
+      "case_columns": [
+        "已启动后风险卖出只剩20股",
+        "runtime",
+        "不强行补回24/30；启动门槛不变运行买入命令"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-17",
+      "group": "G07",
+      "case_columns": [
+        "10万元不适配、50万元适配",
+        "matrix",
+        "分别判资格，不相互覆盖"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-18",
+      "group": "G07",
+      "case_columns": [
+        "多个买单分别看都可买但合计超现金",
+        "allocator",
+        "顺序预约并重算，合计不能超支"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-19",
+      "group": "G07",
+      "case_columns": [
+        "原买单300股已成50、余250确认撤销；主板步长100",
+        "重报",
+        "只报200或更少，不能直接报250或凑300"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G07-20",
+      "group": "G07",
+      "case_columns": [
+        "先有合法规划100，后因风险需再追加零股",
+        "合并",
+        "检查合并委托量的合法集合，而非将任意追加量视为合法"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-01",
+      "group": "G08",
+      "case_columns": [
+        "股票占比65%/65%+微量",
+        "trigger",
+        "65%不触发，后者TOTAL_REDUCE"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-02",
+      "group": "G08",
+      "case_columns": [
+        "总纠偏后降64%",
+        "continue",
+        "仍活跃，不在触发线下就结束"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-03",
+      "group": "G08",
+      "case_columns": [
+        "总纠偏自然降60%",
+        "continue",
+        "结束，不强制旧卖量"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-04",
+      "group": "G08",
+      "case_columns": [
+        "单股5%/5%+微量",
+        "trigger",
+        "等号不触发，超过减向2%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-05",
+      "group": "G08",
+      "case_columns": [
+        "单股从6%到4.9%",
+        "continue",
+        "未到2%，仍纠偏"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-06",
+      "group": "G08",
+      "case_columns": [
+        "行业20%/20%+微量",
+        "trigger",
+        "等号不触发，超过向20%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-07",
+      "group": "G08",
+      "case_columns": [
+        "单股/行业/总仓同时要求卖同股",
+        "merge",
+        "取最严格剩余目标，不三份卖量相加"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-08",
+      "group": "G08",
+      "case_columns": [
+        "受阻9.999%/10%",
+        "restrict",
+        "前者不因本条限制，10%限制；其他原因独立"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-09",
+      "group": "G08",
+      "case_columns": [
+        "受阻降9%但另有行业纠偏",
+        "clear",
+        "只清受阻原因，仍禁买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-10",
+      "group": "G08",
+      "case_columns": [
+        "DD=20%",
+        "EOD",
+        "预警，不自动变权重或加仓"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-11",
+      "group": "G08",
+      "case_columns": [
+        "DD=25%",
+        "EOD",
+        "撤买、EXITING、retirement_triggered=true"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-12",
+      "group": "G08",
+      "case_columns": [
+        "次日DD回20%或注资",
+        "state",
+        "不恢复，不清真实停用标记"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-13",
+      "group": "G08",
+      "case_columns": [
+        "日内价格短时DD25%，尚无正式日终确认",
+        "observation",
+        "复核集中度、资金及已生效风险；不新增盘中回撤触发，日终正式净值达到25%才停用"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-14",
+      "group": "G08",
+      "case_columns": [
+        "ST在窗口中确认",
+        "risk",
+        "取消冲突买入，之后窗口内能执行则卖；不等周末"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-15",
+      "group": "G08",
+      "case_columns": [
+        "价格1.99触发退出后回2.01",
+        "intent",
+        "不取消确认退出；已证数据错误方可撤销"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-16",
+      "group": "G08",
+      "case_columns": [
+        "EX事件后名义价格跌破2且条款真实",
+        "risk",
+        "同规则生效，不临时豁免"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-17",
+      "group": "G08",
+      "case_columns": [
+        "所有正常仓清空但有残余",
+        "state",
+        "无未结委托可RETIRED；残余继续净值/风险"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-18",
+      "group": "G08",
+      "case_columns": [
+        "E≤0",
+        "risk",
+        "拒绝新增、风险失败，不把E夹成正数"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-19",
+      "group": "G08",
+      "case_columns": [
+        "全局源故障但已确认某股终止上市",
+        "restricted",
+        "有依据风险退出继续；不一概禁止合法卖出"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G08-20",
+      "group": "G08",
+      "case_columns": [
+        "只因数据错误误触发并已实卖",
+        "correction",
+        "可人工核正标记；真实交易/费用不倒删"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-01",
+      "group": "G09",
+      "case_columns": [
+        "锚10元、tick0.01、买保护+30bp",
+        "limit",
+        "上界10.03，不能重试抬到10.10"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-02",
+      "group": "G09",
+      "case_columns": [
+        "当前卖一10.04",
+        "buy",
+        "不报，等待有界重试；不扩大保护"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-03",
+      "group": "G09",
+      "case_columns": [
+        "当前买一低于卖保护下界",
+        "sell",
+        "不报，风险意图保留"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-04",
+      "group": "G09",
+      "case_columns": [
+        "报价年龄3秒/3秒+微量",
+        "submit",
+        "3秒允许，超过拒绝"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-05",
+      "group": "G09",
+      "case_columns": [
+        "10:29:59可提交；10:30:00",
+        "clock",
+        "后者禁止新单，只撤单核对"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-06",
+      "group": "G09",
+      "case_columns": [
+        "请求已发但ACK超时",
+        "state",
+        "SENT_UNKNOWN，不用新ID重发"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-07",
+      "group": "G09",
+      "case_columns": [
+        "300股订单成交100后请求撤单",
+        "state",
+        "CANCEL_PENDING，剩200资源仍占用"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-08",
+      "group": "G09",
+      "case_columns": [
+        "撤单等待又成交50",
+        "apply",
+        "实仓150、剩150资源，费用按累计"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-09",
+      "group": "G09",
+      "case_columns": [
+        "部撤终态确认累计150",
+        "release",
+        "释放剩150，保留150股和已发生费"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-10",
+      "group": "G09",
+      "case_columns": [
+        "相同trade_id相同内容重复",
+        "apply",
+        "无第二次股数/现金/费用变化"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-11",
+      "group": "G09",
+      "case_columns": [
+        "相同trade_id不同数量",
+        "apply",
+        "冲突及增风险阻断，不择后一条"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-12",
+      "group": "G09",
+      "case_columns": [
+        "两个不同ID同价同秒同数量",
+        "apply",
+        "两笔真实成交都记录，不能按值去重"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-13",
+      "group": "G09",
+      "case_columns": [
+        "查询累计100、再累计150",
+        "import",
+        "只新增50，不再新增150"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-14",
+      "group": "G09",
+      "case_columns": [
+        "当前回报超原委托数",
+        "validate",
+        "不正常验收；源冲突核查及最大可能暴露保留"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-15",
+      "group": "G09",
+      "case_columns": [
+        "券商已确认真实超限成交",
+        "account",
+        "真实入账并记录政策违约、停增；不忽略暴露"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-16",
+      "group": "G09",
+      "case_columns": [
+        "第3张新单已结束仍需交易",
+        "retry",
+        "当窗口不再创建第4张；风险次日续"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-17",
+      "group": "G09",
+      "case_columns": [
+        "委托窗内发出，但真实成交发生在10:31",
+        "import",
+        "不回填10:29；保留真实10:31及窗口偏离"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-18",
+      "group": "G09",
+      "case_columns": [
+        "普通卖出被拒但已有现金且真实空槽",
+        "buy phase",
+        "无风险全局限制时可买固定名单内股票"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-19",
+      "group": "G09",
+      "case_columns": [
+        "普通卖单状态未知",
+        "buy phase",
+        "不能因预计不成交释放资源进入新增"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-20",
+      "group": "G09",
+      "case_columns": [
+        "同策略30只并行委托",
+        "batch",
+        "允许同owner多个证券，但各证券同方向仅1未结单；全资源先验约束"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-21",
+      "group": "G09",
+      "case_columns": [
+        "锚10.01、tick0.01、30bp保护、同锚HIGH代理",
+        "舍入",
+        "买上界10.05、卖下界9.97，合法法定边界仍优先；无内外取整死锁"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G09-22",
+      "group": "G09",
+      "case_columns": [
+        "10:29真实成交、10:31才收到确认",
+        "入账/可见性",
+        "occurrence=10:29且不是窗外成交；决策直到10:31才可消费该回报"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-01",
+      "group": "G10",
+      "case_columns": [
+        "前20日均额1000万元",
+        "capacity",
+        "当日上限100000元"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-02",
+      "group": "G10",
+      "case_columns": [
+        "当日已买40000、已卖20000",
+        "used",
+        "已用60000，不是净买20000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-03",
+      "group": "G10",
+      "case_columns": [
+        "再有在途30000",
+        "reserve",
+        "剩10000；无确认取消不得释放"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-04",
+      "group": "G10",
+      "case_columns": [
+        "取消在途30000且终态确认",
+        "release",
+        "已用60000仍在，剩40000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-05",
+      "group": "G10",
+      "case_columns": [
+        "卖单底价9.97、合法上界11、剩1000股",
+        "capacity reserve",
+        "11000，不是9970"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-06",
+      "group": "G10",
+      "case_columns": [
+        "无可靠上界的特殊日期",
+        "reserve",
+        "CAPACITY_PRICE_BOUND_UNKNOWN，不猜上界"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-07",
+      "group": "G10",
+      "case_columns": [
+        "当天换窗口/重启程序/换委托ID",
+        "used",
+        "累计容量不重置"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-08",
+      "group": "G10",
+      "case_columns": [
+        "下一市场日",
+        "used",
+        "清当日累计，旧未结订单资源仍需核对"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-09",
+      "group": "G10",
+      "case_columns": [
+        "零成交订单取消",
+        "fee",
+        "佣金0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-10",
+      "group": "G10",
+      "case_columns": [
+        "同委托累计1000→3000→24000",
+        "fee",
+        "增量5、0、1，总6"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-11",
+      "group": "G10",
+      "case_columns": [
+        "原1000元成交后撤单重报另1000",
+        "fee",
+        "两委托总佣金10"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-12",
+      "group": "G10",
+      "case_columns": [
+        "部分成交A=1000、已计5、剩2000",
+        "reserve",
+        "追加佣金预约0，不重复5"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-13",
+      "group": "G10",
+      "case_columns": [
+        "实扣费比计提多0.50",
+        "settle",
+        "只记差额0.50，不重扣全部"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-14",
+      "group": "G10",
+      "case_columns": [
+        "费用已在佣金中",
+        "total",
+        "不重复加规费"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-15",
+      "group": "G10",
+      "case_columns": [
+        "已有股票值60000、E100000，新买费用使比率超60",
+        "preview",
+        "不因忽略分母变化放行"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-16",
+      "group": "G10",
+      "case_columns": [
+        "买单已被券商冻结30000且available已减",
+        "global cash",
+        "不再从available减同一30000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-17",
+      "group": "G10",
+      "case_columns": [
+        "真实回报价已含滑点",
+        "fee",
+        "不额外再扣模拟10/30bp"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G10-18",
+      "group": "G10",
+      "case_columns": [
+        "卖出税费大于回款和可用现金",
+        "sell",
+        "COST_UNFUNDABLE，不能暗中融资"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-01",
+      "group": "G11",
+      "case_columns": [
+        "现金1000、100股价10，分红1/股",
+        "除息价9",
+        "应收100、股票900、现金1000，E仍2000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-02",
+      "group": "G11",
+      "case_columns": [
+        "上例派息前",
+        "cash gate",
+        "可付款现金不因应收增加100"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-03",
+      "group": "G11",
+      "case_columns": [
+        "上例派息",
+        "settle",
+        "现金1100、应收0，E仍2000，非二次盈利"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-04",
+      "group": "G11",
+      "case_columns": [
+        "登记日真实持股0",
+        "record/ex",
+        "零权益记录，不因后来买入补分红"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-05",
+      "group": "G11",
+      "case_columns": [
+        "登记日买入200并已确认",
+        "record",
+        "依法取得的200计登记，不因T+1不可卖而无股息"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-06",
+      "group": "G11",
+      "case_columns": [
+        "登记事件重复发送",
+        "replay",
+        "权益只登记一次；同事件不同条款冲突"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-07",
+      "group": "G11",
+      "case_columns": [
+        "200股10送3",
+        "credit",
+        "260股；正式到账可卖日之前不可卖新增60"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-08",
+      "group": "G11",
+      "case_columns": [
+        "101股送转产生非整数权利",
+        "credit",
+        "依正式取整/现金补偿条款；未知不自创整数"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-09",
+      "group": "G11",
+      "case_columns": [
+        "10配3价5，未认购",
+        "event",
+        "不免费加30股、不虚付150；权利影响按事件处理"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-10",
+      "group": "G11",
+      "case_columns": [
+        "分红/送转后只有旧基价格",
+        "valuation",
+        "不直接旧价×新股；用有证据参考或UNRELIABLE"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-11",
+      "group": "G11",
+      "case_columns": [
+        "同股不同取得日，卖出部分",
+        "tax FIFO",
+        "先消耗早批，日期和分红权利对应保留"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-12",
+      "group": "G11",
+      "case_columns": [
+        "2025-01-01取得，税交割2025-02-01",
+        "税示例profile",
+        "一个自然月边界20%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-13",
+      "group": "G11",
+      "case_columns": [
+        "上例交割2025-02-02",
+        "tax",
+        "10%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-14",
+      "group": "G11",
+      "case_columns": [
+        "2024-01-01取得，2025-01-01/01-02交割",
+        "tax",
+        "边界10%，超过一年0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-15",
+      "group": "G11",
+      "case_columns": [
+        "2025-01-31加一个月",
+        "calendar",
+        "2025-02-28，不固定30天"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-16",
+      "group": "G11",
+      "case_columns": [
+        "未卖股息可能补税20元",
+        "reserve",
+        "只限购买力，不同时减一次未发生税负净值"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-17",
+      "group": "G11",
+      "case_columns": [
+        "派息前先卖出",
+        "tax/event",
+        "最终税率和待付保留；派息时补税不丢"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-18",
+      "group": "G11",
+      "case_columns": [
+        "前期已代扣税，后来补缴",
+        "tax",
+        "只补最终税减已扣税，不重复缴"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-19",
+      "group": "G11",
+      "case_columns": [
+        "税批次或送红股税基未知",
+        "evaluation",
+        "TAX_UNKNOWN，不能默认为免税"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-20",
+      "group": "G11",
+      "case_columns": [
+        "真停牌延用最近价",
+        "marks",
+        "带旧日期暂估，不当正常新Bar或低波证据"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-21",
+      "group": "G11",
+      "case_columns": [
+        "最后一根历史Bar后消失、无终止事件",
+        "lifecycle",
+        "不主动卖出/清零/腾残余槽"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-22",
+      "group": "G11",
+      "case_columns": [
+        "已确认终止正常交易",
+        "residual",
+        "移出正常槽，但E、风险、权利保留且无现金增加"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-23",
+      "group": "G11",
+      "case_columns": [
+        "停用后残余实际回收",
+        "account",
+        "现金/权利真实转换并延续至D，不删除旧亏损"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-24",
+      "group": "G11",
+      "case_columns": [
+        "被动换股破坏互斥范围",
+        "ownership",
+        "保留实际权益、限制共享新增、人工核查；不实现同股分摊"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-25",
+      "group": "G11",
+      "case_columns": [
+        "同一批持股经历两次分红后部分卖出",
+        "税批次",
+        "对两次分红各自剩余补税关系按FIFO处理，不漏旧分红、不向后买入批次补税"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G11-26",
+      "group": "G11",
+      "case_columns": [
+        "账户应缴总税0.05分摊至两相同比例slice",
+        "舍入",
+        "合计仍0.05；相同余数按slice_id固定，一片0.03、一片0.02"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-01",
+      "group": "G12",
+      "case_columns": [
+        "初始本金100000首日E90000",
+        "NAV",
+        "0.9、DD10%，不能重置为1"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-02",
+      "group": "G12",
+      "case_columns": [
+        "E75000、units50000、v1.5、H2，再入75000",
+        "capital",
+        "units100000、E150000、v仍1.5、DD25%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-03",
+      "group": "G12",
+      "case_columns": [
+        "同初态转出15000",
+        "capital",
+        "units40000、E60000、v1.5，H仍2"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-04",
+      "group": "G12",
+      "case_columns": [
+        "入金只改额度、尚未真划拨",
+        "NAV",
+        "不加现金、units或E"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-05",
+      "group": "G12",
+      "case_columns": [
+        "出金动用冻结或待税现金",
+        "transfer",
+        "拒绝，不把承诺删掉满足出金"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-06",
+      "group": "G12",
+      "case_columns": [
+        "全额真实赎回、units=0",
+        "NAV",
+        "资本终止状态，不计算0/0，不清停用历史"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-07",
+      "group": "G12",
+      "case_columns": [
+        "成交日志重复event_id同内容",
+        "recovery",
+        "不再次入账"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-08",
+      "group": "G12",
+      "case_columns": [
+        "同event_id不同内容",
+        "recovery",
+        "硬冲突，停止增风险"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-09",
+      "group": "G12",
+      "case_columns": [
+        "写完整事件后快照未写就崩溃",
+        "resume",
+        "日志重放一次，与不中断相同"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-10",
+      "group": "G12",
+      "case_columns": [
+        "最后JSONL行只写一半",
+        "resume",
+        "只处理完整已提交事件；保留损坏片段，不丢前序"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-11",
+      "group": "G12",
+      "case_columns": [
+        "快照seq超日志seq",
+        "resume",
+        "拒绝直接使用快照，核查一致性"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-12",
+      "group": "G12",
+      "case_columns": [
+        "崩溃时委托SENT_UNKNOWN",
+        "resume",
+        "先查券商，不重新发送"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-13",
+      "group": "G12",
+      "case_columns": [
+        "次日恢复发现昨日普通计划已过期",
+        "resume",
+        "不补执行旧买入"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-14",
+      "group": "G12",
+      "case_columns": [
+        "风险目标未完，恢复时权益变了",
+        "resume",
+        "按真实新E和股数重算，不盲重放旧量"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-15",
+      "group": "G12",
+      "case_columns": [
+        "真实回报漏一笔但余额被人改平",
+        "reconcile",
+        "禁止余额覆盖法通过；须补对应事实"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G12-16",
+      "group": "G12",
+      "case_columns": [
+        "两进程同时写同一账本",
+        "lock",
+        "一个获得写权，另一个只读/拒绝，不双写"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-01",
+      "group": "G13",
+      "case_columns": [
+        "周五固定名单，周一开盘第一名涨停",
+        "daily",
+        "拒买该股留现金，不用第二名替换"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-02",
+      "group": "G13",
+      "case_columns": [
+        "周一10点才确认ST",
+        "09:30代理",
+        "不回填开盘退出；作用于之后代理点"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-03",
+      "group": "G13",
+      "case_columns": [
+        "开盘卖不出、全日后来有交易",
+        "daily",
+        "不用全日高低/量额证明开盘卖出"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-04",
+      "group": "G13",
+      "case_columns": [
+        "在10:00根据刚完上一分钟信息提交",
+        "minute",
+        "可以尝试[10:00,10:01)，不提前使用该Bar结果选股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-05",
+      "group": "G13",
+      "case_columns": [
+        "上例订单60秒超时",
+        "10:01",
+        "先计Bar内已有单成交，再处理撤单，不能所有订单零成交"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-06",
+      "group": "G13",
+      "case_columns": [
+        "10:00卖出结果10:01才可知",
+        "buy",
+        "10:01前不能花该回款；下一轮按真实新现金"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-07",
+      "group": "G13",
+      "case_columns": [
+        "10:29提交",
+        "minute",
+        "可尝试[10:29,10:30)；10:30无新单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-08",
+      "group": "G13",
+      "case_columns": [
+        "风险事实10:00:30收到",
+        "minute",
+        "下一整分钟行动，不插入10:00订单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-09",
+      "group": "G13",
+      "case_columns": [
+        "滑点候选价超订单限价或Bar范围",
+        "match",
+        "不成交，不把价格夹回边界强行填单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-10",
+      "group": "G13",
+      "case_columns": [
+        "Bar仅有50股成交量，订单200",
+        "match",
+        "至多50股部分成交，申报200合法不代表必须全成"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-11",
+      "group": "G13",
+      "case_columns": [
+        "分钟行情关键Bar缺失",
+        "match",
+        "UNKNOWN/BLOCKED，不能转日线最有利价"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-12",
+      "group": "G13",
+      "case_columns": [
+        "真实交易观察与分钟代理差异",
+        "report",
+        "分列事实与代理，不拼接赢家曲线"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-13",
+      "group": "G13",
+      "case_columns": [
+        "日线收益很好但窗口能力未核实",
+        "qualify",
+        "不得到可部署资格"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G13-14",
+      "group": "G13",
+      "case_columns": [
+        "秒级实际报价与分钟代理新鲜度",
+        "validate",
+        "分模式，不误以分钟close通过实时报价3秒规则"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-01",
+      "group": "G14",
+      "case_columns": [
+        "自有现金100000，预批准30000",
+        "authorize",
+        "可用70000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-02",
+      "group": "G14",
+      "case_columns": [
+        "上述30000转为券商冻结",
+        "transition",
+        "自有可用仍70000，不变40000或100000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-03",
+      "group": "G14",
+      "case_columns": [
+        "券商available80000，尚未体现在冻结的批准10000，待付2000，自有剩70000",
+        "gate",
+        "本批上限68000"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-04",
+      "group": "G14",
+      "case_columns": [
+        "两策略同时基于旧快照申请现金",
+        "coordinator",
+        "串行授权一方，另一方不得承诺同一钱"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-05",
+      "group": "G14",
+      "case_columns": [
+        "ETF卖出回款50000",
+        "owner",
+        "先归ETF，不自动给股票使用"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-06",
+      "group": "G14",
+      "case_columns": [
+        "明确ETF转股票10000",
+        "transfer",
+        "两边现金−/+10000，同一ID原子记录，合计不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-07",
+      "group": "G14",
+      "case_columns": [
+        "转资其中一侧视图还未更新",
+        "recovery",
+        "同共同事件恢复另一侧，不第二次扣转出"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-08",
+      "group": "G14",
+      "case_columns": [
+        "前批订单终态未知",
+        "next batch",
+        "不批准新增风险批次"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-09",
+      "group": "G14",
+      "case_columns": [
+        "股票应急到来、ETF普通批尚未发单",
+        "priority",
+        "股票必要退出优先；不扩大窗口"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-10",
+      "group": "G14",
+      "case_columns": [
+        "ETF已有委托在途",
+        "emergency",
+        "先确认/撤销再处理股票串行批，不假装不存在"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-11",
+      "group": "G14",
+      "case_columns": [
+        "人工协调拖到10:31",
+        "plan",
+        "普通计划到期，风险下一窗口，无窗外新买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-12",
+      "group": "G14",
+      "case_columns": [
+        "ETF适配使用全券商total_asset做自身E",
+        "acceptance",
+        "外部边界不合格；局部归属快照未补前不共享实盘"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-13",
+      "group": "G14",
+      "case_columns": [
+        "股票现金被ETF占用但仍计股票E",
+        "reconcile",
+        "拒绝双份权益/购买力，不能通过30%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-14",
+      "group": "G14",
+      "case_columns": [
+        "未解释现金差100元",
+        "reconcile",
+        "不塞UNASSIGNED强行对平，停止新增"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-15",
+      "group": "G14",
+      "case_columns": [
+        "恰有0.01元来源舍入且可解释",
+        "reconcile",
+        "记录舍入差；不把它扩大为一般误差预算"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G14-16",
+      "group": "G14",
+      "case_columns": [
+        "一策略持仓未知但股票自己的可卖量与串行确认充分",
+        "risk sell",
+        "允许有依据必要卖出；不批准新买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-01",
+      "group": "G15",
+      "case_columns": [
+        "年初首交易日不是周末",
+        "anchor",
+        "取年内首完整周最后市场日20点，不取1月首日"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-02",
+      "group": "G15",
+      "case_columns": [
+        "A0缺预热数据",
+        "matrix",
+        "保留缺格和证据不足，不能删A0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-03",
+      "group": "G15",
+      "case_columns": [
+        "用2011账户截出2021",
+        "compare",
+        "标为切片，不能作为A2现金新起点"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-04",
+      "group": "G15",
+      "case_columns": [
+        "S2普通批原定周一10点",
+        "schedule",
+        "周二同钟点单窗口；固定名单金额不重选"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-05",
+      "group": "G15",
+      "case_columns": [
+        "S2风险首次延迟后次日重新计划",
+        "schedule",
+        "不再滚动延迟一天"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-06",
+      "group": "G15",
+      "case_columns": [
+        "S3个股风险段d0启动",
+        "block",
+        "d0,d1,d2禁该股卖，d3才可尝试"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-07",
+      "group": "G15",
+      "case_columns": [
+        "S3行业纠偏",
+        "block",
+        "该行业共同受阻，普通卖单也受阻"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-08",
+      "group": "G15",
+      "case_columns": [
+        "S3总暴露或25%应急",
+        "block",
+        "本股票策略全组合受阻，不仅触发最初个股"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-09",
+      "group": "G15",
+      "case_columns": [
+        "上例ETF仍有交易",
+        "scope",
+        "不自动冻结ETF证券"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-10",
+      "group": "G15",
+      "case_columns": [
+        "净值高点100，当前75=45股票+30现金，股票再跌12%",
+        "stress",
+        "E69.6、DD30.4%，退出指令无现金回款"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-11",
+      "group": "G15",
+      "case_columns": [
+        "d3实际还停牌/跌停",
+        "execute",
+        "继续失败，不能强制第4天成交"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-12",
+      "group": "G15",
+      "case_columns": [
+        "两风险段重叠",
+        "block",
+        "取限制并集，各段独立一次计时"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-13",
+      "group": "G15",
+      "case_columns": [
+        "同段每日更新",
+        "block",
+        "不改变原d0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-14",
+      "group": "G15",
+      "case_columns": [
+        "风险自然满足、但压力期还有余天",
+        "intent",
+        "不制造不必要卖单；确有其他范围内卖单仍受剩余冲击"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-15",
+      "group": "G15",
+      "case_columns": [
+        "S2和S3",
+        "matrix",
+        "独立单元，不私自同时叠加"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-16",
+      "group": "G15",
+      "case_columns": [
+        "停用发生远早于D",
+        "ending",
+        "全现金/残余继续至共同D，不缩短评价期"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-17",
+      "group": "G15",
+      "case_columns": [
+        "到D仍有未知估值尾部",
+        "qualify",
+        "证据不足，不期末强制清算"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G15-18",
+      "group": "G15",
+      "case_columns": [
+        "3角色×2金额×4起点×4情景",
+        "schedule",
+        "96个身份明确的单元，失败也出记录"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-01",
+      "group": "G16",
+      "case_columns": [
+        "初日−10%、之后回原本金",
+        "returns",
+        "首日损失和恢复完整，不漏起点"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-02",
+      "group": "G16",
+      "case_columns": [
+        "十年1→2→1.5后持现金七年",
+        "evaluate",
+        "年化约4.13797%、MDD25%；真实停用则先否决"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-03",
+      "group": "G16",
+      "case_columns": [
+        "高年化配置一格触发应急，其余幸存",
+        "rank",
+        "不进入幸存者排序"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-04",
+      "group": "G16",
+      "case_columns": [
+        "同格先触发25%，受阻后MDD30.4",
+        "reasons",
+        "同时记录存续失败、风险失败"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-05",
+      "group": "G16",
+      "case_columns": [
+        "MDD恰30%与30%+微量",
+        "gate",
+        "前者仅风险门槛通过，后者失败；不四舍五入"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-06",
+      "group": "G16",
+      "case_columns": [
+        "8个BASE/HIGH年化12,11,7,6,8,7,5,4%",
+        "robust",
+        "最小4%，不是平均7.5%"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-07",
+      "group": "G16",
+      "case_columns": [
+        "S2/S3年化较差但硬资格通过",
+        "robust",
+        "不替换BASE/HIGH最小值定义；压力仍列报告"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-08",
+      "group": "G16",
+      "case_columns": [
+        "稳健年化恰0",
+        "economics",
+        "不满足>0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-09",
+      "group": "G16",
+      "case_columns": [
+        "B1收益降而风险改善",
+        "recommendation",
+        "TRADEOFF_PENDING，不自行改目标宣布赢"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-10",
+      "group": "G16",
+      "case_columns": [
+        "B0因缺因子数据",
+        "comparator",
+        "B0不受因子覆盖门槛或缺失退出影响"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-11",
+      "group": "G16",
+      "case_columns": [
+        "B0真实停用、B1幸存",
+        "interpretation",
+        "运行性改善证据，不自动叫纯alpha"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-12",
+      "group": "G16",
+      "case_columns": [
+        "B2年化最高",
+        "role",
+        "仍为缓冲对照，不自动替换B1规则"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-13",
+      "group": "G16",
+      "case_columns": [
+        "ETF尚未上市年份",
+        "benchmark",
+        "不假造上市前可交易收益；共同窗口分列"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-14",
+      "group": "G16",
+      "case_columns": [
+        "外部ETF对象尚未预先指定",
+        "evaluate",
+        "外部经济比较未完成，不事后选最弱ETF"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-15",
+      "group": "G16",
+      "case_columns": [
+        "停用后更名或重入金",
+        "reapply",
+        "旧真实标记保留，无自动恢复"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-16",
+      "group": "G16",
+      "case_columns": [
+        "有实质规则修订的新版本",
+        "reapply",
+        "原四起点四情景、外部差异、用户新批准均要求"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-17",
+      "group": "G16",
+      "case_columns": [
+        "所有候选失败",
+        "output",
+        "NO_ADOPTABLE_CONFIGURATION，不放宽参数"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-18",
+      "group": "G16",
+      "case_columns": [
+        "旧历史已看过但改文件名",
+        "evidence",
+        "不重新标盲测或统计认证"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-19",
+      "group": "G16",
+      "case_columns": [
+        "QMT主源未核验，仅临时TS诊断",
+        "qualify",
+        "能工程继续，不能因有净值升级部署"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G16-20",
+      "group": "G16",
+      "case_columns": [
+        "跨金额排序",
+        "output",
+        "各金额独立资格，不能用50万通过替代10万"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-01",
+      "group": "G17",
+      "case_columns": [
+        "100000现金、30只同价10、零滑点夹具、每单5佣金、按代码每3只分为一行业共10行业",
+        "完整首次建仓按G07-12得到59000股票、40850现金、99850净资产；股数与佣金可逐笔核对"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-02",
+      "group": "G17",
+      "case_columns": [
+        "上例首只200股分红1、除息价9、到账前后",
+        "除息股票58800、应收200、现金40850，E99850；派息后现金41050、应收0，E不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-03",
+      "group": "G17",
+      "case_columns": [
+        "上例下一周E99850，末只100股价10、普通目标1997",
+        "缺997元不足100股，不能超目标补一手；记录ROUNDING_NO_ORDER"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-04",
+      "group": "G17",
+      "case_columns": [
+        "周计划、卖单部分成交、取消待确认、风险新触发、迟到回报",
+        "无重复股数/现金，无超卖，无提前买第31股，最终与按真实时间顺序输入一致"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-05",
+      "group": "G17",
+      "case_columns": [
+        "两策略预批准→券商冻结→部分成交→撤单→转资",
+        "共同现金守恒；每份资源只出现一次；资本修订使旧买入失效"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-06",
+      "group": "G17",
+      "case_columns": [
+        "给全部市场事实追加未来年份",
+        "前缀决策/成交/账本（原有事实不改）完全一致"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-07",
+      "group": "G17",
+      "case_columns": [
+        "打乱同一截面行、重复等值来源和回报",
+        "已确认经济路径一致，重复冲突仍被捕获"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-08",
+      "group": "G17",
+      "case_columns": [
+        "在每一个已提交事件后模拟崩溃再恢复",
+        "最终seq、股数、现金、费用、税批次和状态与不中断相同"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-09",
+      "group": "G17",
+      "case_columns": [
+        "将原始金额单位统一放大/转换但正确映射",
+        "标准值及后续决策不变"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-10",
+      "group": "G17",
+      "case_columns": [
+        "风险比例减仓中更改所有因子评分",
+        "卖量比例算法不变；普通计划可变，风控不得读分数"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-11",
+      "group": "G17",
+      "case_columns": [
+        "退出受阻期间价格连续变化和公司行动",
+        "无卖出回款；现金、权益转换与受阻损失真实保留"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-12",
+      "group": "G17",
+      "case_columns": [
+        "SOURCE修正影响第一笔交易后多周",
+        "重放从最早依赖事件前到D，所有后续状态重新导出，不拼旧后半段"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-13",
+      "group": "G17",
+      "case_columns": [
+        "费用后全局风险目标循环",
+        "单股/行业/总仓均满足或明确不可达；算法单调增加有限卖量并终止"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-14",
+      "group": "G17",
+      "case_columns": [
+        "长期运行至停用再现金七年",
+        "指标完整、每日覆盖统计完整、采用仍否决"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-15",
+      "group": "G17",
+      "case_columns": [
+        "0成交、全现金、全部因子恒定或首次未启动",
+        "不产生虚假低风险成功候选"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G17-16",
+      "group": "G17",
+      "case_columns": [
+        "资源预约后价格变化、实扣费修订",
+        "不使用旧预览直接放行；更新费用后风险与双现金门"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-01",
+      "group": "G18",
+      "case_columns": [
+        "QMT与TS同日原始价、量、额、股本及单位",
+        "身份/基础/单位对齐，源政策可复现；不符合则相关字段未知"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-02",
+      "group": "G18",
+      "case_columns": [
+        "QMT可取得的历史财务、披露与版本",
+        "明确历史能力，不能只用当前报表；不足由已核验TS补充"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-03",
+      "group": "G18",
+      "case_columns": [
+        "后来退市/停牌证券历史",
+        "能取得身份与交易状态，未知部分不删样本"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-04",
+      "group": "G18",
+      "case_columns": [
+        "分红、送转、配股、换股多阶段各至少一个适用样本",
+        "股数/应收/到账/税基逐项核对；缺一种不能认证那种事件"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-05",
+      "group": "G18",
+      "case_columns": [
+        "用户券商部分成交、部撤、迟到回报、当日重复查询",
+        "稳定ID与累计语义确认；失败不启用实际自动导入"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-06",
+      "group": "G18",
+      "case_columns": [
+        "可用现金、冻结现金、买卖回款与费用",
+        "证明现金等式和冻结映射；不能只看total_asset"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-07",
+      "group": "G18",
+      "case_columns": [
+        "两策略互斥范围与ETF自身权益计划",
+        "ETF不把全部券商资产用于自己；未证明不共享实盘"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-08",
+      "group": "G18",
+      "case_columns": [
+        "人工串行两批及应急优先演练",
+        "前批终态确认、额度不重复、窗口可满足；不要求真实下单，可先授权模拟账户"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-09",
+      "group": "G18",
+      "case_columns": [
+        "历史费率与用户实际清算单",
+        "佣金是否含规费、逐单最低费、税/过户费日期与取整对上"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-10",
+      "group": "G18",
+      "case_columns": [
+        "分钟10:00—10:30与前向成交样本",
+        "时点、延迟、价格保护、部分量、撤单窗口核验；结果与日线代理分列"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-11",
+      "group": "G18",
+      "case_columns": [
+        "日历、交易单位、价格笼子、涨跌停、市值底线历史范围",
+        "RuleBook唯一匹配且来源完整；不要凭当前规则认证A0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G18-12",
+      "group": "G18",
+      "case_columns": [
+        "真实初始已有仓的税批次/未结权益/委托",
+        "有足够Bootstrap；缺少时不假设全现金或新购日"
+      ],
+      "status": "NOT_RUN",
+      "scope": "EXTERNAL",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-01",
+      "group": "G19",
+      "case_columns": [
+        "2%个股退出受阻，普通卖出已完成；允许无关固定买单",
+        "仅禁ST股；真实29槽后生成NEW 200股买单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-02",
+      "group": "G19",
+      "case_columns": [
+        "五只各2%受阻合计10%，全局禁买；不混入单股5%触发",
+        "BLOCKED_EXIT_EXPOSURE；无买单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-03",
+      "group": "G19",
+      "case_columns": [
+        "2%受阻且TOTAL_REDUCE活动，全局禁买",
+        "TOTAL_REDUCE；无买单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-04",
+      "group": "G19",
+      "case_columns": [
+        "25%精确边界：1元资本流，日终仍触发",
+        "份额300004/3，NAV=3/4、DD=1/4；日终触发"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-05",
+      "group": "G19",
+      "case_columns": [
+        "25%精确边界：-1元资本流，日终仍触发",
+        "份额299996/3，NAV和DD保持精确边界"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-06",
+      "group": "G19",
+      "case_columns": [
+        "25%精确边界：1,-2,0.01,-0.01元资本流，日终仍触发",
+        "连续流后份额299996/3；不积累阈值误差"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-07",
+      "group": "G19",
+      "case_columns": [
+        "20%/25%/30%的等号及上下1分；每格再转入1元",
+        "所有门槛等号正确；1分两侧不混同"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-08",
+      "group": "G19",
+      "case_columns": [
+        "连续资本流中断后按精确分子分母恢复",
+        "恢复前后精确数值及触发完全一致"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-09",
+      "group": "G19",
+      "case_columns": [
+        "拒绝非规范精确比值及D1近似快照",
+        "七类非法比值拒绝；D1近似快照要求重建"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-10",
+      "group": "G19",
+      "case_columns": [
+        "ACKED直接全成300",
+        "FILLED；300股、现金6995、总佣金5"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-11",
+      "group": "G19",
+      "case_columns": [
+        "300已成100，撤销确认前再成200：直接FILLED，佣金只5元",
+        "FILLED；剩余预约0、已用容量3000、无重复订单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-12",
+      "group": "G19",
+      "case_columns": [
+        "成交先于ACK，迟到ACK不重记或回退",
+        "先成交后ACK不重复记账；最终同全成"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-13",
+      "group": "G19",
+      "case_columns": [
+        "撤单失败已知原单活动，保留剩余预约且不重报",
+        "PARTIAL；200股预约保留、取消需求保留、不可重报"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-14",
+      "group": "G19",
+      "case_columns": [
+        "全成后重复成交、相容迟到撤销终态与ACK",
+        "保持FILLED；迟到/重复不重复扣费或复活"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-15",
+      "group": "G19",
+      "case_columns": [
+        "终态累计150、逐笔仅100，补齐50后部撤，累计不能重复记账",
+        "先RECONCILE_REQUIRED，补50后CANCELED；150股只入一次；同窗口仍有效目标可形成100股重试候选"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-16",
+      "group": "G19",
+      "case_columns": [
+        "不能判为旧版本的冲突终态，真实全成保留但对账阻断",
+        "保留300股和5元费用，RECONCILE_REQUIRED；未成预约0"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-17",
+      "group": "G19",
+      "case_columns": [
+        "风险目标自然满足先撤；撤销中再成200，照实减到700，不自动买回",
+        "取消等待中真实再卖200；最终700股，不回买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-18",
+      "group": "G19",
+      "case_columns": [
+        "资本修订取消已发买单；竞态全成后无新补单",
+        "旧买单取消需求生效；竞态全成300，资本修订仍禁新买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-19",
+      "group": "G19",
+      "case_columns": [
+        "CANCEL_PENDING断点恢复后收最终200及重复回报",
+        "断点与连续链一致；重复事件不重扣/重报"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-20",
+      "group": "G19",
+      "case_columns": [
+        "FLAT_SCORE合格老仓2.6%，保留向2%的普通减持",
+        "合法卖300股，不新增买单"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-21",
+      "group": "G19",
+      "case_columns": [
+        "FLAT_SCORE老仓1.4%，不补买",
+        "保留700股，不补仓"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-22",
+      "group": "G19",
+      "case_columns": [
+        "FLAT_SCORE原减持目标因跳空变增持，不反向买入",
+        "不卖也不反向补买"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-23",
+      "group": "G19",
+      "case_columns": [
+        "同派息日、不同登记日选旧新税制；长期税5元/0元",
+        "旧/新税制分别5元和0元；不按派息或卖出日改规则"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-24",
+      "group": "G19",
+      "case_columns": [
+        "工程税表左闭右开、空档、重叠及PAY_DATE拒绝；不认证真实切换日",
+        "含下界、不含上界；空档/重叠/选日错误明确拒绝"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-25",
+      "group": "G19",
+      "case_columns": [
+        "唯一Bundle派生规范Study；旧模式与额外Study字段被拒绝",
+        "内部映射唯一；旧枚举和重复冲突引用均拒绝"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    },
+    {
+      "id": "G19-26",
+      "group": "G19",
+      "case_columns": [
+        "迟到除息应收跨900元资本流：重算1900份，NAV=1；所有断点一致",
+        "真实900元流与100股不变；份额1900、NAV/HWM=1、DD=0；恢复相同"
+      ],
+      "status": "NOT_RUN",
+      "scope": "IMPLEMENTATION_TEST",
+      "note": "设计用例；局部参考链结果不能替代生产实现验收。"
+    }
+  ]
+}

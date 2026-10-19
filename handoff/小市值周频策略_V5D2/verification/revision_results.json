@@ -1,0 +1,1473 @@
+{
+  "detail_version": "V5D2",
+  "scope": "26 fixed revision chains on local reference projections, NOT a production state machine. Original312 and new26 business cases remain NOT_RUN; no 96-cell or real-account run.",
+  "passed_chains": 26,
+  "failed_chains": 0,
+  "legacy_decimal_counterexample": {
+    "dd": "0.24999999999999999999999999999999999999999999999998",
+    "reaches_25_percent": false
+  },
+  "chains": [
+    {
+      "id": "G19-01",
+      "status": "PASS",
+      "expected": {
+        "global_buy_blocks": [],
+        "actual_names_after_sell": 29,
+        "orders": [
+          {
+            "security_id": "NEW",
+            "side": "BUY",
+            "qty": 200,
+            "limit": "10"
+          }
+        ]
+      },
+      "actual": {
+        "equity": "100000.00",
+        "actual_names_after_sell": 29,
+        "global_buy_blocks": [],
+        "security_buy_blocks": {
+          "B0": [
+            "SECURITY_EXIT"
+          ]
+        },
+        "orders": [
+          {
+            "security_id": "NEW",
+            "side": "BUY",
+            "qty": 200,
+            "limit": "10"
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-02",
+      "status": "PASS",
+      "expected": {
+        "global_buy_blocks": [
+          "BLOCKED_EXIT_EXPOSURE"
+        ],
+        "orders": []
+      },
+      "actual": {
+        "equity": "100000.00",
+        "actual_names_after_sell": 29,
+        "global_buy_blocks": [
+          "BLOCKED_EXIT_EXPOSURE"
+        ],
+        "security_buy_blocks": {
+          "B0": [
+            "SECURITY_EXIT"
+          ],
+          "B1": [
+            "SECURITY_EXIT"
+          ],
+          "B2": [
+            "SECURITY_EXIT"
+          ],
+          "B3": [
+            "SECURITY_EXIT"
+          ],
+          "B4": [
+            "SECURITY_EXIT"
+          ]
+        },
+        "orders": []
+      }
+    },
+    {
+      "id": "G19-03",
+      "status": "PASS",
+      "expected": {
+        "global_buy_blocks": [
+          "TOTAL_REDUCE"
+        ],
+        "orders": []
+      },
+      "actual": {
+        "equity": "100000.00",
+        "actual_names_after_sell": 29,
+        "global_buy_blocks": [
+          "TOTAL_REDUCE"
+        ],
+        "security_buy_blocks": {
+          "B0": [
+            "SECURITY_EXIT"
+          ]
+        },
+        "orders": []
+      }
+    },
+    {
+      "id": "G19-04",
+      "status": "PASS",
+      "expected": {
+        "units": {
+          "num": "300004",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "retire": true,
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "actual": {
+        "units": {
+          "num": "300004",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "warning": true,
+        "retire": true,
+        "mdd_limit_pass": true
+      }
+    },
+    {
+      "id": "G19-05",
+      "status": "PASS",
+      "expected": {
+        "units": {
+          "num": "299996",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "retire": true,
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "actual": {
+        "units": {
+          "num": "299996",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "warning": true,
+        "retire": true,
+        "mdd_limit_pass": true
+      }
+    },
+    {
+      "id": "G19-06",
+      "status": "PASS",
+      "expected": {
+        "units": {
+          "num": "299996",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "retire": true,
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        }
+      },
+      "actual": {
+        "units": {
+          "num": "299996",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "warning": true,
+        "retire": true,
+        "mdd_limit_pass": true
+      }
+    },
+    {
+      "id": "G19-07",
+      "status": "PASS",
+      "expected": {
+        "all_flags_equal": true
+      },
+      "actual": {
+        "all_flags_equal": true,
+        "actual_flags": [
+          [
+            false,
+            false,
+            true
+          ],
+          [
+            true,
+            false,
+            true
+          ],
+          [
+            true,
+            false,
+            true
+          ],
+          [
+            true,
+            false,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            false
+          ]
+        ]
+      }
+    },
+    {
+      "id": "G19-08",
+      "status": "PASS",
+      "expected": {
+        "units": {
+          "num": "299996",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "restore_matches_uninterrupted": true
+      },
+      "actual": {
+        "units": {
+          "num": "299996",
+          "den": "3"
+        },
+        "nav": {
+          "num": "3",
+          "den": "4"
+        },
+        "hwm": {
+          "num": "1",
+          "den": "1"
+        },
+        "dd": {
+          "num": "1",
+          "den": "4"
+        },
+        "warning": true,
+        "retire": true,
+        "mdd_limit_pass": true,
+        "restore_matches_uninterrupted": true
+      }
+    },
+    {
+      "id": "G19-09",
+      "status": "PASS",
+      "expected": {
+        "rejected_count": 7
+      },
+      "actual": {
+        "rejected_count": 7,
+        "d1_snapshot_rejected": true
+      }
+    },
+    {
+      "id": "G19-10",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-11",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "TIMEOUT",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-12",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-13",
+      "status": "PASS",
+      "expected": {
+        "status": "PARTIAL",
+        "shares": 100,
+        "filled_qty": 100,
+        "commission": "5.00",
+        "remaining_qty": 200,
+        "cash_reserved": "2000.00",
+        "cancel_required": true,
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "PARTIAL",
+        "shares": 100,
+        "cash": "8995.00",
+        "filled_qty": 100,
+        "gross": "1000",
+        "commission": "5.00",
+        "remaining_qty": 200,
+        "cash_reserved": "2000.00",
+        "sell_qty_reserved": 0,
+        "capacity_used": "1000",
+        "capacity_reserved": "2000",
+        "cancel_required": true,
+        "cancel_reason": "TIMEOUT",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-14",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "TIMEOUT",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-15",
+      "status": "PASS",
+      "expected": {
+        "status": "CANCELED",
+        "shares": 150,
+        "cash": "8495.00",
+        "filled_qty": 150,
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "1500",
+        "replacement_orders": 1,
+        "replacement_proposals": [
+          {
+            "side": "BUY",
+            "qty": 100,
+            "limit": "10"
+          }
+        ]
+      },
+      "actual": {
+        "status": "CANCELED",
+        "shares": 150,
+        "cash": "8495.00",
+        "filled_qty": 150,
+        "gross": "1500",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "1500",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "TIMEOUT",
+        "replacement_orders": 1,
+        "replacement_proposals": [
+          {
+            "side": "BUY",
+            "qty": 100,
+            "limit": "10"
+          }
+        ],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "RECONCILE_REQUIRED",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCELED",
+            "shares": 150,
+            "cash": "8495.00",
+            "filled_qty": 150,
+            "gross": "1500",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1500",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 1,
+            "replacement_proposals": [
+              {
+                "side": "BUY",
+                "qty": 100,
+                "limit": "10"
+              }
+            ],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-16",
+      "status": "PASS",
+      "expected": {
+        "status": "RECONCILE_REQUIRED",
+        "shares": 300,
+        "filled_qty": 300,
+        "commission": "5.00",
+        "cash_reserved": "0",
+        "remaining_qty": 0,
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "RECONCILE_REQUIRED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "RECONCILE_REQUIRED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-17",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 700,
+        "cash": "98595.00",
+        "filled_qty": 300,
+        "commission": "5.00",
+        "sell_qty_reserved": 0,
+        "remaining_qty": 0,
+        "replacement_orders": 0
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 700,
+        "cash": "98595.00",
+        "filled_qty": 300,
+        "gross": "600",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "600",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "TARGET_SATISFIED",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 900,
+            "cash": "98195.00",
+            "filled_qty": 100,
+            "gross": "200",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 200,
+            "capacity_used": "200",
+            "capacity_reserved": "400",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 900,
+            "cash": "98195.00",
+            "filled_qty": 100,
+            "gross": "200",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 200,
+            "capacity_used": "200",
+            "capacity_reserved": "400",
+            "cancel_required": true,
+            "cancel_reason": "TARGET_SATISFIED",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 700,
+            "cash": "98595.00",
+            "filled_qty": 300,
+            "gross": "600",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "600",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TARGET_SATISFIED",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-18",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "7095.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "replacement_orders": 0,
+        "capital_invalid": true
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "7095.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "CAPITAL_CHANGED",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": true,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 100,
+            "cash": "9095.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "CAPITAL_CHANGED",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": true
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "7095.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "CAPITAL_CHANGED",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-19",
+      "status": "PASS",
+      "expected": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "replacement_orders": 0,
+        "restore_matches_uninterrupted": true
+      },
+      "actual": {
+        "status": "FILLED",
+        "shares": 300,
+        "cash": "6995.00",
+        "filled_qty": 300,
+        "gross": "3000",
+        "commission": "5.00",
+        "remaining_qty": 0,
+        "cash_reserved": "0",
+        "sell_qty_reserved": 0,
+        "capacity_used": "3000",
+        "capacity_reserved": "0",
+        "cancel_required": false,
+        "cancel_reason": "TIMEOUT",
+        "replacement_orders": 0,
+        "replacement_proposals": [],
+        "capital_invalid": false,
+        "restore_matches_uninterrupted": true,
+        "trace_actual": [
+          {
+            "status": "PARTIAL",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": false,
+            "cancel_reason": "",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "CANCEL_PENDING",
+            "shares": 100,
+            "cash": "8995.00",
+            "filled_qty": 100,
+            "gross": "1000",
+            "commission": "5.00",
+            "remaining_qty": 200,
+            "cash_reserved": "2000.00",
+            "sell_qty_reserved": 0,
+            "capacity_used": "1000",
+            "capacity_reserved": "2000",
+            "cancel_required": true,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          },
+          {
+            "status": "FILLED",
+            "shares": 300,
+            "cash": "6995.00",
+            "filled_qty": 300,
+            "gross": "3000",
+            "commission": "5.00",
+            "remaining_qty": 0,
+            "cash_reserved": "0",
+            "sell_qty_reserved": 0,
+            "capacity_used": "3000",
+            "capacity_reserved": "0",
+            "cancel_required": false,
+            "cancel_reason": "TIMEOUT",
+            "replacement_orders": 0,
+            "replacement_proposals": [],
+            "capital_invalid": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "G19-20",
+      "status": "PASS",
+      "expected": {
+        "mode": "TARGET_AMOUNT",
+        "qty": 300,
+        "side": "SELL",
+        "prohibit_buy": true
+      },
+      "actual": {
+        "mode": "TARGET_AMOUNT",
+        "qty": 300,
+        "side": "SELL",
+        "prohibit_buy": true
+      }
+    },
+    {
+      "id": "G19-21",
+      "status": "PASS",
+      "expected": {
+        "mode": "HOLD_SHARES",
+        "qty": 0,
+        "side": null,
+        "prohibit_buy": true
+      },
+      "actual": {
+        "mode": "HOLD_SHARES",
+        "qty": 0,
+        "side": null,
+        "prohibit_buy": true
+      }
+    },
+    {
+      "id": "G19-22",
+      "status": "PASS",
+      "expected": {
+        "mode": "TARGET_AMOUNT",
+        "qty": 0,
+        "side": null,
+        "prohibit_buy": true
+      },
+      "actual": {
+        "mode": "TARGET_AMOUNT",
+        "qty": 0,
+        "side": null,
+        "prohibit_buy": true
+      }
+    },
+    {
+      "id": "G19-23",
+      "status": "PASS",
+      "expected": {
+        "selected_rules": [
+          "OLD_SAMPLE_0907",
+          "NEW_SAMPLE_0909"
+        ],
+        "final_taxes": [
+          "5.00",
+          "0.00"
+        ],
+        "additional_taxes": [
+          "0.00",
+          "0.00"
+        ],
+        "payment_date_does_not_select_rule": true
+      },
+      "actual": {
+        "selected_rules": [
+          "OLD_SAMPLE_0907",
+          "NEW_SAMPLE_0909"
+        ],
+        "final_taxes": [
+          "5.00",
+          "0.00"
+        ],
+        "additional_taxes": [
+          "0.00",
+          "0.00"
+        ],
+        "payment_date_does_not_select_rule": true
+      }
+    },
+    {
+      "id": "G19-24",
+      "status": "PASS",
+      "expected": {
+        "rules": [
+          "ENGINEERING_OLD",
+          "ENGINEERING_NEW",
+          "TAX_RULE_MISSING"
+        ],
+        "overlap_rejected": true,
+        "wrong_basis_rejected": true
+      },
+      "actual": {
+        "rules": [
+          "ENGINEERING_OLD",
+          "ENGINEERING_NEW",
+          "TAX_RULE_MISSING"
+        ],
+        "overlap_rejected": true,
+        "wrong_basis_rejected": true
+      }
+    },
+    {
+      "id": "G19-25",
+      "status": "PASS",
+      "expected": {
+        "source_id_matches": true,
+        "factor_package_id": "TEST_ONLY_RANK",
+        "wire_extra_profile_rejected": true,
+        "aliases_rejected": true,
+        "payload_reference_mismatch_rejected": true
+      },
+      "actual": {
+        "source_id_matches": true,
+        "factor_package_id": "TEST_ONLY_RANK",
+        "wire_extra_profile_rejected": true,
+        "aliases_rejected": true,
+        "payload_reference_mismatch_rejected": true
+      }
+    },
+    {
+      "id": "G19-26",
+      "status": "PASS",
+      "expected": {
+        "old_units": {
+          "num": "2000",
+          "den": "1"
+        },
+        "corrected_equity": "1900",
+        "corrected_units": {
+          "num": "1900",
+          "den": "1"
+        },
+        "corrected_nav": {
+          "num": "1",
+          "den": "1"
+        },
+        "corrected_hwm": {
+          "num": "1",
+          "den": "1"
+        },
+        "corrected_dd": {
+          "num": "0",
+          "den": "1"
+        },
+        "shares": 100,
+        "cash": "900",
+        "receivable": "100",
+        "actual_flows": [
+          "900"
+        ],
+        "original_facts_unchanged": true,
+        "all_checkpoints_agree": true,
+        "duplicate_correction_idempotent": true
+      },
+      "actual": {
+        "old_units": {
+          "num": "2000",
+          "den": "1"
+        },
+        "corrected_equity": "1900",
+        "corrected_units": {
+          "num": "1900",
+          "den": "1"
+        },
+        "corrected_nav": {
+          "num": "1",
+          "den": "1"
+        },
+        "corrected_hwm": {
+          "num": "1",
+          "den": "1"
+        },
+        "corrected_dd": {
+          "num": "0",
+          "den": "1"
+        },
+        "shares": 100,
+        "cash": "900",
+        "receivable": "100",
+        "actual_flows": [
+          "900"
+        ],
+        "original_facts_unchanged": true,
+        "all_checkpoints_agree": true,
+        "duplicate_correction_idempotent": true
+      }
+    }
+  ]
+}

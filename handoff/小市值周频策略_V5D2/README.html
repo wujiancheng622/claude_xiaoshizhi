@@ -1,0 +1,55 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>小市值周频策略｜V5D2详细设计完整包</title><style>
+:root{--bg:#f1f4f6;--paper:#fff;--ink:#182b38;--muted:#526777;--accent:#136778;--line:#dce4e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.layout{max-width:1510px;margin:auto;display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;padding:28px}aside{position:sticky;top:20px;align-self:start;max-height:94vh;overflow:auto;padding:22px 20px;background:#e9eff2;border:1px solid var(--line);border-radius:12px}aside h2{font-size:17px;margin:0 0 12px}aside a{display:block;font-size:13px;line-height:1.55;padding:6px 0;color:#3d596a}.subnav{padding-left:12px!important;font-size:12px!important;color:#617381!important}.version{font-size:12px;letter-spacing:.08em;color:var(--accent);font-weight:700}main{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:42px 44px}.topbar{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px}h1{font-size:32px;line-height:1.4;letter-spacing:-.02em;margin:12px 0 22px}h2{font-size:24px;line-height:1.5;margin:45px 0 18px;padding-bottom:8px;border-bottom:2px solid #d6e6eb}h3{font-size:19px;margin:28px 0 12px}h4{font-size:17px;margin-top:22px}p{margin:12px 0 17px}strong{font-weight:700}blockquote{margin:20px 0;padding:12px 20px;background:#edf5f7;border-left:4px solid var(--accent)}blockquote p{margin:4px 0}.table-wrap{max-width:100%;overflow-x:auto;margin:20px 0 26px;border:1px solid var(--line);border-radius:8px}table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px;line-height:1.75}th,td{padding:12px 14px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}th{background:#e8f1f4;font-weight:700}tr:last-child td{border-bottom:0}tr:nth-child(even)td{background:#f8fafb}pre{padding:18px;background:#f2f5f7;border:1px solid var(--line);border-radius:7px;overflow:auto;font-size:13px;line-height:1.65}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;font-size:.91em}p code,td code,li code{background:#eef3f5;border-radius:3px;padding:2px 4px}pre code{background:none;padding:0;white-space:pre}li{margin:6px 0}hr{border:0;border-top:1px solid var(--line);margin:30px 0}.footer{margin-top:42px;border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted)}.toc-mobile{display:none}
+@media(max-width:900px){.layout{display:block;padding:12px}aside{display:none}main{padding:24px 20px;border-radius:10px}h1{font-size:25px}h2{font-size:21px;margin-top:34px}h3{font-size:18px}.toc-mobile{display:block;margin-bottom:22px;background:#edf3f5;padding:12px 16px;border-radius:8px}.toc-mobile a{display:block;font-size:13px;margin:7px 0}.table-wrap{margin:18px -3px}th,td{padding:10px 12px}body{font-size:15px}.topbar{gap:10px;font-size:12px}pre{font-size:12px}}
+@media print{body{background:#fff}.layout{display:block;padding:0}aside,.topbar,.toc-mobile{display:none}main{border:0;padding:0}h2{break-after:avoid}tr{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:10px}a{color:inherit}}
+</style></head><body><div class="layout"><aside><div class="version">V5D2 · 设计交付</div><h2>章节目录</h2><a class="" href="#section-2">阅读顺序</a><a class="" href="#section-3">离线小型复验</a><a class="" href="#section-4">给编码模型的约束</a></aside><main><div class="topbar"><a href="README.html">交付入口</a><a href="01_详细设计_V5D2.html">详细设计</a><a href="02_测试设计与验收用例_V5D2.html">测试用例</a><a href="03_接口与输入契约_V5D2.html">接口契约</a><a href="05_逐项复核与修订裁决_V5D2.html">修订裁决</a></div><div class="version">概要 V5 不变 · 详细设计 V5D2</div><details class="toc-mobile"><summary>展开章节目录</summary><a href="#section-2">阅读顺序</a><a href="#section-3">离线小型复验</a><a href="#section-4">给编码模型的约束</a></details><article><h1 id="section-1">小市值周频策略｜V5D2详细设计完整包</h1>
+<p><strong>基线：概要V5不变。用途：按确定合同编码并独立验收。</strong> 本轮只修订V5D1已定位的边界，未开发生产策略、修改R5/QMT或执行真实报撤单。</p>
+<h2 id="section-2">阅读顺序</h2>
+<div aria-label="可横向滚动的数据表" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="01_%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1_V5D2.md">01 详细设计</a></td>
+<td>22部分算法和状态；含两级禁买、精确净值及完整订单迁移</td>
+</tr>
+<tr>
+<td><a href="03_%E6%8E%A5%E5%8F%A3%E4%B8%8E%E8%BE%93%E5%85%A5%E5%A5%91%E7%BA%A6_V5D2.md">03 接口与输入契约</a></td>
+<td>唯一Bundle映射、枚举、精确状态、税则日期和重投影</td>
+</tr>
+<tr>
+<td><a href="02_%E6%B5%8B%E8%AF%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E9%AA%8C%E6%94%B6%E7%94%A8%E4%BE%8B_V5D2.md">02 测试设计</a></td>
+<td>原312项＋新增26条关键事件链，共338项生产设计用例，均NOT_RUN</td>
+</tr>
+<tr>
+<td><a href="04_%E6%A0%A1%E6%A0%B8%E4%B8%8E%E5%A4%96%E9%83%A8%E8%BE%93%E5%85%A5_V5D2.md">04 校核与外部输入</a></td>
+<td>实际验证范围、未运行部分及精确外部缺口</td>
+</tr>
+<tr>
+<td><a href="05_%E9%80%90%E9%A1%B9%E5%A4%8D%E6%A0%B8%E4%B8%8E%E4%BF%AE%E8%AE%A2%E8%A3%81%E5%86%B3_V5D2.md">05 逐项复核裁决</a></td>
+<td>采纳/部分采纳/不采纳、证据及语义变更分类</td>
+</tr>
+<tr>
+<td><a href="%E5%9F%BA%E7%BA%BF_%E6%A6%82%E8%A6%81%E8%AE%BE%E8%AE%A1_V5_20261016.md">原概要V5</a></td>
+<td>不变的只读投资基线</td>
+</tr>
+</tbody>
+</table></div>
+<p>每份主文均有同名HTML阅读版。<code>inputs/bundle.schema.json</code>与两个Bundle模板是唯一研究输入合同；<code>runtime_contracts.schema.json</code>仅校验新增的精确状态及税则绑定记录。</p>
+<p><code>verification/golden_vectors.json</code>保留原6组并新增26组，共32组固定输入/预期。测试用税则文件明确标为TEST_ONLY，不可用作全部历史税表。因子及真实Profile状态没有被自动升级。</p>
+<h2 id="section-3">离线小型复验</h2>
+<pre><code class="language-bash">python verification/verify_design.py
+python verification/verify_revision.py
+python verification/check_documents.py
+</code></pre>
+<p>第一个脚本仅需Python标准库；第二、三个另使用已安装的jsonschema，文档检查还需beautifulsoup4和markdown-it-py。脚本不安装依赖、不联网、不读取凭据或交易。阅读HTML无需这些依赖。</p>
+<p>结果分别保存为<code>verification_results.json</code>、<code>revision_results.json</code>、<code>document_checks.json</code>。原局部278项与新增26条参考链不是338项生产验收；后者必须由真实实现独立执行。96格市场回放及真实QMT/券商/共享账户测试仍未运行。</p>
+<h2 id="section-4">给编码模型的约束</h2>
+<p>以01、03、Schema的同版合同实现；以02和黄金向量建立自己的测试。不能为通过测试改动投资参数，不接受旧DAILY_PROXY别名或两套Study格式，不把50位Decimal近似作为硬净值门槛。旧D1近似快照只能从可信事件重建，不能直接升级。</p>
+<p>FORWARD_MANUAL中的报撤单动作仍为人工清单和导入确认。本包不授权增加真实自动下单/撤单，也不要求建设通用协调平台。</p>
+</article><div class="footer">此阅读版与同名 Markdown 同步。局部校核不等于生产实现、市场回放或真实账户验收。</div></main></div></body></html>

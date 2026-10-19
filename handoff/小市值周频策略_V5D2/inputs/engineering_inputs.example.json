@@ -1,0 +1,231 @@
+{
+  "bundle_version": "V5D2",
+  "baseline": {
+    "pool_limit": 400,
+    "slots": 30,
+    "retain_rank": 45,
+    "listing_age_sessions": 250,
+    "min_raw_close": "2",
+    "min_adv20": "10000000",
+    "joint_coverage": "0.80",
+    "package_healthy_ratio": "0.95",
+    "max_consecutive_coverage_bad": 2,
+    "unknown_healthy_weeks": 2,
+    "financial_age_months": 15,
+    "stock_target": "0.60",
+    "stock_trigger": "0.65",
+    "center": "0.02",
+    "band_low": "0.015",
+    "band_high": "0.025",
+    "single_trigger": "0.05",
+    "industry_limit": "0.20",
+    "blocked_exit_trigger": "0.10",
+    "dd_warning": "0.20",
+    "dd_retire": "0.25",
+    "dd_limit": "0.30",
+    "startup_min_names": 24,
+    "startup_min_stock_ratio": "0.50",
+    "daily_capacity_ratio": "0.01",
+    "commission_rate": "0.00025",
+    "minimum_commission": "5",
+    "base_slippage": "0.001",
+    "high_slippage": "0.003",
+    "cutoff_time": "20:00:00",
+    "window_start": "10:00:00",
+    "window_end": "10:30:00",
+    "timezone": "Asia/Shanghai"
+  },
+  "execution_technical": {
+    "max_new_orders_per_security_side_window": 3,
+    "order_wait_seconds": 60,
+    "retry_min_seconds": 60,
+    "quote_max_age_seconds": 3,
+    "account_max_age_seconds": 5,
+    "price_protection_nominal": "0.003",
+    "protection_rounding": "OUTWARD_TICK"
+  },
+  "study": {
+    "study_id": "engineering-fixture-not-an-investment-run",
+    "detail_version": "V5D2",
+    "end_date": "2026-10-16",
+    "capital_mode": "DEFAULT_TWO",
+    "capitals": [
+      "100000",
+      "500000"
+    ],
+    "start_years": [
+      2011,
+      2016,
+      2021,
+      2024
+    ],
+    "roles": [
+      "B0",
+      "B1",
+      "B2"
+    ],
+    "scenarios": [
+      "S0",
+      "S1",
+      "S2",
+      "S3"
+    ],
+    "execution_mode": "REPLAY_DAILY_PROXY",
+    "fact_snapshot_id": "TEST_FIXTURE",
+    "purpose": "ENGINEERING_ONLY"
+  },
+  "profiles": {
+    "factor": {
+      "profile_id": "factor-test-rank-001",
+      "status": "DECLARED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [
+        "G05-01"
+      ],
+      "payload": {
+        "package_id": "TEST_ONLY_RANK",
+        "version": "1",
+        "purpose": "TEST_ONLY",
+        "factors": [
+          {
+            "factor_id": "TEST_SEQUENCE",
+            "implementation_id": "TEST_ONLY_VALUE_FROM_FIXTURE",
+            "direction": "HIGHER_BETTER",
+            "output_unit": "fixture_score",
+            "output_quantum": "0.000001",
+            "input_fields": [
+              "fixture_value"
+            ],
+            "formula_definition": "直接返回用例提供的测试分数；不是投资因子。",
+            "validity_rules": [
+              "必须有限、as-of有效"
+            ],
+            "max_report_age_months": 0,
+            "golden_case_ids": [
+              "G05-01",
+              "G05-02",
+              "G05-03"
+            ],
+            "source_scope_ref": "TEST_FIXTURE"
+          }
+        ],
+        "aggregation": "EQUAL_WEIGHT",
+        "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+        "joint_rule": "ALL_FACTORS_VALID",
+        "neutralization": "NONE"
+      }
+    },
+    "universe": {
+      "profile_id": "universe-not-provided",
+      "status": "NOT_PROVIDED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [],
+      "payload": null
+    },
+    "rules": {
+      "profile_id": "rules-not-provided",
+      "status": "NOT_PROVIDED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [],
+      "payload": null
+    },
+    "fees": {
+      "profile_id": "fees-not-provided",
+      "status": "NOT_PROVIDED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [],
+      "payload": null
+    },
+    "sources": {
+      "profile_id": "sources-not-provided",
+      "status": "NOT_PROVIDED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [],
+      "payload": null
+    },
+    "bootstrap": {
+      "profile_id": "bootstrap-not-provided",
+      "status": "NOT_PROVIDED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [],
+      "payload": null
+    },
+    "benchmark": {
+      "profile_id": "benchmark-not-provided",
+      "status": "NOT_PROVIDED",
+      "scope": {
+        "purpose": "TEST_ONLY",
+        "start_date": null,
+        "end_date": null,
+        "markets": [
+          "SH",
+          "SZ"
+        ],
+        "account_ref": null,
+        "description": "待补真实适用范围；此模板不是已验证能力。"
+      },
+      "source_refs": [],
+      "payload": null
+    }
+  }
+}

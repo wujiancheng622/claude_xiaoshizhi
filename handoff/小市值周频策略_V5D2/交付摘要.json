@@ -1,0 +1,35 @@
+{
+  "version": "V5D2",
+  "date": "2026-10-16",
+  "basis": "Overview V5, unchanged investment parameters",
+  "readiness": "Ready to implement within reviewed semantic scope; not production or investment acceptance",
+  "local_reference": {
+    "inherited_assertions": 278,
+    "new_fixed_chains": 26,
+    "failed_new_chains": 0,
+    "document_validation_groups": 67
+  },
+  "planned_production_cases": {
+    "original": 312,
+    "new": 26,
+    "total": 338,
+    "status": "NOT_RUN"
+  },
+  "golden_vectors": 32,
+  "historical_96_cells": "NOT_RUN",
+  "QMT_broker_shared_account": "NOT_RUN",
+  "production_code_changes": false,
+  "remote_file_changes": false,
+  "real_orders": false,
+  "outstanding_inputs": [
+    "Final factor definitions",
+    "Actual allocation and permissions/bootstrap",
+    "Historical tax/fee/settlement tables and broker semantics",
+    "QMT/Tushare and shared-cash operational evidence"
+  ],
+  "legacy_resume_condition": "Rebuild from reliable immutable facts; rounded D1 snapshots not accepted as exact",
+  "execution_environment": {
+    "python": "3.13.5",
+    "location": "conversation sandbox, not user workstation"
+  }
+}

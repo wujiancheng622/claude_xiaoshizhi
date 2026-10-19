@@ -1,0 +1,30 @@
+{
+  "scope": "Representative desktop/mobile views and rendered case table rows; not all viewport pixels or business correctness.",
+  "method": "Generated HTML loaded as inline document content; local file URL navigation was unavailable. Link targets separately validated by check_documents.py.",
+  "checks": [
+    {
+      "file": "01_详细设计_V5D2.html",
+      "viewport": "1440x1000",
+      "body_width": 1440,
+      "screen_width": 1440
+    },
+    {
+      "file": "02_测试设计与验收用例_V5D2.html",
+      "rendered_case_rows": 338
+    },
+    {
+      "file": "03_接口与输入契约_V5D2.html",
+      "viewport": "390x844",
+      "body_width": 390,
+      "horizontal_tables": "internal scroll containers"
+    }
+  ],
+  "visual_inspection": {
+    "inspected": [
+      "D09_订单转移_桌面.png",
+      "G19_固定用例_桌面.png",
+      "03_接口契约_手机.png"
+    ],
+    "result": "Text and tables readable in representative views; wide tables use internal horizontal scrolling."
+  }
+}

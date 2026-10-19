@@ -1,0 +1,7463 @@
+{
+ "generated_at": "2026-10-19T07:21:25.092182+00:00",
+ "detail_version": "V5D2",
+ "execution_environment": {
+  "python": "3.12.3",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "location": "user workstation (WSL)",
+  "oracle_used": false
+ },
+ "unit_tests": {
+  "run": 354,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 137.3
+ },
+ "case_counts": {
+  "PASS": 326,
+  "BLOCKED": 12
+ },
+ "total_cases": 338,
+ "unknown_case_ids": [],
+ "golden_vectors": [
+  {
+   "id": "G05-01",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_golden_percentile"
+   ]
+  },
+  {
+   "id": "G17-01",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_startup_sizing_golden",
+    "tests.test_g17_integration.G17.test_first_build"
+   ]
+  },
+  {
+   "id": "G07-08",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_fee_aware_total_reduce"
+   ]
+  },
+  {
+   "id": "G09-07_TO_09",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_golden_partial_cancel_chain"
+   ]
+  },
+  {
+   "id": "G08_FEE_CLOSURE",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_fee_aware_total_reduce"
+   ]
+  },
+  {
+   "id": "G16_RETIRED_CAGR",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_retired_positive_cagr_rejected"
+   ]
+  },
+  {
+   "id": "G19-01",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.RiskPipeline.test_g19_01"
+   ]
+  },
+  {
+   "id": "G19-02",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.RiskPipeline.test_g19_02"
+   ]
+  },
+  {
+   "id": "G19-03",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.RiskPipeline.test_g19_03"
+   ]
+  },
+  {
+   "id": "G19-04",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_04"
+   ]
+  },
+  {
+   "id": "G19-05",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_05"
+   ]
+  },
+  {
+   "id": "G19-06",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_06"
+   ]
+  },
+  {
+   "id": "G19-07",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_07"
+   ]
+  },
+  {
+   "id": "G19-08",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_08"
+   ]
+  },
+  {
+   "id": "G19-09",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_09"
+   ]
+  },
+  {
+   "id": "G19-10",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_10"
+   ]
+  },
+  {
+   "id": "G19-11",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_11"
+   ]
+  },
+  {
+   "id": "G19-12",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_12"
+   ]
+  },
+  {
+   "id": "G19-13",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_13",
+    "tests.test_review_fixes.LedgerFixes.test_followup_cancel_once_per_failure"
+   ]
+  },
+  {
+   "id": "G19-14",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_14"
+   ]
+  },
+  {
+   "id": "G19-15",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_15"
+   ]
+  },
+  {
+   "id": "G19-16",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_16"
+   ]
+  },
+  {
+   "id": "G19-17",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_17"
+   ]
+  },
+  {
+   "id": "G19-18",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_18"
+   ]
+  },
+  {
+   "id": "G19-19",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_19"
+   ]
+  },
+  {
+   "id": "G19-20",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_flat_score_reduce_only",
+    "tests.test_g19_golden.Flat.test_g19_20"
+   ]
+  },
+  {
+   "id": "G19-21",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Flat.test_g19_21"
+   ]
+  },
+  {
+   "id": "G19-22",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Flat.test_g19_22"
+   ]
+  },
+  {
+   "id": "G19-23",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Tax.test_g19_23"
+   ]
+  },
+  {
+   "id": "G19-24",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Tax.test_g19_24"
+   ]
+  },
+  {
+   "id": "G19-25",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.BundleMap.test_g19_25"
+   ]
+  },
+  {
+   "id": "G19-26",
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Late.test_g19_26"
+   ]
+  }
+ ],
+ "cases": [
+  {
+   "id": "G01-01",
+   "group": "G01",
+   "requirement": [
+    "加载完整V5D2常量",
+    "validate",
+    "所有值与V5一致，无默认98%或90%仓位混入"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_constants_match_v5"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-02",
+   "group": "G01",
+   "requirement": [
+    "把stock_target改0.7但版本仍V5D2",
+    "validate",
+    "`BASELINE_MISMATCH`，不运行原版本"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_baseline_mismatch"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-03",
+   "group": "G01",
+   "requirement": [
+    "ETF/股票范围存在同一ID",
+    "bootstrap",
+    "拒绝共享运行；不生成同股分摊表"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_scope_overlap_rejected"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-04",
+   "group": "G01",
+   "requirement": [
+    "因子包缺失，给定TEST_ONLY夹具",
+    "回放骨架",
+    "可产生工程输出；资格始终ENGINEERING_ONLY"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_test_package_engineering_only"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-05",
+   "group": "G01",
+   "requirement": [
+    "实际金额与权限均空",
+    "plan",
+    "不编造50万元或科创权限；对应外部输入阻断"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_missing_capital_and_permission_blocks_plan"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-06",
+   "group": "G01",
+   "requirement": [
+    "所有财务值齐全但含未来available_at",
+    "compute",
+    "拒绝未来依赖，不标正常"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_future_available_at_rejected",
+    "tests.test_review_fixes.RuleAndSettlementFixes.test_rule_not_public_at_cutoff_is_unknown"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-07",
+   "group": "G01",
+   "requirement": [
+    "金额NaN、股数True或小数",
+    "deserialize",
+    "类型错误；不能转换为1股或0元"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_type_errors"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-08",
+   "group": "G01",
+   "requirement": [
+    "同一期RuleBook出现两行重叠",
+    "validate",
+    "`RULE_AMBIGUOUS`；不能按文件先后取一行"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_rule_overlap_ambiguous",
+    "tests.test_review_fixes.RuleAndSettlementFixes.test_fee_rule_settlement_reference",
+    "tests.test_review_fixes.RuleAndSettlementFixes.test_unknown_settlement_mapping_unsupported",
+    "tests.test_review_fixes.RuleScopeByRiskStatus.test_scope_selected_by_risk_status",
+    "tests.test_review_fixes.RuleScopeByRiskStatus.test_unrecognized_overlapping_scope_rejected"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-09",
+   "group": "G01",
+   "requirement": [
+    "研究费用表有一段历史空档",
+    "A0",
+    "缺失区间标证据不足，不套今天费率"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g01_config.G01.test_fee_gap_insufficient"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G01-10",
+   "group": "G01",
+   "requirement": [
+    "调用未授权LIVE_ORDER",
+    "dispatch",
+    "无任何真实报撤单调用；明确拒绝"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_forward_manual.ForwardManual.test_forward_chain",
+    "tests.test_g01_config.G01.test_live_order_refused"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-01",
+   "group": "G02",
+   "requirement": [
+    "同口径QMT=10.00、TS=10.00，均有效",
+    "select",
+    "QMT、来源轨迹完整"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_qmt_primary_when_equal"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-02",
+   "group": "G02",
+   "requirement": [
+    "QMT只有当前股本，查询历史市值；TS历史有效",
+    "select",
+    "TS补充，理由HISTORICAL_SEMANTICS_UNAVAILABLE"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_historical_semantics_substitute"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-03",
+   "group": "G02",
+   "requirement": [
+    "QMT缺该日，TS同口径已核验",
+    "select",
+    "显式SUBSTITUTE；不是静默拼接"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_qmt_missing_explicit_substitute"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-04",
+   "group": "G02",
+   "requirement": [
+    "QMT过期报价，TS新鲜历史日值",
+    "实时报单",
+    "历史日值不能代实时对手盘；不报单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_daily_value_not_realtime_quote"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-05",
+   "group": "G02",
+   "requirement": [
+    "QMT负收盘价、TS正价且已核验",
+    "select",
+    "错值拒用，可显式替代，不因QMT优先保留负价"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_wrong_qmt_value_rejected"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-06",
+   "group": "G02",
+   "requirement": [
+    "双方有效但10元与11元冲突",
+    "select",
+    "SOURCE_CONFLICT；不平均、不自动取收益更好者"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_conflict"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-07",
+   "group": "G02",
+   "requirement": [
+    "QMT展示量化0.01，TS量化0.001，舍入区间相交",
+    "select",
+    "采用QMT中心值；保留舍入解释"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_rounding_explained"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-08",
+   "group": "G02",
+   "requirement": [
+    "单位错：TS amount=10000千元",
+    "normalize",
+    "10,000,000元；不能当10,000元"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_amount_unit"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-09",
+   "group": "G02",
+   "requirement": [
+    "TS vol=35手",
+    "normalize",
+    "3,500股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_volume_unit"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-10",
+   "group": "G02",
+   "requirement": [
+    "TS total_mv=120000万元",
+    "normalize",
+    "1,200,000,000元"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_total_mv_unit"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-11",
+   "group": "G02",
+   "requirement": [
+    "两复权序列锚不同但字段同名",
+    "merge",
+    "BASIS_MISMATCH；不能直接拼接"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_basis_mismatch"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-12",
+   "group": "G02",
+   "requirement": [
+    "QMT账户余额缺失、TS有市值",
+    "bootstrap",
+    "TS不能补账户现金；账户事实未知"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_ts_cannot_fill_account"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-13",
+   "group": "G02",
+   "requirement": [
+    "QMT恢复修正最早2021周度分数",
+    "impact",
+    "从最早受影响决策前重放到D，不只改当周分数"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_impact_replays_from_earliest"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-14",
+   "group": "G02",
+   "requirement": [
+    "QMT差异只有未使用字段",
+    "impact",
+    "记录无影响，不触发无关全量回放"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_unused_field_no_impact"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-15",
+   "group": "G02",
+   "requirement": [
+    "随机重排来源记录行",
+    "repeat",
+    "来源裁决与数值不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_row_shuffle_invariant"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G02-16",
+   "group": "G02",
+   "requirement": [
+    "同事件合计分红1.4与分项1.0/0.4混在来源中",
+    "normalize",
+    "必须按事件条款去重/合并；不能全部相加2.8"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G02.test_dividend_total_and_parts_not_summed"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-01",
+   "group": "G03",
+   "requirement": [
+    "财报报告期2025-12-31，公告2026-04-17",
+    "2025末计算",
+    "不可见，不用end_date过滤冒充as-of"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_report_not_visible_before_announcement"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-02",
+   "group": "G03",
+   "requirement": [
+    "公告只有周五日期",
+    "周五20点信号",
+    "下一市场日09:30前不可用"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_date_only_next_session_0930"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-03",
+   "group": "G03",
+   "requirement": [
+    "公告有可信周五19:00时刻",
+    "周五20点",
+    "可用；周五20:01公告不可用"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_trusted_timestamp"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-04",
+   "group": "G03",
+   "requirement": [
+    "TTM的Q1先公开，上年全年更晚公开",
+    "TTM",
+    "max依赖时刻为更晚全年公开时刻"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_ttm_available_at_is_max"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-05",
+   "group": "G03",
+   "requirement": [
+    "YTD=30、上年全年120、上年同期20",
+    "TTM",
+    "130，独立四季求和同口径一致"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_ttm_value"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-06",
+   "group": "G03",
+   "requirement": [
+    "当年Q2累计80、Q1累计30",
+    "单季",
+    "50；缺Q1则未知，不把80当单季"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_single_quarter"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-07",
+   "group": "G03",
+   "requirement": [
+    "同期两版本更正5月1日公开",
+    "4月/5月查询",
+    "4月用旧；5月后用新；不倒填"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_revision_visibility"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-08",
+   "group": "G03",
+   "requirement": [
+    "同键同时间不同值但无版本关系",
+    "as-of",
+    "冲突；不得按输入顺序择一"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_same_time_conflict"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-09",
+   "group": "G03",
+   "requirement": [
+    "未来追加2027财报",
+    "重跑2025信号",
+    "所有2025输出不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_future_append_prefix_invariant"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-10",
+   "group": "G03",
+   "requirement": [
+    "latest period已公开但必要字段非法",
+    "compute",
+    "模型不适用，不退回旧期“较好”数据"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_latest_invalid_not_fallback"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-11",
+   "group": "G03",
+   "requirement": [
+    "最新尚未公告的新报告期",
+    "compute",
+    "不当已披露缺失；仍使用真正可见的最新期"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_unpublished_period_not_missing"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-12",
+   "group": "G03",
+   "requirement": [
+    "报告期加15月当天/次日",
+    "freshness",
+    "当天有效；次日过期，包更严格时从严"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_freshness_15_months"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-13",
+   "group": "G03",
+   "requirement": [
+    "无时区报价",
+    "normalize",
+    "时间语义不明，不进入执行"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_naive_time_rejected"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-14",
+   "group": "G03",
+   "requirement": [
+    "信号周包含节假日",
+    "schedule",
+    "用真实最后市场日；不固定星期五"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_holiday_week_end"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-15",
+   "group": "G03",
+   "requirement": [
+    "数据终点是星期三但本周未结束",
+    "week_end",
+    "不制造完整周度截止"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_incomplete_week_not_cutoff"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-16",
+   "group": "G03",
+   "requirement": [
+    "10:00才收到新事实",
+    "日线09:30代理",
+    "不影响09:30成交、数量或选股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_10am_fact_not_in_0930_proxy"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-17",
+   "group": "G03",
+   "requirement": [
+    "登记日15:00存在已提交订单的收盘成交",
+    "日终登记",
+    "先记当日成交，再锁登记股数；不能遗漏这批权益"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_record_after_same_day_fill"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G03-18",
+   "group": "G03",
+   "requirement": [
+    "公司行动晚到且生效早于已有真实成交",
+    "恢复",
+    "用实际成交和修正事件重投影，不重造历史订单；保留当时决策记录"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g02_g03_data.G03.test_late_corporate_action_reprojection"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-01",
+   "group": "G04",
+   "requirement": [
+    "500只确认合格、无评分输入",
+    "build_pool",
+    "按MV及代码取400，结果不依赖因子"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_400_smallest_no_factor"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-02",
+   "group": "G04",
+   "requirement": [
+    "两股同MV",
+    "sort",
+    "代码顺序固定；重排行不改变边界"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_tie_by_code_and_shuffle"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-03",
+   "group": "G04",
+   "requirement": [
+    "后来退市证券在历史时点合格",
+    "history",
+    "保留历史资格；不按最终退市日提前删股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_later_delisted_kept"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-04",
+   "group": "G04",
+   "requirement": [
+    "上市索引差249/250",
+    "eligible",
+    "249失败，250通过"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_listing_age"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-05",
+   "group": "G04",
+   "requirement": [
+    "原价1.99/2.00",
+    "eligible",
+    "前者失败，后者通过"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_price_floor"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-06",
+   "group": "G04",
+   "requirement": [
+    "ADV20=9,999,999/10,000,000",
+    "eligible",
+    "前者失败，后者通过"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_adv_floor"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-07",
+   "group": "G04",
+   "requirement": [
+    "19天有额、1天确认停牌",
+    "ADV",
+    "停牌0且仍除20"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_suspended_day_zero"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-08",
+   "group": "G04",
+   "requirement": [
+    "19天有额、1天来源缺失",
+    "ADV",
+    "UNKNOWN，不当0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_missing_day_unknown"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-09",
+   "group": "G04",
+   "requirement": [
+    "规则标该历史时期市值底线NOT_APPLICABLE",
+    "eligible",
+    "不套未来门槛；此条件通过"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_floor_not_applicable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-10",
+   "group": "G04",
+   "requirement": [
+    "底线规则缺失",
+    "eligible",
+    "RULE_UNKNOWN，不等于NOT_APPLICABLE"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_floor_rule_missing_unknown",
+    "tests.test_review_fixes.RuleAndSettlementFixes.test_rule_not_public_at_cutoff_is_unknown"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-11",
+   "group": "G04",
+   "requirement": [
+    "399只确认合格+1只潜在未知",
+    "build_pool",
+    "不健康，不能把399当完整范围"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_399_plus_unknown_unhealthy"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-12",
+   "group": "G04",
+   "requirement": [
+    "已满400，未知股MV已证实大于第400键",
+    "health",
+    "可记录无关未知，不阻断池"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_unknown_above_boundary_irrelevant"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-13",
+   "group": "G04",
+   "requirement": [
+    "已满400，未知股MV缺失或可能较小",
+    "health",
+    "POOL_UNCERTAIN，暂停普通信号"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_unknown_possibly_small"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-14",
+   "group": "G04",
+   "requirement": [
+    "一个已确认价格不合格且其他字段未知",
+    "predicate",
+    "FALSE，不必因其无关未知阻断全池"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_confirmed_false_dominates_unknown"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-15",
+   "group": "G04",
+   "requirement": [
+    "池形成后因子有80只缺失",
+    "score",
+    "不从第401以后补80只"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_no_refill_beyond_400"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G04-16",
+   "group": "G04",
+   "requirement": [
+    "0只合格",
+    "coverage",
+    "EMPTY_ECONOMIC_POOL；禁止0/0=100%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G04.test_empty_pool"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-01",
+   "group": "G05",
+   "requirement": [
+    "单项[10,20,20,40]正向",
+    "score",
+    "[−1,0,0,1]，并列均分"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_golden_percentile"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-02",
+   "group": "G05",
+   "requirement": [
+    "同输入反向",
+    "score",
+    "[1,0,0,−1]；不反两次"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_reverse_once"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-03",
+   "group": "G05",
+   "requirement": [
+    "一项全部7",
+    "score",
+    "全0，原包权重不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_constant_factor_zero_keeps_weight"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-04",
+   "group": "G05",
+   "requirement": [
+    "只有一只有效",
+    "score",
+    "分数0，不除以n−1=0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_single_valid"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-05",
+   "group": "G05",
+   "requirement": [
+    "两项方向相反、等权后全同",
+    "plan",
+    "FLAT_SCORE，不新增/补买/排名替换；合格老仓>2.5%保留减持至固定2%金额；报价变化不反向买入；风险照常"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_flat_score_reduce_only"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-06",
+   "group": "G05",
+   "requirement": [
+    "320/400联合有效",
+    "coverage",
+    "80%健康；319/400不健康"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_coverage_boundary"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-07",
+   "group": "G05",
+   "requirement": [
+    "三项各90%，分别缺40只不重叠",
+    "intersection",
+    "联合280/400=70%，不能取平均90%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_joint_intersection"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-08",
+   "group": "G05",
+   "requirement": [
+    "A项400有值，B项320有值",
+    "score",
+    "两项都只在共同320只上排名"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_rank_on_common_set"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-09",
+   "group": "G05",
+   "requirement": [
+    "一股缺一项",
+    "score",
+    "不在J；不按剩余项重权"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_missing_one_item_excluded"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-10",
+   "group": "G05",
+   "requirement": [
+    "合法负利润与极端正值",
+    "preprocessing",
+    "原值保留且映射有界百分位；不winsorize或填0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_negative_and_extreme_kept"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-11",
+   "group": "G05",
+   "requirement": [
+    "全局故障跨两周",
+    "counters",
+    "个别计数不增、不清，不批量抛售"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_global_fault_no_count_change"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-12",
+   "group": "G05",
+   "requirement": [
+    "健康缺失、故障、故障、健康缺失、健康恢复",
+    "counters",
+    "1,1,1,2,0；第4周安排普通退出"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_counter_sequence"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-13",
+   "group": "G05",
+   "requirement": [
+    "健康批次确认分母非法",
+    "counters",
+    "本周模型不适用退出，不等两周"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_model_inapplicable_exits_now"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-14",
+   "group": "G05",
+   "requirement": [
+    "100应评估周健康95/94",
+    "package",
+    "95通过比例，94失败"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_package_ratio_95"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-15",
+   "group": "G05",
+   "requirement": [
+    "健康比例98%但连续3周坏（总周数足够）",
+    "package",
+    "连续性失败，不被高平均覆盖抵消"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_streak_failure"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-16",
+   "group": "G05",
+   "requirement": [
+    "若干周UNASSESSED",
+    "package",
+    "不删除分母；证据不足"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_unassessed_kept_in_denominator"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-17",
+   "group": "G05",
+   "requirement": [
+    "200组正单调变换与输入重排",
+    "metamorphic",
+    "排名和同分规则不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_metamorphic_monotone"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G05-18",
+   "group": "G05",
+   "requirement": [
+    "更换包但相同规范评分输入",
+    "backbone",
+    "账户/执行常量不改变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_package_change_keeps_backbone"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-01",
+   "group": "G06",
+   "requirement": [
+    "全现金、400有效",
+    "first plan",
+    "固定前30；行业受限的候选在信号时跳过"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_first_plan_top30_industry_skip",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_industry_planning_uses_planned_values"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-02",
+   "group": "G06",
+   "requirement": [
+    "老仓名次30/45/46",
+    "B1",
+    "30、45保留，46普通退出"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_b1_retain_45"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-03",
+   "group": "G06",
+   "requirement": [
+    "同名单老仓31",
+    "B2",
+    "普通退出；B1可保留"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_b2_retain_30"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-04",
+   "group": "G06",
+   "requirement": [
+    "老仓市值序位399→401、综合分仍高",
+    "plan",
+    "离池普通退出，不评分豁免"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_off_pool_exit_despite_score"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-05",
+   "group": "G06",
+   "requirement": [
+    "29保留+1确定冻结旧仓",
+    "plan/execute",
+    "没有额外新槽，不买第31只"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_frozen_exit_occupies_slot",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_exit_with_open_sell_occupies_slot"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-06",
+   "group": "G06",
+   "requirement": [
+    "计划卖旧股后来失败",
+    "execute",
+    "重新计实际槽；不执行对应新增"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_failed_sell_recounts_actual_slots"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-07",
+   "group": "G06",
+   "requirement": [
+    "一股部分卖出仍1股",
+    "slots",
+    "仍占1槽；卖完且终态才释放"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_one_share_left_occupies_slot",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_exit_with_open_sell_occupies_slot",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_slots_exceeded_records_and_blocks_adds"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-08",
+   "group": "G06",
+   "requirement": [
+    "在途新买已部分成交",
+    "slots",
+    "并集计一次，不算两个槽"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_in_transit_buy_counted_once"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-09",
+   "group": "G06",
+   "requirement": [
+    "只有10只可买",
+    "weights",
+    "每只仍2%，不是6%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_each_still_2pct"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-10",
+   "group": "G06",
+   "requirement": [
+    "截止E=100000，执行E=110000",
+    "targets",
+    "单股普通目标仍2000，不自动2200"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_fixed_target_not_scaled"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-11",
+   "group": "G06",
+   "requirement": [
+    "截止value=1500或2500",
+    "band",
+    "HOLD_SHARES；1499.99/2500.01才TARGET_AMOUNT"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_band_edges"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-12",
+   "group": "G06",
+   "requirement": [
+    "TARGET_AMOUNT隔夜价涨导致超目标",
+    "sizing",
+    "可由补买变减持；HOLD_SHARES不变成补买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_target_amount_direction_follows_price"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-13",
+   "group": "G06",
+   "requirement": [
+    "已因风险减卖后普通目标仍较高",
+    "same batch",
+    "禁买集合生效，不能同批买回"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_no_buyback_after_risk_sell"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-14",
+   "group": "G06",
+   "requirement": [
+    "信号后转入资金",
+    "execute",
+    "旧普通买入CAPITAL_CHANGED；不扩大资金目标"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_capital_change_invalidates_buys"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-15",
+   "group": "G06",
+   "requirement": [
+    "行业计划退出失败",
+    "preview",
+    "实际行业仓计入；不得按假想退出买同业新股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_failed_industry_exit_counts"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G06-16",
+   "group": "G06",
+   "requirement": [
+    "因缺资金买不到最后几只",
+    "execute",
+    "留现金，不添加固定名单之外证券"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G06.test_insufficient_cash_keeps_cash"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-01",
+   "group": "G07",
+   "requirement": [
+    "实际260股、目标500股、主板100步长",
+    "普通买入",
+    "只新增200，不买240"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_main_board_step"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-02",
+   "group": "G07",
+   "requirement": [
+    "同缺口240、科创最低200逐股",
+    "普通买入",
+    "240合法（使用相应日期RuleBook）"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_star_240"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-03",
+   "group": "G07",
+   "requirement": [
+    "科创缺口199",
+    "buy",
+    "不报；不向上凑200超普通目标"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_star_199_no_order"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-04",
+   "group": "G07",
+   "requirement": [
+    "持260可卖260、主板保守子集",
+    "exit",
+    "允许全部260；普通部分取100/200，不拆零凑目标"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_full_odd_exit_and_partial_grid"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-05",
+   "group": "G07",
+   "requirement": [
+    "q260但当天新买不可卖",
+    "sell",
+    "free_sell=0，不用总股数代替"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_bought_today_not_sellable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-06",
+   "group": "G07",
+   "requirement": [
+    "mature1000、broker_can_sell700、冻结300已在两边映射",
+    "free_sell",
+    "700，不再减成400"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_free_sell_no_double_freeze"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-07",
+   "group": "G07",
+   "requirement": [
+    "再有批准未报100股",
+    "free_sell",
+    "600，预批准也占用"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_free_sell_preapproved"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-08",
+   "group": "G07",
+   "requirement": [
+    "E100000、股票66000、价10、例费0.1%+5",
+    "风险降60%",
+    "600股不足；100股步长最低700股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_fee_aware_total_reduce"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-09",
+   "group": "G07",
+   "requirement": [
+    "上例最多可卖500股",
+    "risk",
+    "卖到合法可行上限，目标未达、限制保持"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_unreachable_sells_max"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-10",
+   "group": "G07",
+   "requirement": [
+    "后续行业卖出费用使先前单股2%再超线",
+    "merge",
+    "全局费用闭合复核；不能保留假完成"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_fee_closure_loop"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-11",
+   "group": "G07",
+   "requirement": [
+    "冻结A5000股，交易B支付25元",
+    "ledger",
+    "A仍5000股；E减少25，不能按比例缩A"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_frozen_shares_not_scaled_for_fees"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-12",
+   "group": "G07",
+   "requirement": [
+    "10万元、30股每股目标2000、价10、每单5费、零滑点夹具",
+    "startup sizing",
+    "顺序最大合法分配为前29只200股、末只100股；股票59000、佣金150，E99850"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_startup_sizing_golden"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-13",
+   "group": "G07",
+   "requirement": [
+    "24股、原始股票额50000/本金100000",
+    "startup",
+    "适配通过边界；费用后风险仍另校验"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_startup_boundary_pass"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-14",
+   "group": "G07",
+   "requirement": [
+    "23股但股票额60000",
+    "startup",
+    "不适配，不能算现金赢家"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_startup_23_names_fail"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-15",
+   "group": "G07",
+   "requirement": [
+    "startup26股但原始股票额49999.99",
+    "startup",
+    "不适配"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_startup_ratio_fail"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-16",
+   "group": "G07",
+   "requirement": [
+    "已启动后风险卖出只剩20股",
+    "runtime",
+    "不强行补回24/30；启动门槛不变运行买入命令"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_runtime_no_forced_24"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-17",
+   "group": "G07",
+   "requirement": [
+    "10万元不适配、50万元适配",
+    "matrix",
+    "分别判资格，不相互覆盖"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_capital_configs_independent"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-18",
+   "group": "G07",
+   "requirement": [
+    "多个买单分别看都可买但合计超现金",
+    "allocator",
+    "顺序预约并重算，合计不能超支"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_sequential_reservation"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-19",
+   "group": "G07",
+   "requirement": [
+    "原买单300股已成50、余250确认撤销；主板步长100",
+    "重报",
+    "只报200或更少，不能直接报250或凑300"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_resubmit_after_partial_cancel"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G07-20",
+   "group": "G07",
+   "requirement": [
+    "先有合法规划100，后因风险需再追加零股",
+    "合并",
+    "检查合并委托量的合法集合，而非将任意追加量视为合法"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_merged_order_legality"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-01",
+   "group": "G08",
+   "requirement": [
+    "股票占比65%/65%+微量",
+    "trigger",
+    "65%不触发，后者TOTAL_REDUCE"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_total_trigger_strict"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-02",
+   "group": "G08",
+   "requirement": [
+    "总纠偏后降64%",
+    "continue",
+    "仍活跃，不在触发线下就结束"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_total_continues_at_64"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-03",
+   "group": "G08",
+   "requirement": [
+    "总纠偏自然降60%",
+    "continue",
+    "结束，不强制旧卖量"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_total_ends_at_60"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-04",
+   "group": "G08",
+   "requirement": [
+    "单股5%/5%+微量",
+    "trigger",
+    "等号不触发，超过减向2%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_single_trigger_strict"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-05",
+   "group": "G08",
+   "requirement": [
+    "单股从6%到4.9%",
+    "continue",
+    "未到2%，仍纠偏"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_single_continues_until_2pct"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-06",
+   "group": "G08",
+   "requirement": [
+    "行业20%/20%+微量",
+    "trigger",
+    "等号不触发，超过向20%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_industry_trigger_strict"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-07",
+   "group": "G08",
+   "requirement": [
+    "单股/行业/总仓同时要求卖同股",
+    "merge",
+    "取最严格剩余目标，不三份卖量相加"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_merge_max_not_sum"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-08",
+   "group": "G08",
+   "requirement": [
+    "受阻9.999%/10%",
+    "restrict",
+    "前者不因本条限制，10%限制；其他原因独立"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_blocked_exit_10pct"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-09",
+   "group": "G08",
+   "requirement": [
+    "受阻降9%但另有行业纠偏",
+    "clear",
+    "只清受阻原因，仍禁买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_clear_blocked_but_industry_remains"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-10",
+   "group": "G08",
+   "requirement": [
+    "DD=20%",
+    "EOD",
+    "预警，不自动变权重或加仓"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_dd20_warning_only"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-11",
+   "group": "G08",
+   "requirement": [
+    "DD=25%",
+    "EOD",
+    "撤买、EXITING、retirement_triggered=true"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_dd25_retires"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-12",
+   "group": "G08",
+   "requirement": [
+    "次日DD回20%或注资",
+    "state",
+    "不恢复，不清真实停用标记"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_retirement_not_cleared"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-13",
+   "group": "G08",
+   "requirement": [
+    "日内价格短时DD25%，尚无正式日终确认",
+    "observation",
+    "复核集中度、资金及已生效风险；不新增盘中回撤触发，日终正式净值达到25%才停用"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_intraday_drawdown_no_trigger"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-14",
+   "group": "G08",
+   "requirement": [
+    "ST在窗口中确认",
+    "risk",
+    "取消冲突买入，之后窗口内能执行则卖；不等周末"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_st_confirmed_in_window",
+    "tests.test_review_fixes.RuleScopeByRiskStatus.test_scope_selected_by_risk_status"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-15",
+   "group": "G08",
+   "requirement": [
+    "价格1.99触发退出后回2.01",
+    "intent",
+    "不取消确认退出；已证数据错误方可撤销"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_price_exit_not_undone_by_rebound",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_holding_mv_floor_triggers_security_exit"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-16",
+   "group": "G08",
+   "requirement": [
+    "EX事件后名义价格跌破2且条款真实",
+    "risk",
+    "同规则生效，不临时豁免"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_ex_date_nominal_drop_same_rule"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-17",
+   "group": "G08",
+   "requirement": [
+    "所有正常仓清空但有残余",
+    "state",
+    "无未结委托可RETIRED；残余继续净值/风险"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_retired_with_residual"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-18",
+   "group": "G08",
+   "requirement": [
+    "E≤0",
+    "risk",
+    "拒绝新增、风险失败，不把E夹成正数"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_nonpositive_equity",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_security_exit_detected_when_insolvent"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-19",
+   "group": "G08",
+   "requirement": [
+    "全局源故障但已确认某股终止上市",
+    "restricted",
+    "有依据风险退出继续；不一概禁止合法卖出"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_global_fault_still_risk_exit"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G08-20",
+   "group": "G08",
+   "requirement": [
+    "只因数据错误误触发并已实卖",
+    "correction",
+    "可人工核正标记；真实交易/费用不倒删"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_false_trigger_manual_correction"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-01",
+   "group": "G09",
+   "requirement": [
+    "锚10元、tick0.01、买保护+30bp",
+    "limit",
+    "上界10.03，不能重试抬到10.10"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_buy_protection"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-02",
+   "group": "G09",
+   "requirement": [
+    "当前卖一10.04",
+    "buy",
+    "不报，等待有界重试；不扩大保护"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_ask_above_bound_no_order"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-03",
+   "group": "G09",
+   "requirement": [
+    "当前买一低于卖保护下界",
+    "sell",
+    "不报，风险意图保留"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_bid_below_bound_no_sell"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-04",
+   "group": "G09",
+   "requirement": [
+    "报价年龄3秒/3秒+微量",
+    "submit",
+    "3秒允许，超过拒绝"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_quote_age"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-05",
+   "group": "G09",
+   "requirement": [
+    "10:29:59可提交；10:30:00",
+    "clock",
+    "后者禁止新单，只撤单核对"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_window_clock"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-06",
+   "group": "G09",
+   "requirement": [
+    "请求已发但ACK超时",
+    "state",
+    "SENT_UNKNOWN，不用新ID重发"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_sent_unknown_no_resend"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-07",
+   "group": "G09",
+   "requirement": [
+    "300股订单成交100后请求撤单",
+    "state",
+    "CANCEL_PENDING，剩200资源仍占用"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_golden_partial_cancel_chain",
+    "tests.test_review_fixes.LedgerFixes.test_followup_cancel_once_per_failure"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-08",
+   "group": "G09",
+   "requirement": [
+    "撤单等待又成交50",
+    "apply",
+    "实仓150、剩150资源，费用按累计"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_golden_partial_cancel_chain"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-09",
+   "group": "G09",
+   "requirement": [
+    "部撤终态确认累计150",
+    "release",
+    "释放剩150，保留150股和已发生费"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_golden_partial_cancel_chain"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-10",
+   "group": "G09",
+   "requirement": [
+    "相同trade_id相同内容重复",
+    "apply",
+    "无第二次股数/现金/费用变化"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_forward_manual.ForwardManual.test_forward_chain",
+    "tests.test_g09_g10_orders_fees.G09.test_duplicate_trade_idempotent"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-11",
+   "group": "G09",
+   "requirement": [
+    "相同trade_id不同数量",
+    "apply",
+    "冲突及增风险阻断，不择后一条"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_same_trade_id_conflict",
+    "tests.test_review_fixes.ForwardFixes.test_rejected_broker_row_not_committed_and_recoverable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-12",
+   "group": "G09",
+   "requirement": [
+    "两个不同ID同价同秒同数量",
+    "apply",
+    "两笔真实成交都记录，不能按值去重"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_distinct_ids_same_values"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-13",
+   "group": "G09",
+   "requirement": [
+    "查询累计100、再累计150",
+    "import",
+    "只新增50，不再新增150"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_cumulative_query_diff"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-14",
+   "group": "G09",
+   "requirement": [
+    "当前回报超原委托数",
+    "validate",
+    "不正常验收；源冲突核查及最大可能暴露保留"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_report_exceeds_order"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-15",
+   "group": "G09",
+   "requirement": [
+    "券商已确认真实超限成交",
+    "account",
+    "真实入账并记录政策违约、停增；不忽略暴露"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_confirmed_breach_recorded_and_blocks"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-16",
+   "group": "G09",
+   "requirement": [
+    "第3张新单已结束仍需交易",
+    "retry",
+    "当窗口不再创建第4张；风险次日续"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_max_three_orders"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-17",
+   "group": "G09",
+   "requirement": [
+    "委托窗内发出，但真实成交发生在10:31",
+    "import",
+    "不回填10:29；保留真实10:31及窗口偏离"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_out_of_window_fill_not_backfilled"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-18",
+   "group": "G09",
+   "requirement": [
+    "普通卖出被拒但已有现金且真实空槽",
+    "buy phase",
+    "无风险全局限制时可买固定名单内股票"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_failed_ordinary_sell_still_buys"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-19",
+   "group": "G09",
+   "requirement": [
+    "普通卖单状态未知",
+    "buy phase",
+    "不能因预计不成交释放资源进入新增"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_unknown_sell_blocks_buys"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-20",
+   "group": "G09",
+   "requirement": [
+    "同策略30只并行委托",
+    "batch",
+    "允许同owner多个证券，但各证券同方向仅1未结单；全资源先验约束"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_parallel_orders_one_per_side",
+    "tests.test_review_fixes.ForwardFixes.test_manual_existing_open_sell_not_duplicated"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-21",
+   "group": "G09",
+   "requirement": [
+    "锚10.01、tick0.01、30bp保护、同锚HIGH代理",
+    "舍入",
+    "买上界10.05、卖下界9.97，合法法定边界仍优先；无内外取整死锁"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_tick_rounding_no_deadlock"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G09-22",
+   "group": "G09",
+   "requirement": [
+    "10:29真实成交、10:31才收到确认",
+    "入账/可见性",
+    "occurrence=10:29且不是窗外成交；决策直到10:31才可消费该回报"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G09.test_occurred_vs_received"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-01",
+   "group": "G10",
+   "requirement": [
+    "前20日均额1000万元",
+    "capacity",
+    "当日上限100000元"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_capacity"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-02",
+   "group": "G10",
+   "requirement": [
+    "当日已买40000、已卖20000",
+    "used",
+    "已用60000，不是净买20000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_used_not_netted"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-03",
+   "group": "G10",
+   "requirement": [
+    "再有在途30000",
+    "reserve",
+    "剩10000；无确认取消不得释放"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_pending_and_release"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-04",
+   "group": "G10",
+   "requirement": [
+    "取消在途30000且终态确认",
+    "release",
+    "已用60000仍在，剩40000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_pending_and_release"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-05",
+   "group": "G10",
+   "requirement": [
+    "卖单底价9.97、合法上界11、剩1000股",
+    "capacity reserve",
+    "11000，不是9970"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_sell_capacity_upper_bound"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-06",
+   "group": "G10",
+   "requirement": [
+    "无可靠上界的特殊日期",
+    "reserve",
+    "CAPACITY_PRICE_BOUND_UNKNOWN，不猜上界"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_no_upper_bound",
+    "tests.test_g09_g10_orders_fees.G10.test_no_upper_bound_engine_skips"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-07",
+   "group": "G10",
+   "requirement": [
+    "当天换窗口/重启程序/换委托ID",
+    "used",
+    "累计容量不重置"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_used_survives_restart"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-08",
+   "group": "G10",
+   "requirement": [
+    "下一市场日",
+    "used",
+    "清当日累计，旧未结订单资源仍需核对"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_next_day_reset"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-09",
+   "group": "G10",
+   "requirement": [
+    "零成交订单取消",
+    "fee",
+    "佣金0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_zero_fill_zero_fee"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-10",
+   "group": "G10",
+   "requirement": [
+    "同委托累计1000→3000→24000",
+    "fee",
+    "增量5、0、1，总6"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_cumulative_commission"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-11",
+   "group": "G10",
+   "requirement": [
+    "原1000元成交后撤单重报另1000",
+    "fee",
+    "两委托总佣金10"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_new_order_new_minimum"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-12",
+   "group": "G10",
+   "requirement": [
+    "部分成交A=1000、已计5、剩2000",
+    "reserve",
+    "追加佣金预约0，不重复5"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_extra_reserve_zero"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-13",
+   "group": "G10",
+   "requirement": [
+    "实扣费比计提多0.50",
+    "settle",
+    "只记差额0.50，不重扣全部"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_settlement_difference_only",
+    "tests.test_review_fixes.RuleAndSettlementFixes.test_next_session_fee_and_tax_dates"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-14",
+   "group": "G10",
+   "requirement": [
+    "费用已在佣金中",
+    "total",
+    "不重复加规费"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_included_fee_not_added"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-15",
+   "group": "G10",
+   "requirement": [
+    "已有股票值60000、E100000，新买费用使比率超60",
+    "preview",
+    "不因忽略分母变化放行"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_fee_changes_denominator"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-16",
+   "group": "G10",
+   "requirement": [
+    "买单已被券商冻结30000且available已减",
+    "global cash",
+    "不再从available减同一30000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_broker_freeze_not_double_counted"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-17",
+   "group": "G10",
+   "requirement": [
+    "真实回报价已含滑点",
+    "fee",
+    "不额外再扣模拟10/30bp"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_no_double_slippage"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G10-18",
+   "group": "G10",
+   "requirement": [
+    "卖出税费大于回款和可用现金",
+    "sell",
+    "COST_UNFUNDABLE，不能暗中融资"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g09_g10_orders_fees.G10.test_cost_unfundable",
+    "tests.test_review_fixes.RiskAndPlanFixes.test_cost_unfundable_sell_skipped"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-01",
+   "group": "G11",
+   "requirement": [
+    "现金1000、100股价10，分红1/股",
+    "除息价9",
+    "应收100、股票900、现金1000，E仍2000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_ex_dividend"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-02",
+   "group": "G11",
+   "requirement": [
+    "上例派息前",
+    "cash gate",
+    "可付款现金不因应收增加100"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_receivable_not_spendable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-03",
+   "group": "G11",
+   "requirement": [
+    "上例派息",
+    "settle",
+    "现金1100、应收0，E仍2000，非二次盈利"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_pay"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-04",
+   "group": "G11",
+   "requirement": [
+    "登记日真实持股0",
+    "record/ex",
+    "零权益记录，不因后来买入补分红"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_zero_holding_record"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-05",
+   "group": "G11",
+   "requirement": [
+    "登记日买入200并已确认",
+    "record",
+    "依法取得的200计登记，不因T+1不可卖而无股息"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_record_day_purchase_eligible"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-06",
+   "group": "G11",
+   "requirement": [
+    "登记事件重复发送",
+    "replay",
+    "权益只登记一次；同事件不同条款冲突"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_record_once"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-07",
+   "group": "G11",
+   "requirement": [
+    "200股10送3",
+    "credit",
+    "260股；正式到账可卖日之前不可卖新增60"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_bonus_shares"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-08",
+   "group": "G11",
+   "requirement": [
+    "101股送转产生非整数权利",
+    "credit",
+    "依正式取整/现金补偿条款；未知不自创整数"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_fractional_rights"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-09",
+   "group": "G11",
+   "requirement": [
+    "10配3价5，未认购",
+    "event",
+    "不免费加30股、不虚付150；权利影响按事件处理"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_rights_not_free_shares"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-10",
+   "group": "G11",
+   "requirement": [
+    "分红/送转后只有旧基价格",
+    "valuation",
+    "不直接旧价×新股；用有证据参考或UNRELIABLE"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_old_basis_price_unreliable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-11",
+   "group": "G11",
+   "requirement": [
+    "同股不同取得日，卖出部分",
+    "tax FIFO",
+    "先消耗早批，日期和分红权利对应保留"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_fifo",
+    "tests.test_review_fixes.LedgerFixes.test_sale_tax_preview_matches_booking"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-12",
+   "group": "G11",
+   "requirement": [
+    "2025-01-01取得，税交割2025-02-01",
+    "税示例profile",
+    "一个自然月边界20%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_one_month_boundary",
+    "tests.test_review_fixes.RuleAndSettlementFixes.test_next_session_fee_and_tax_dates"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-13",
+   "group": "G11",
+   "requirement": [
+    "上例交割2025-02-02",
+    "tax",
+    "10%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_after_one_month"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-14",
+   "group": "G11",
+   "requirement": [
+    "2024-01-01取得，2025-01-01/01-02交割",
+    "tax",
+    "边界10%，超过一年0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_one_year_boundary"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-15",
+   "group": "G11",
+   "requirement": [
+    "2025-01-31加一个月",
+    "calendar",
+    "2025-02-28，不固定30天"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_month_end"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-16",
+   "group": "G11",
+   "requirement": [
+    "未卖股息可能补税20元",
+    "reserve",
+    "只限购买力，不同时减一次未发生税负净值"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_contingent_reserve_not_equity"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-17",
+   "group": "G11",
+   "requirement": [
+    "派息前先卖出",
+    "tax/event",
+    "最终税率和待付保留；派息时补税不丢"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_sell_before_pay",
+    "tests.test_review_fixes.LedgerFixes.test_sale_tax_preview_matches_booking",
+    "tests.test_review_fixes.LedgerFixes.test_sold_out_before_ex_keeps_entitlement"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-18",
+   "group": "G11",
+   "requirement": [
+    "前期已代扣税，后来补缴",
+    "tax",
+    "只补最终税减已扣税，不重复缴"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_withheld_then_supplement",
+    "tests.test_review_fixes.LedgerFixes.test_withholding_on_unknown_tax_no_phantom_refund"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-19",
+   "group": "G11",
+   "requirement": [
+    "税批次或送红股税基未知",
+    "evaluation",
+    "TAX_UNKNOWN，不能默认为免税"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_stock_dividend_tax_unknown",
+    "tests.test_g11_g12_ledger.G11.test_unknown_tax_basis",
+    "tests.test_review_fixes.LedgerFixes.test_sell_planner_tax_unknown_not_zero",
+    "tests.test_review_fixes.LedgerFixes.test_withholding_on_unknown_tax_no_phantom_refund"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-20",
+   "group": "G11",
+   "requirement": [
+    "真停牌延用最近价",
+    "marks",
+    "带旧日期暂估，不当正常新Bar或低波证据"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_suspended_provisional"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-21",
+   "group": "G11",
+   "requirement": [
+    "最后一根历史Bar后消失、无终止事件",
+    "lifecycle",
+    "不主动卖出/清零/腾残余槽"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_vanished_bar_not_residual"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-22",
+   "group": "G11",
+   "requirement": [
+    "已确认终止正常交易",
+    "residual",
+    "移出正常槽，但E、风险、权利保留且无现金增加"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_residual"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-23",
+   "group": "G11",
+   "requirement": [
+    "停用后残余实际回收",
+    "account",
+    "现金/权利真实转换并延续至D，不删除旧亏损"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_residual_recovery_after_retire"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-24",
+   "group": "G11",
+   "requirement": [
+    "被动换股破坏互斥范围",
+    "ownership",
+    "保留实际权益、限制共享新增、人工核查；不实现同股分摊"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_conversion_breaks_scope"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-25",
+   "group": "G11",
+   "requirement": [
+    "同一批持股经历两次分红后部分卖出",
+    "税批次",
+    "对两次分红各自剩余补税关系按FIFO处理，不漏旧分红、不向后买入批次补税"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_two_dividends_fifo"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G11-26",
+   "group": "G11",
+   "requirement": [
+    "账户应缴总税0.05分摊至两相同比例slice",
+    "舍入",
+    "合计仍0.05；相同余数按slice_id固定，一片0.03、一片0.02"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G11.test_allocation_rounding"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-01",
+   "group": "G12",
+   "requirement": [
+    "初始本金100000首日E90000",
+    "NAV",
+    "0.9、DD10%，不能重置为1"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_first_day_loss"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-02",
+   "group": "G12",
+   "requirement": [
+    "E75000、units50000、v1.5、H2，再入75000",
+    "capital",
+    "units100000、E150000、v仍1.5、DD25%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_inflow_keeps_unit_value"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-03",
+   "group": "G12",
+   "requirement": [
+    "同初态转出15000",
+    "capital",
+    "units40000、E60000、v1.5，H仍2"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_outflow"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-04",
+   "group": "G12",
+   "requirement": [
+    "入金只改额度、尚未真划拨",
+    "NAV",
+    "不加现金、units或E"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_quota_only_no_change"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-05",
+   "group": "G12",
+   "requirement": [
+    "出金动用冻结或待税现金",
+    "transfer",
+    "拒绝，不把承诺删掉满足出金"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_outflow_cannot_use_committed",
+    "tests.test_review_fixes.LedgerFixes.test_outflow_limited_to_free_cash"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-06",
+   "group": "G12",
+   "requirement": [
+    "全额真实赎回、units=0",
+    "NAV",
+    "资本终止状态，不计算0/0，不清停用历史"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_full_redemption"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-07",
+   "group": "G12",
+   "requirement": [
+    "成交日志重复event_id同内容",
+    "recovery",
+    "不再次入账"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_duplicate_event"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-08",
+   "group": "G12",
+   "requirement": [
+    "同event_id不同内容",
+    "recovery",
+    "硬冲突，停止增风险"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_same_id_different_content"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-09",
+   "group": "G12",
+   "requirement": [
+    "写完整事件后快照未写就崩溃",
+    "resume",
+    "日志重放一次，与不中断相同"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_crash_before_snapshot"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-10",
+   "group": "G12",
+   "requirement": [
+    "最后JSONL行只写一半",
+    "resume",
+    "只处理完整已提交事件；保留损坏片段，不丢前序"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_torn_tail",
+    "tests.test_review_fixes.LedgerFixes.test_reader_does_not_truncate"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-11",
+   "group": "G12",
+   "requirement": [
+    "快照seq超日志seq",
+    "resume",
+    "拒绝直接使用快照，核查一致性"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_snapshot_ahead",
+    "tests.test_review_fixes.BindingAndMatrixFixes.test_resume_with_different_study_refused",
+    "tests.test_review_fixes.LedgerFixes.test_snapshot_rejects_bad_hwm"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-12",
+   "group": "G12",
+   "requirement": [
+    "崩溃时委托SENT_UNKNOWN",
+    "resume",
+    "先查券商，不重新发送"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_forward_manual.ForwardManual.test_forward_chain",
+    "tests.test_g09_g10_orders_fees.G09.test_sent_unknown_no_resend"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-13",
+   "group": "G12",
+   "requirement": [
+    "次日恢复发现昨日普通计划已过期",
+    "resume",
+    "不补执行旧买入"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_expired_plan_not_replayed"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-14",
+   "group": "G12",
+   "requirement": [
+    "风险目标未完，恢复时权益变了",
+    "resume",
+    "按真实新E和股数重算，不盲重放旧量"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_risk_recomputed_with_new_equity"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-15",
+   "group": "G12",
+   "requirement": [
+    "真实回报漏一笔但余额被人改平",
+    "reconcile",
+    "禁止余额覆盖法通过；须补对应事实"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_forward_manual.ForwardManual.test_forward_chain",
+    "tests.test_g11_g12_ledger.G12.test_no_balance_override",
+    "tests.test_review_fixes.ForwardFixes.test_reconcile_limitations_survive_recovery",
+    "tests.test_review_fixes.ForwardFixes.test_rejected_broker_row_not_committed_and_recoverable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G12-16",
+   "group": "G12",
+   "requirement": [
+    "两进程同时写同一账本",
+    "lock",
+    "一个获得写权，另一个只读/拒绝，不双写"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_single_writer_lock"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-01",
+   "group": "G13",
+   "requirement": [
+    "周五固定名单，周一开盘第一名涨停",
+    "daily",
+    "拒买该股留现金，不用第二名替换"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_limit_up_no_replacement"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-02",
+   "group": "G13",
+   "requirement": [
+    "周一10点才确认ST",
+    "09:30代理",
+    "不回填开盘退出；作用于之后代理点"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_10am_st_not_backfilled"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-03",
+   "group": "G13",
+   "requirement": [
+    "开盘卖不出、全日后来有交易",
+    "daily",
+    "不用全日高低/量额证明开盘卖出"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_open_limit_down_no_daily_fill"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-04",
+   "group": "G13",
+   "requirement": [
+    "在10:00根据刚完上一分钟信息提交",
+    "minute",
+    "可以尝试[10:00,10:01)，不提前使用该Bar结果选股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_engine_invariants.EngineInvariants.test_minute_window_chain",
+    "tests.test_g13_g15_timing_stress.G13.test_minute_first_interval"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-05",
+   "group": "G13",
+   "requirement": [
+    "上例订单60秒超时",
+    "10:01",
+    "先计Bar内已有单成交，再处理撤单，不能所有订单零成交"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_fill_before_timeout_cancel"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-06",
+   "group": "G13",
+   "requirement": [
+    "10:00卖出结果10:01才可知",
+    "buy",
+    "10:01前不能花该回款；下一轮按真实新现金"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_engine_invariants.EngineInvariants.test_minute_window_chain",
+    "tests.test_g13_g15_timing_stress.G13.test_proceeds_visible_next_minute"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-07",
+   "group": "G13",
+   "requirement": [
+    "10:29提交",
+    "minute",
+    "可尝试[10:29,10:30)；10:30无新单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_1029_last_new_order"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-08",
+   "group": "G13",
+   "requirement": [
+    "风险事实10:00:30收到",
+    "minute",
+    "下一整分钟行动，不插入10:00订单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_fact_at_100030_acts_next_minute"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-09",
+   "group": "G13",
+   "requirement": [
+    "滑点候选价超订单限价或Bar范围",
+    "match",
+    "不成交，不把价格夹回边界强行填单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_price_outside_range_no_fill"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-10",
+   "group": "G13",
+   "requirement": [
+    "Bar仅有50股成交量，订单200",
+    "match",
+    "至多50股部分成交，申报200合法不代表必须全成"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_bar_volume_cap"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-11",
+   "group": "G13",
+   "requirement": [
+    "分钟行情关键Bar缺失",
+    "match",
+    "UNKNOWN/BLOCKED，不能转日线最有利价"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_missing_minute_bars"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-12",
+   "group": "G13",
+   "requirement": [
+    "真实交易观察与分钟代理差异",
+    "report",
+    "分列事实与代理，不拼接赢家曲线"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_modes_reported_separately"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-13",
+   "group": "G13",
+   "requirement": [
+    "日线收益很好但窗口能力未核实",
+    "qualify",
+    "不得到可部署资格"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_daily_not_deployable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G13-14",
+   "group": "G13",
+   "requirement": [
+    "秒级实际报价与分钟代理新鲜度",
+    "validate",
+    "分模式，不误以分钟close通过实时报价3秒规则"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G13.test_freshness_by_mode"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-01",
+   "group": "G14",
+   "requirement": [
+    "自有现金100000，预批准30000",
+    "authorize",
+    "可用70000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_preapproval_reduces_own_free"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-02",
+   "group": "G14",
+   "requirement": [
+    "上述30000转为券商冻结",
+    "transition",
+    "自有可用仍70000，不变40000或100000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_transition_to_freeze"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-03",
+   "group": "G14",
+   "requirement": [
+    "券商available80000，尚未体现在冻结的批准10000，待付2000，自有剩70000",
+    "gate",
+    "本批上限68000"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_two_gates"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-04",
+   "group": "G14",
+   "requirement": [
+    "两策略同时基于旧快照申请现金",
+    "coordinator",
+    "串行授权一方，另一方不得承诺同一钱"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_serial_authorization"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-05",
+   "group": "G14",
+   "requirement": [
+    "ETF卖出回款50000",
+    "owner",
+    "先归ETF，不自动给股票使用"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_etf_proceeds_stay_etf"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-06",
+   "group": "G14",
+   "requirement": [
+    "明确ETF转股票10000",
+    "transfer",
+    "两边现金−/+10000，同一ID原子记录，合计不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_atomic_transfer"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-07",
+   "group": "G14",
+   "requirement": [
+    "转资其中一侧视图还未更新",
+    "recovery",
+    "同共同事件恢复另一侧，不第二次扣转出"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_transfer_recovery_one_side"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-08",
+   "group": "G14",
+   "requirement": [
+    "前批订单终态未知",
+    "next batch",
+    "不批准新增风险批次"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_unknown_previous_batch"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-09",
+   "group": "G14",
+   "requirement": [
+    "股票应急到来、ETF普通批尚未发单",
+    "priority",
+    "股票必要退出优先；不扩大窗口"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_emergency_priority_over_unstarted"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-10",
+   "group": "G14",
+   "requirement": [
+    "ETF已有委托在途",
+    "emergency",
+    "先确认/撤销再处理股票串行批，不假装不存在"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_wait_for_inflight"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-11",
+   "group": "G14",
+   "requirement": [
+    "人工协调拖到10:31",
+    "plan",
+    "普通计划到期，风险下一窗口，无窗外新买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_late_coordination"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-12",
+   "group": "G14",
+   "requirement": [
+    "ETF适配使用全券商total_asset做自身E",
+    "acceptance",
+    "外部边界不合格；局部归属快照未补前不共享实盘"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_etf_total_asset_rejected"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-13",
+   "group": "G14",
+   "requirement": [
+    "股票现金被ETF占用但仍计股票E",
+    "reconcile",
+    "拒绝双份权益/购买力，不能通过30%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_double_count"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-14",
+   "group": "G14",
+   "requirement": [
+    "未解释现金差100元",
+    "reconcile",
+    "不塞UNASSIGNED强行对平，停止新增"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_unexplained_difference"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-15",
+   "group": "G14",
+   "requirement": [
+    "恰有0.01元来源舍入且可解释",
+    "reconcile",
+    "记录舍入差；不把它扩大为一般误差预算"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_explained_rounding"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G14-16",
+   "group": "G14",
+   "requirement": [
+    "一策略持仓未知但股票自己的可卖量与串行确认充分",
+    "risk sell",
+    "允许有依据必要卖出；不批准新买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g14_shared_cash.G14.test_necessary_sell_allowed"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-01",
+   "group": "G15",
+   "requirement": [
+    "年初首交易日不是周末",
+    "anchor",
+    "取年内首完整周最后市场日20点，不取1月首日"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_start_anchor"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-02",
+   "group": "G15",
+   "requirement": [
+    "A0缺预热数据",
+    "matrix",
+    "保留缺格和证据不足，不能删A0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_missing_a0_kept",
+    "tests.test_review_fixes.BindingAndMatrixFixes.test_matrix_blocks_and_cell_errors_recorded"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-03",
+   "group": "G15",
+   "requirement": [
+    "用2011账户截出2021",
+    "compare",
+    "标为切片，不能作为A2现金新起点"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_slice_not_new_start"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-04",
+   "group": "G15",
+   "requirement": [
+    "S2普通批原定周一10点",
+    "schedule",
+    "周二同钟点单窗口；固定名单金额不重选"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s2_ordinary_delay"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-05",
+   "group": "G15",
+   "requirement": [
+    "S2风险首次延迟后次日重新计划",
+    "schedule",
+    "不再滚动延迟一天"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s2_risk_delay_once"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-06",
+   "group": "G15",
+   "requirement": [
+    "S3个股风险段d0启动",
+    "block",
+    "d0,d1,d2禁该股卖，d3才可尝试"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s3_single_d0_d2"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-07",
+   "group": "G15",
+   "requirement": [
+    "S3行业纠偏",
+    "block",
+    "该行业共同受阻，普通卖单也受阻"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s3_industry_blocks_ordinary"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-08",
+   "group": "G15",
+   "requirement": [
+    "S3总暴露或25%应急",
+    "block",
+    "本股票策略全组合受阻，不仅触发最初个股"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s3_total_blocks_all_stock"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-09",
+   "group": "G15",
+   "requirement": [
+    "上例ETF仍有交易",
+    "scope",
+    "不自动冻结ETF证券"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s3_total_blocks_all_stock"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-10",
+   "group": "G15",
+   "requirement": [
+    "净值高点100，当前75=45股票+30现金，股票再跌12%",
+    "stress",
+    "E69.6、DD30.4%，退出指令无现金回款"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_stress_drawdown"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-11",
+   "group": "G15",
+   "requirement": [
+    "d3实际还停牌/跌停",
+    "execute",
+    "继续失败，不能强制第4天成交"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_d3_still_blocked_by_market"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-12",
+   "group": "G15",
+   "requirement": [
+    "两风险段重叠",
+    "block",
+    "取限制并集，各段独立一次计时"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_overlap_union_and_fixed_d0"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-13",
+   "group": "G15",
+   "requirement": [
+    "同段每日更新",
+    "block",
+    "不改变原d0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_overlap_union_and_fixed_d0"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-14",
+   "group": "G15",
+   "requirement": [
+    "风险自然满足、但压力期还有余天",
+    "intent",
+    "不制造不必要卖单；确有其他范围内卖单仍受剩余冲击"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_satisfied_no_forced_sell"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-15",
+   "group": "G15",
+   "requirement": [
+    "S2和S3",
+    "matrix",
+    "独立单元，不私自同时叠加"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_s2_s3_independent"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-16",
+   "group": "G15",
+   "requirement": [
+    "停用发生远早于D",
+    "ending",
+    "全现金/残余继续至共同D，不缩短评价期"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_retired_continues_to_d"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-17",
+   "group": "G15",
+   "requirement": [
+    "到D仍有未知估值尾部",
+    "qualify",
+    "证据不足，不期末强制清算"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_unknown_tail_insufficient",
+    "tests.test_review_fixes.EvaluationFixes.test_provisional_valuation_decisive"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G15-18",
+   "group": "G15",
+   "requirement": [
+    "3角色×2金额×4起点×4情景",
+    "schedule",
+    "96个身份明确的单元，失败也出记录"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g13_g15_timing_stress.G15.test_96_cells_identity"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-01",
+   "group": "G16",
+   "requirement": [
+    "初日−10%、之后回原本金",
+    "returns",
+    "首日损失和恢复完整，不漏起点"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g11_g12_ledger.G12.test_first_day_loss",
+    "tests.test_g16_evaluation.G16.test_first_day_loss_and_recovery",
+    "tests.test_review_fixes.EvaluationFixes.test_annual_returns_chain"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-02",
+   "group": "G16",
+   "requirement": [
+    "十年1→2→1.5后持现金七年",
+    "evaluate",
+    "年化约4.13797%、MDD25%；真实停用则先否决"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_retired_positive_cagr_rejected"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-03",
+   "group": "G16",
+   "requirement": [
+    "高年化配置一格触发应急，其余幸存",
+    "rank",
+    "不进入幸存者排序"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_one_retired_cell_excluded"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-04",
+   "group": "G16",
+   "requirement": [
+    "同格先触发25%，受阻后MDD30.4",
+    "reasons",
+    "同时记录存续失败、风险失败"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_both_reasons_recorded"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-05",
+   "group": "G16",
+   "requirement": [
+    "MDD恰30%与30%+微量",
+    "gate",
+    "前者仅风险门槛通过，后者失败；不四舍五入"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_mdd_boundary"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-06",
+   "group": "G16",
+   "requirement": [
+    "8个BASE/HIGH年化12,11,7,6,8,7,5,4%",
+    "robust",
+    "最小4%，不是平均7.5%"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_robust_is_min"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-07",
+   "group": "G16",
+   "requirement": [
+    "S2/S3年化较差但硬资格通过",
+    "robust",
+    "不替换BASE/HIGH最小值定义；压力仍列报告"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_stress_not_in_robust"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-08",
+   "group": "G16",
+   "requirement": [
+    "稳健年化恰0",
+    "economics",
+    "不满足>0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_robust_zero_fails"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-09",
+   "group": "G16",
+   "requirement": [
+    "B1收益降而风险改善",
+    "recommendation",
+    "TRADEOFF_PENDING，不自行改目标宣布赢"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_tradeoff"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-10",
+   "group": "G16",
+   "requirement": [
+    "B0因缺因子数据",
+    "comparator",
+    "B0不受因子覆盖门槛或缺失退出影响"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_b0_no_factor_dependency"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-11",
+   "group": "G16",
+   "requirement": [
+    "B0真实停用、B1幸存",
+    "interpretation",
+    "运行性改善证据，不自动叫纯alpha"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_b0_retired_b1_survives"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-12",
+   "group": "G16",
+   "requirement": [
+    "B2年化最高",
+    "role",
+    "仍为缓冲对照，不自动替换B1规则"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_b2_not_champion"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-13",
+   "group": "G16",
+   "requirement": [
+    "ETF尚未上市年份",
+    "benchmark",
+    "不假造上市前可交易收益；共同窗口分列"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_etf_pre_listing"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-14",
+   "group": "G16",
+   "requirement": [
+    "外部ETF对象尚未预先指定",
+    "evaluate",
+    "外部经济比较未完成，不事后选最弱ETF"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_benchmark_not_specified"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-15",
+   "group": "G16",
+   "requirement": [
+    "停用后更名或重入金",
+    "reapply",
+    "旧真实标记保留，无自动恢复"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g08_risk.G08.test_dd25_retires",
+    "tests.test_review_fixes.ForwardFixes.test_retirement_history_unchecked_blocks_forward"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-16",
+   "group": "G16",
+   "requirement": [
+    "有实质规则修订的新版本",
+    "reapply",
+    "原四起点四情景、外部差异、用户新批准均要求"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_reapply_requirements"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-17",
+   "group": "G16",
+   "requirement": [
+    "所有候选失败",
+    "output",
+    "NO_ADOPTABLE_CONFIGURATION，不放宽参数"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_all_fail"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-18",
+   "group": "G16",
+   "requirement": [
+    "旧历史已看过但改文件名",
+    "evidence",
+    "不重新标盲测或统计认证"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_rename_not_new_evidence"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-19",
+   "group": "G16",
+   "requirement": [
+    "QMT主源未核验，仅临时TS诊断",
+    "qualify",
+    "能工程继续，不能因有净值升级部署"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_ts_only_not_deployable"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G16-20",
+   "group": "G16",
+   "requirement": [
+    "跨金额排序",
+    "output",
+    "各金额独立资格，不能用50万通过替代10万"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_capital_configs_independent"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-01",
+   "group": "G17",
+   "requirement": [
+    "100000现金、30只同价10、零滑点夹具、每单5佣金、按代码每3只分为一行业共10行业",
+    "完整首次建仓按G07-12得到59000股票、40850现金、99850净资产；股数与佣金可逐笔核对"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_startup_sizing_golden",
+    "tests.test_g17_integration.G17.test_first_build"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-02",
+   "group": "G17",
+   "requirement": [
+    "上例首只200股分红1、除息价9、到账前后",
+    "除息股票58800、应收200、现金40850，E99850；派息后现金41050、应收0，E不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_dividend_after_build"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-03",
+   "group": "G17",
+   "requirement": [
+    "上例下一周E99850，末只100股价10、普通目标1997",
+    "缺997元不足100股，不能超目标补一手；记录ROUNDING_NO_ORDER"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_next_week_rounding_no_order"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-04",
+   "group": "G17",
+   "requirement": [
+    "周计划、卖单部分成交、取消待确认、风险新触发、迟到回报",
+    "无重复股数/现金，无超卖，无提前买第31股，最终与按真实时间顺序输入一致"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_engine_invariants.EngineInvariants.test_daily_proxy_long_chain",
+    "tests.test_engine_invariants.EngineInvariants.test_minute_window_chain",
+    "tests.test_g17_integration.G17.test_arrival_order_equals_chronological"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-05",
+   "group": "G17",
+   "requirement": [
+    "两策略预批准→券商冻结→部分成交→撤单→转资",
+    "共同现金守恒；每份资源只出现一次；资本修订使旧买入失效"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_two_strategy_chain"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-06",
+   "group": "G17",
+   "requirement": [
+    "给全部市场事实追加未来年份",
+    "前缀决策/成交/账本（原有事实不改）完全一致"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_future_append_prefix"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-07",
+   "group": "G17",
+   "requirement": [
+    "打乱同一截面行、重复等值来源和回报",
+    "已确认经济路径一致，重复冲突仍被捕获"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_engine_invariants.EngineInvariants.test_daily_proxy_long_chain",
+    "tests.test_g17_integration.G17.test_shuffle_and_duplicates"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-08",
+   "group": "G17",
+   "requirement": [
+    "在每一个已提交事件后模拟崩溃再恢复",
+    "最终seq、股数、现金、费用、税批次和状态与不中断相同"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_crash_after_every_event"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-09",
+   "group": "G17",
+   "requirement": [
+    "将原始金额单位统一放大/转换但正确映射",
+    "标准值及后续决策不变"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_unit_scaling_invariant"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-10",
+   "group": "G17",
+   "requirement": [
+    "风险比例减仓中更改所有因子评分",
+    "卖量比例算法不变；普通计划可变，风控不得读分数"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_risk_sells_ignore_scores"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-11",
+   "group": "G17",
+   "requirement": [
+    "退出受阻期间价格连续变化和公司行动",
+    "无卖出回款；现金、权益转换与受阻损失真实保留"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_blocked_exit_losses_kept"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-12",
+   "group": "G17",
+   "requirement": [
+    "SOURCE修正影响第一笔交易后多周",
+    "重放从最早依赖事件前到D，所有后续状态重新导出，不拼旧后半段"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_correction_replays_from_earliest",
+    "tests.test_g19_golden.Late.test_g19_26"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-13",
+   "group": "G17",
+   "requirement": [
+    "费用后全局风险目标循环",
+    "单股/行业/总仓均满足或明确不可达；算法单调增加有限卖量并终止"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g06_g07_plan_sizing.G07.test_fee_closure_loop"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-14",
+   "group": "G17",
+   "requirement": [
+    "长期运行至停用再现金七年",
+    "指标完整、每日覆盖统计完整、采用仍否决"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g16_evaluation.G16.test_retired_positive_cagr_rejected",
+    "tests.test_g17_integration.G17.test_retire_then_cash_metrics"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-15",
+   "group": "G17",
+   "requirement": [
+    "0成交、全现金、全部因子恒定或首次未启动",
+    "不产生虚假低风险成功候选"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_no_fake_low_risk_winner"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G17-16",
+   "group": "G17",
+   "requirement": [
+    "资源预约后价格变化、实扣费修订",
+    "不使用旧预览直接放行；更新费用后风险与双现金门"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g17_integration.G17.test_reservation_then_price_and_fee_change"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G18-01",
+   "group": "G18",
+   "requirement": [
+    "QMT与TS同日原始价、量、额、股本及单位",
+    "身份/基础/单位对齐，源政策可复现；不符合则相关字段未知"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要QMT与Tushare同日真实样本（价/量/额/股本/单位）"
+  },
+  {
+   "id": "G18-02",
+   "group": "G18",
+   "requirement": [
+    "QMT可取得的历史财务、披露与版本",
+    "明确历史能力，不能只用当前报表；不足由已核验TS补充"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要QMT历史财务、披露与版本能力实测"
+  },
+  {
+   "id": "G18-03",
+   "group": "G18",
+   "requirement": [
+    "后来退市/停牌证券历史",
+    "能取得身份与交易状态，未知部分不删样本"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要后来退市/停牌证券的真实历史身份与状态"
+  },
+  {
+   "id": "G18-04",
+   "group": "G18",
+   "requirement": [
+    "分红、送转、配股、换股多阶段各至少一个适用样本",
+    "股数/应收/到账/税基逐项核对；缺一种不能认证那种事件"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要分红/送转/配股/换股多阶段真实样本"
+  },
+  {
+   "id": "G18-05",
+   "group": "G18",
+   "requirement": [
+    "用户券商部分成交、部撤、迟到回报、当日重复查询",
+    "稳定ID与累计语义确认；失败不启用实际自动导入"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要用户券商部分成交、部撤、迟到回报、重复查询样本"
+  },
+  {
+   "id": "G18-06",
+   "group": "G18",
+   "requirement": [
+    "可用现金、冻结现金、买卖回款与费用",
+    "证明现金等式和冻结映射；不能只看total_asset"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要真实可用/冻结现金、回款与费用映射证据"
+  },
+  {
+   "id": "G18-07",
+   "group": "G18",
+   "requirement": [
+    "两策略互斥范围与ETF自身权益计划",
+    "ETF不把全部券商资产用于自己；未证明不共享实盘"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要ETF自身权益计划与互斥范围实测"
+  },
+  {
+   "id": "G18-08",
+   "group": "G18",
+   "requirement": [
+    "人工串行两批及应急优先演练",
+    "前批终态确认、额度不重复、窗口可满足；不要求真实下单，可先授权模拟账户"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要人工串行两批及应急优先演练（不下真实单）"
+  },
+  {
+   "id": "G18-09",
+   "group": "G18",
+   "requirement": [
+    "历史费率与用户实际清算单",
+    "佣金是否含规费、逐单最低费、税/过户费日期与取整对上"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要历史费率与用户实际清算单"
+  },
+  {
+   "id": "G18-10",
+   "group": "G18",
+   "requirement": [
+    "分钟10:00—10:30与前向成交样本",
+    "时点、延迟、价格保护、部分量、撤单窗口核验；结果与日线代理分列"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要分钟10:00—10:30与前向成交样本"
+  },
+  {
+   "id": "G18-11",
+   "group": "G18",
+   "requirement": [
+    "日历、交易单位、价格笼子、涨跌停、市值底线历史范围",
+    "RuleBook唯一匹配且来源完整；不要凭当前规则认证A0"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要日历、交易单位、价格笼子、涨跌停、市值底线的已核验历史表"
+  },
+  {
+   "id": "G18-12",
+   "group": "G18",
+   "requirement": [
+    "真实初始已有仓的税批次/未结权益/委托",
+    "有足够Bootstrap；缺少时不假设全现金或新购日"
+   ],
+   "status": "BLOCKED",
+   "tests": [],
+   "note": "需要真实初始已有仓的税批次/未结权益/委托"
+  },
+  {
+   "id": "G19-01",
+   "group": "G19",
+   "requirement": [
+    "2%个股退出受阻，普通卖出已完成；允许无关固定买单",
+    "仅禁ST股；真实29槽后生成NEW 200股买单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.RiskPipeline.test_g19_01"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-02",
+   "group": "G19",
+   "requirement": [
+    "五只各2%受阻合计10%，全局禁买；不混入单股5%触发",
+    "BLOCKED_EXIT_EXPOSURE；无买单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.RiskPipeline.test_g19_02"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-03",
+   "group": "G19",
+   "requirement": [
+    "2%受阻且TOTAL_REDUCE活动，全局禁买",
+    "TOTAL_REDUCE；无买单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.RiskPipeline.test_g19_03"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-04",
+   "group": "G19",
+   "requirement": [
+    "25%精确边界：1元资本流，日终仍触发",
+    "份额300004/3，NAV=3/4、DD=1/4；日终触发"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_04"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-05",
+   "group": "G19",
+   "requirement": [
+    "25%精确边界：-1元资本流，日终仍触发",
+    "份额299996/3，NAV和DD保持精确边界"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_05"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-06",
+   "group": "G19",
+   "requirement": [
+    "25%精确边界：1,-2,0.01,-0.01元资本流，日终仍触发",
+    "连续流后份额299996/3；不积累阈值误差"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_06"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-07",
+   "group": "G19",
+   "requirement": [
+    "20%/25%/30%的等号及上下1分；每格再转入1元",
+    "所有门槛等号正确；1分两侧不混同"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_07"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-08",
+   "group": "G19",
+   "requirement": [
+    "连续资本流中断后按精确分子分母恢复",
+    "恢复前后精确数值及触发完全一致"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_08"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-09",
+   "group": "G19",
+   "requirement": [
+    "拒绝非规范精确比值及D1近似快照",
+    "七类非法比值拒绝；D1近似快照要求重建"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Capital.test_g19_09"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-10",
+   "group": "G19",
+   "requirement": [
+    "ACKED直接全成300",
+    "FILLED；300股、现金6995、总佣金5"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_10"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-11",
+   "group": "G19",
+   "requirement": [
+    "300已成100，撤销确认前再成200：直接FILLED，佣金只5元",
+    "FILLED；剩余预约0、已用容量3000、无重复订单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_11"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-12",
+   "group": "G19",
+   "requirement": [
+    "成交先于ACK，迟到ACK不重记或回退",
+    "先成交后ACK不重复记账；最终同全成"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_12"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-13",
+   "group": "G19",
+   "requirement": [
+    "撤单失败已知原单活动，保留剩余预约且不重报",
+    "PARTIAL；200股预约保留、取消需求保留、不可重报"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_13",
+    "tests.test_review_fixes.LedgerFixes.test_followup_cancel_once_per_failure"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-14",
+   "group": "G19",
+   "requirement": [
+    "全成后重复成交、相容迟到撤销终态与ACK",
+    "保持FILLED；迟到/重复不重复扣费或复活"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_14"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-15",
+   "group": "G19",
+   "requirement": [
+    "终态累计150、逐笔仅100，补齐50后部撤，累计不能重复记账",
+    "先RECONCILE_REQUIRED，补50后CANCELED；150股只入一次；同窗口仍有效目标可形成100股重试候选"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_15"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-16",
+   "group": "G19",
+   "requirement": [
+    "不能判为旧版本的冲突终态，真实全成保留但对账阻断",
+    "保留300股和5元费用，RECONCILE_REQUIRED；未成预约0"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_16"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-17",
+   "group": "G19",
+   "requirement": [
+    "风险目标自然满足先撤；撤销中再成200，照实减到700，不自动买回",
+    "取消等待中真实再卖200；最终700股，不回买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_17"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-18",
+   "group": "G19",
+   "requirement": [
+    "资本修订取消已发买单；竞态全成后无新补单",
+    "旧买单取消需求生效；竞态全成300，资本修订仍禁新买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_18"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-19",
+   "group": "G19",
+   "requirement": [
+    "CANCEL_PENDING断点恢复后收最终200及重复回报",
+    "断点与连续链一致；重复事件不重扣/重报"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Orders.test_g19_19"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-20",
+   "group": "G19",
+   "requirement": [
+    "FLAT_SCORE合格老仓2.6%，保留向2%的普通减持",
+    "合法卖300股，不新增买单"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g04_g05_pool_factors.G05.test_flat_score_reduce_only",
+    "tests.test_g19_golden.Flat.test_g19_20"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-21",
+   "group": "G19",
+   "requirement": [
+    "FLAT_SCORE老仓1.4%，不补买",
+    "保留700股，不补仓"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Flat.test_g19_21"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-22",
+   "group": "G19",
+   "requirement": [
+    "FLAT_SCORE原减持目标因跳空变增持，不反向买入",
+    "不卖也不反向补买"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Flat.test_g19_22"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-23",
+   "group": "G19",
+   "requirement": [
+    "同派息日、不同登记日选旧新税制；长期税5元/0元",
+    "旧/新税制分别5元和0元；不按派息或卖出日改规则"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Tax.test_g19_23"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-24",
+   "group": "G19",
+   "requirement": [
+    "工程税表左闭右开、空档、重叠及PAY_DATE拒绝；不认证真实切换日",
+    "含下界、不含上界；空档/重叠/选日错误明确拒绝"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Tax.test_g19_24"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-25",
+   "group": "G19",
+   "requirement": [
+    "唯一Bundle派生规范Study；旧模式与额外Study字段被拒绝",
+    "内部映射唯一；旧枚举和重复冲突引用均拒绝"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.BundleMap.test_g19_25"
+   ],
+   "note": ""
+  },
+  {
+   "id": "G19-26",
+   "group": "G19",
+   "requirement": [
+    "迟到除息应收跨900元资本流：重算1900份，NAV=1；所有断点一致",
+    "真实900元流与100股不变；份额1900、NAV/HWM=1、DD=0；恢复相同"
+   ],
+   "status": "PASS",
+   "tests": [
+    "tests.test_g19_golden.Late.test_g19_26"
+   ],
+   "note": ""
+  }
+ ],
+ "test_outcomes": {
+  "tests.test_engine_invariants.EngineInvariants.test_daily_proxy_long_chain": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-04",
+    "G17-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_engine_invariants.EngineInvariants.test_minute_window_chain": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-04",
+    "G13-04",
+    "G13-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_forward_manual.ForwardManual.test_blocked_without_capital": {
+   "status": "PASS",
+   "case_ids": [],
+   "detail": ""
+  },
+  "tests.test_forward_manual.ForwardManual.test_forward_chain": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-10",
+    "G09-10",
+    "G12-12",
+    "G12-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_baseline_mismatch": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_constants_match_v5": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_fee_gap_insufficient": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_future_available_at_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_live_order_refused": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_missing_capital_and_permission_blocks_plan": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_rule_overlap_ambiguous": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_scope_overlap_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_test_package_engineering_only": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g01_config.G01.test_type_errors": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_amount_unit": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_basis_mismatch": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_conflict": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_daily_value_not_realtime_quote": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_dividend_total_and_parts_not_summed": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_historical_semantics_substitute": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_impact_replays_from_earliest": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_qmt_missing_explicit_substitute": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_qmt_primary_when_equal": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_rounding_explained": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_row_shuffle_invariant": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_total_mv_unit": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_ts_cannot_fill_account": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_unused_field_no_impact": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_volume_unit": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G02.test_wrong_qmt_value_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G02-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_10am_fact_not_in_0930_proxy": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_date_only_next_session_0930": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_freshness_15_months": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_future_append_prefix_invariant": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_holiday_week_end": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_incomplete_week_not_cutoff": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_late_corporate_action_reprojection": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_latest_invalid_not_fallback": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_naive_time_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_record_after_same_day_fill": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_report_not_visible_before_announcement": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_revision_visibility": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_same_time_conflict": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_single_quarter": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_trusted_timestamp": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_ttm_available_at_is_max": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_ttm_value": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g02_g03_data.G03.test_unpublished_period_not_missing": {
+   "status": "PASS",
+   "case_ids": [
+    "G03-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_399_plus_unknown_unhealthy": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_400_smallest_no_factor": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_adv_floor": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_confirmed_false_dominates_unknown": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_empty_pool": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_floor_not_applicable": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_floor_rule_missing_unknown": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_later_delisted_kept": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_listing_age": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_missing_day_unknown": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_no_refill_beyond_400": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_price_floor": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_suspended_day_zero": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_tie_by_code_and_shuffle": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_unknown_above_boundary_irrelevant": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G04.test_unknown_possibly_small": {
+   "status": "PASS",
+   "case_ids": [
+    "G04-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_constant_factor_zero_keeps_weight": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_counter_sequence": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_coverage_boundary": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_flat_score_reduce_only": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-05",
+    "G19-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_global_fault_no_count_change": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_golden_percentile": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_joint_intersection": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_metamorphic_monotone": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_missing_one_item_excluded": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_model_inapplicable_exits_now": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_negative_and_extreme_kept": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_package_change_keeps_backbone": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_package_ratio_95": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_rank_on_common_set": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_reverse_once": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_single_valid": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_streak_failure": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g04_g05_pool_factors.G05.test_unassessed_kept_in_denominator": {
+   "status": "PASS",
+   "case_ids": [
+    "G05-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_b1_retain_45": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_b2_retain_30": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_band_edges": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_capital_change_invalidates_buys": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_each_still_2pct": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_failed_industry_exit_counts": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_failed_sell_recounts_actual_slots": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_first_plan_top30_industry_skip": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_fixed_target_not_scaled": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_frozen_exit_occupies_slot": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_in_transit_buy_counted_once": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_insufficient_cash_keeps_cash": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_no_buyback_after_risk_sell": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_off_pool_exit_despite_score": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_one_share_left_occupies_slot": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G06.test_target_amount_direction_follows_price": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_bought_today_not_sellable": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_capital_configs_independent": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-17",
+    "G16-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_fee_aware_total_reduce": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-08",
+    "G08_FEE_CLOSURE"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_fee_closure_loop": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-10",
+    "G17-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_free_sell_no_double_freeze": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_free_sell_preapproved": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_frozen_shares_not_scaled_for_fees": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_full_odd_exit_and_partial_grid": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_main_board_step": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_merged_order_legality": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_resubmit_after_partial_cancel": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_runtime_no_forced_24": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_sequential_reservation": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_star_199_no_order": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_star_240": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_startup_23_names_fail": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_startup_boundary_pass": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_startup_ratio_fail": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_startup_sizing_golden": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-12",
+    "G17-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g06_g07_plan_sizing.G07.test_unreachable_sells_max": {
+   "status": "PASS",
+   "case_ids": [
+    "G07-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_blocked_exit_10pct": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_clear_blocked_but_industry_remains": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_dd20_warning_only": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_dd25_retires": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-11",
+    "G16-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_ex_date_nominal_drop_same_rule": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_false_trigger_manual_correction": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_global_fault_still_risk_exit": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_industry_trigger_strict": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_intraday_drawdown_no_trigger": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_merge_max_not_sum": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_nonpositive_equity": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_price_exit_not_undone_by_rebound": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_retired_with_residual": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_retirement_not_cleared": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_single_continues_until_2pct": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_single_trigger_strict": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_st_confirmed_in_window": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_total_continues_at_64": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_total_ends_at_60": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g08_risk.G08.test_total_trigger_strict": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_ask_above_bound_no_order": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_bid_below_bound_no_sell": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_buy_protection": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_confirmed_breach_recorded_and_blocks": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_cumulative_query_diff": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_distinct_ids_same_values": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_duplicate_trade_idempotent": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_failed_ordinary_sell_still_buys": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_golden_partial_cancel_chain": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-07",
+    "G09-08",
+    "G09-09",
+    "G09-07_TO_09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_max_three_orders": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_occurred_vs_received": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-22"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_out_of_window_fill_not_backfilled": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_parallel_orders_one_per_side": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_quote_age": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_report_exceeds_order": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_same_trade_id_conflict": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_sent_unknown_no_resend": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-06",
+    "G12-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_tick_rounding_no_deadlock": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-21"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_unknown_sell_blocks_buys": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G09.test_window_clock": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_broker_freeze_not_double_counted": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_capacity": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_cost_unfundable": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_cumulative_commission": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_extra_reserve_zero": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_fee_changes_denominator": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_included_fee_not_added": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_new_order_new_minimum": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_next_day_reset": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_no_double_slippage": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_no_upper_bound": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_no_upper_bound_engine_skips": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_pending_and_release": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-03",
+    "G10-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_sell_capacity_upper_bound": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_settlement_difference_only": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_used_not_netted": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_used_survives_restart": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g09_g10_orders_fees.G10.test_zero_fill_zero_fee": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_after_one_month": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_allocation_rounding": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-26"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_bonus_shares": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_contingent_reserve_not_equity": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_conversion_breaks_scope": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-24"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_ex_dividend": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_fifo": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_fractional_rights": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_month_end": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_old_basis_price_unreliable": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_one_month_boundary": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_one_year_boundary": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_pay": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_receivable_not_spendable": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_record_day_purchase_eligible": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_record_once": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_residual": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-22"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_residual_recovery_after_retire": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-23"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_rights_not_free_shares": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_sell_before_pay": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_stock_dividend_tax_unknown": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_suspended_provisional": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_two_dividends_fifo": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-25"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_unknown_tax_basis": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_vanished_bar_not_residual": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-21"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_withheld_then_supplement": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G11.test_zero_holding_record": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_crash_before_snapshot": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_duplicate_event": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_expired_plan_not_replayed": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_first_day_loss": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-01",
+    "G16-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_full_redemption": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_inflow_keeps_unit_value": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_no_balance_override": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_outflow": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_outflow_cannot_use_committed": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_quota_only_no_change": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_risk_recomputed_with_new_equity": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_same_id_different_content": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_single_writer_lock": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_snapshot_ahead": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g11_g12_ledger.G12.test_torn_tail": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_1029_last_new_order": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_10am_st_not_backfilled": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_bar_volume_cap": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_daily_not_deployable": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_fact_at_100030_acts_next_minute": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_fill_before_timeout_cancel": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_freshness_by_mode": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_limit_up_no_replacement": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_minute_first_interval": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_missing_minute_bars": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_modes_reported_separately": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_open_limit_down_no_daily_fill": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_price_outside_range_no_fill": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G13.test_proceeds_visible_next_minute": {
+   "status": "PASS",
+   "case_ids": [
+    "G13-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_96_cells_identity": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_d3_still_blocked_by_market": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_missing_a0_kept": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_overlap_union_and_fixed_d0": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-12",
+    "G15-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_retired_continues_to_d": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_s2_ordinary_delay": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_s2_risk_delay_once": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_s2_s3_independent": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_s3_industry_blocks_ordinary": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_s3_single_d0_d2": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_s3_total_blocks_all_stock": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-08",
+    "G15-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_satisfied_no_forced_sell": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_slice_not_new_start": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_start_anchor": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_stress_drawdown": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g13_g15_timing_stress.G15.test_unknown_tail_insufficient": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_atomic_transfer": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_double_count": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_emergency_priority_over_unstarted": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_etf_proceeds_stay_etf": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_etf_total_asset_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_explained_rounding": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_late_coordination": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_necessary_sell_allowed": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_preapproval_reduces_own_free": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_serial_authorization": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_transfer_recovery_one_side": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_transition_to_freeze": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_two_gates": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_unexplained_difference": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_unknown_previous_batch": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g14_shared_cash.G14.test_wait_for_inflight": {
+   "status": "PASS",
+   "case_ids": [
+    "G14-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_all_fail": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_b0_no_factor_dependency": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_b0_retired_b1_survives": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_b2_not_champion": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_benchmark_not_specified": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_both_reasons_recorded": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_etf_pre_listing": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_first_day_loss_and_recovery": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_mdd_boundary": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_one_retired_cell_excluded": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_reapply_requirements": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_rename_not_new_evidence": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_retired_positive_cagr_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-02",
+    "G17-14",
+    "G16_RETIRED_CAGR"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_robust_is_min": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_robust_zero_fails": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_stress_not_in_robust": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_tradeoff": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g16_evaluation.G16.test_ts_only_not_deployable": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_arrival_order_equals_chronological": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_blocked_exit_losses_kept": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_correction_replays_from_earliest": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_crash_after_every_event": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_dividend_after_build": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_first_build": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_future_append_prefix": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_next_week_rounding_no_order": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_no_fake_low_risk_winner": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_reservation_then_price_and_fee_change": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_retire_then_cash_metrics": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_risk_sells_ignore_scores": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_shuffle_and_duplicates": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_two_strategy_chain": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g17_integration.G17.test_unit_scaling_invariant": {
+   "status": "PASS",
+   "case_ids": [
+    "G17-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.BundleMap.test_g19_25": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-25"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Capital.test_g19_04": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-04"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Capital.test_g19_05": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Capital.test_g19_06": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-06"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Capital.test_g19_07": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Capital.test_g19_08": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Capital.test_g19_09": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-09"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Flat.test_g19_20": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Flat.test_g19_21": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-21"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Flat.test_g19_22": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-22"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Late.test_g19_26": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-26",
+    "G17-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_10": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_11": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_12": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_13": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-13"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_14": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_15": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_16": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-16"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_17": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_18": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Orders.test_g19_19": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.RiskPipeline.test_g19_01": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.RiskPipeline.test_g19_02": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.RiskPipeline.test_g19_03": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-03"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Tax.test_g19_23": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-23"
+   ],
+   "detail": ""
+  },
+  "tests.test_g19_golden.Tax.test_g19_24": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-24"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.BindingAndMatrixFixes.test_matrix_blocks_and_cell_errors_recorded": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-02"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.BindingAndMatrixFixes.test_resume_with_different_study_refused": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.EvaluationFixes.test_annual_returns_chain": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.EvaluationFixes.test_build_facts_trail": {
+   "status": "PASS",
+   "case_ids": [],
+   "detail": ""
+  },
+  "tests.test_review_fixes.EvaluationFixes.test_provisional_valuation_decisive": {
+   "status": "PASS",
+   "case_ids": [
+    "G15-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.ForwardFixes.test_existing_account_bootstrap_import_then_init": {
+   "status": "PASS",
+   "case_ids": [],
+   "detail": ""
+  },
+  "tests.test_review_fixes.ForwardFixes.test_final_intents_and_status_mapping": {
+   "status": "PASS",
+   "case_ids": [],
+   "detail": ""
+  },
+  "tests.test_review_fixes.ForwardFixes.test_manual_existing_open_sell_not_duplicated": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-20"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.ForwardFixes.test_reconcile_limitations_survive_recovery": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.ForwardFixes.test_rejected_broker_row_not_committed_and_recoverable": {
+   "status": "PASS",
+   "case_ids": [
+    "G09-11",
+    "G12-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.ForwardFixes.test_retirement_history_unchecked_blocks_forward": {
+   "status": "PASS",
+   "case_ids": [
+    "G16-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_followup_cancel_once_per_failure": {
+   "status": "PASS",
+   "case_ids": [
+    "G19-13",
+    "G09-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_outflow_limited_to_free_cash": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-05"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_reader_does_not_truncate": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_sale_tax_preview_matches_booking": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-11",
+    "G11-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_sell_planner_tax_unknown_not_zero": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-19"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_snapshot_rejects_bad_hwm": {
+   "status": "PASS",
+   "case_ids": [
+    "G12-11"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_sold_out_before_ex_keeps_entitlement": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-17"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.LedgerFixes.test_withholding_on_unknown_tax_no_phantom_refund": {
+   "status": "PASS",
+   "case_ids": [
+    "G11-19",
+    "G11-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RiskAndPlanFixes.test_cost_unfundable_sell_skipped": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RiskAndPlanFixes.test_exit_with_open_sell_occupies_slot": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-05",
+    "G06-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RiskAndPlanFixes.test_holding_mv_floor_triggers_security_exit": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-15"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RiskAndPlanFixes.test_industry_planning_uses_planned_values": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-01"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RiskAndPlanFixes.test_security_exit_detected_when_insolvent": {
+   "status": "PASS",
+   "case_ids": [
+    "G08-18"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RiskAndPlanFixes.test_slots_exceeded_records_and_blocks_adds": {
+   "status": "PASS",
+   "case_ids": [
+    "G06-07"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RuleAndSettlementFixes.test_fee_rule_settlement_reference": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RuleAndSettlementFixes.test_next_session_fee_and_tax_dates": {
+   "status": "PASS",
+   "case_ids": [
+    "G10-13",
+    "G11-12"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RuleAndSettlementFixes.test_rule_not_public_at_cutoff_is_unknown": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-06",
+    "G04-10"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RuleAndSettlementFixes.test_unknown_settlement_mapping_unsupported": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-08"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RuleScopeByRiskStatus.test_scope_selected_by_risk_status": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-08",
+    "G08-14"
+   ],
+   "detail": ""
+  },
+  "tests.test_review_fixes.RuleScopeByRiskStatus.test_unrecognized_overlapping_scope_rejected": {
+   "status": "PASS",
+   "case_ids": [
+    "G01-08"
+   ],
+   "detail": ""
+  }
+ }
+}

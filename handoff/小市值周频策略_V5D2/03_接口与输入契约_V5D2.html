@@ -1,0 +1,333 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>小市值周频策略｜接口与输入契约 V5D2</title><style>
+:root{--bg:#f1f4f6;--paper:#fff;--ink:#182b38;--muted:#526777;--accent:#136778;--line:#dce4e8}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.layout{max-width:1510px;margin:auto;display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;padding:28px}aside{position:sticky;top:20px;align-self:start;max-height:94vh;overflow:auto;padding:22px 20px;background:#e9eff2;border:1px solid var(--line);border-radius:12px}aside h2{font-size:17px;margin:0 0 12px}aside a{display:block;font-size:13px;line-height:1.55;padding:6px 0;color:#3d596a}.subnav{padding-left:12px!important;font-size:12px!important;color:#617381!important}.version{font-size:12px;letter-spacing:.08em;color:var(--accent);font-weight:700}main{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:42px 44px}.topbar{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:26px}h1{font-size:32px;line-height:1.4;letter-spacing:-.02em;margin:12px 0 22px}h2{font-size:24px;line-height:1.5;margin:45px 0 18px;padding-bottom:8px;border-bottom:2px solid #d6e6eb}h3{font-size:19px;margin:28px 0 12px}h4{font-size:17px;margin-top:22px}p{margin:12px 0 17px}strong{font-weight:700}blockquote{margin:20px 0;padding:12px 20px;background:#edf5f7;border-left:4px solid var(--accent)}blockquote p{margin:4px 0}.table-wrap{max-width:100%;overflow-x:auto;margin:20px 0 26px;border:1px solid var(--line);border-radius:8px}table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px;line-height:1.75}th,td{padding:12px 14px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}th{background:#e8f1f4;font-weight:700}tr:last-child td{border-bottom:0}tr:nth-child(even)td{background:#f8fafb}pre{padding:18px;background:#f2f5f7;border:1px solid var(--line);border-radius:7px;overflow:auto;font-size:13px;line-height:1.65}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;font-size:.91em}p code,td code,li code{background:#eef3f5;border-radius:3px;padding:2px 4px}pre code{background:none;padding:0;white-space:pre}li{margin:6px 0}hr{border:0;border-top:1px solid var(--line);margin:30px 0}.footer{margin-top:42px;border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted)}.toc-mobile{display:none}
+@media(max-width:900px){.layout{display:block;padding:12px}aside{display:none}main{padding:24px 20px;border-radius:10px}h1{font-size:25px}h2{font-size:21px;margin-top:34px}h3{font-size:18px}.toc-mobile{display:block;margin-bottom:22px;background:#edf3f5;padding:12px 16px;border-radius:8px}.toc-mobile a{display:block;font-size:13px;margin:7px 0}.table-wrap{margin:18px -3px}th,td{padding:10px 12px}body{font-size:15px}.topbar{gap:10px;font-size:12px}pre{font-size:12px}}
+@media print{body{background:#fff}.layout{display:block;padding:0}aside,.topbar,.toc-mobile{display:none}main{border:0;padding:0}h2{break-after:avoid}tr{break-inside:avoid}.table-wrap{overflow:visible}table{min-width:0;font-size:10px}a{color:inherit}}
+</style></head><body><div class="layout"><aside><div class="version">V5D2 · 设计交付</div><h2>章节目录</h2><a class="" href="#section-2">H01. 字段与序列化规则</a><a class="subnav" href="#section-3">1.1 基本类型</a><a class="subnav" href="#section-4">1.2 外部资料状态</a><a class="subnav" href="#section-5">1.3 Result</a><a class="" href="#section-6">H02. 一次研究需要的固定输入</a><a class="subnav" href="#section-7">2.1 唯一输入Bundle及StudyDefinition派生</a><a class="subnav" href="#section-8">2.2 基线配置校验</a><a class="subnav" href="#section-9">2.3 UniverseProfile</a><a class="" href="#section-10">H03. 因子包接口：公式待补，行为不能待补</a><a class="subnav" href="#section-11">3.1 FactorPackage</a><a class="subnav" href="#section-12">3.2 FactorSpec</a><a class="subnav" href="#section-13">3.3 FactorValue状态</a><a class="" href="#section-14">H04. 日期规则、费用与清算输入</a><a class="subnav" href="#section-15">4.1 TradeRule行</a><a class="subnav" href="#section-16">4.2 SettlementRule</a><a class="subnav" href="#section-17">4.3 FeeRule行</a><a class="subnav" href="#section-18">4.4 TaxProfile与FIFO算法</a><a class="" href="#section-19">H05. 账户、行情与事件接口</a><a class="subnav" href="#section-20">5.1 QuoteSnapshot</a><a class="subnav" href="#section-21">5.2 AccountView</a><a class="subnav" href="#section-22">5.3 批次、订单和成交</a><a class="" href="#section-23">H06. 规划与风险输出合同</a><a class="subnav" href="#section-24">6.1 WeeklyPlan</a><a class="subnav" href="#section-25">6.2 RiskDecision与FinalIntent</a><a class="subnav" href="#section-26">6.3 资源所有权</a><a class="" href="#section-27">H07. 事件顺序、晚到记录与恢复</a><a class="subnav" href="#section-28">7.1 正常事件优先级</a><a class="subnav" href="#section-29">7.2 一条已确认事件只改变账本一次</a><a class="subnav" href="#section-30">7.3 晚到公司行动和历史修正</a><a class="subnav" href="#section-31">7.4 跨资本流重投影与精确快照</a><a class="" href="#section-32">H08. 回放、黄金结果与采用输出</a><a class="subnav" href="#section-33">8.1 行情投递</a><a class="subnav" href="#section-34">8.2 单元输出记录</a><a class="subnav" href="#section-35">8.3 资格判定总函数</a><a class="" href="#section-36">H09. 需要由开发者实现、无需另作投资判断的校验顺序</a><a class="" href="#section-37">H10. 开发边界</a><a class="" href="#section-38">H11. Schema覆盖边界</a></aside><main><div class="topbar"><a href="README.html">交付入口</a><a href="01_详细设计_V5D2.html">详细设计</a><a href="02_测试设计与验收用例_V5D2.html">测试用例</a><a href="03_接口与输入契约_V5D2.html">接口契约</a><a href="05_逐项复核与修订裁决_V5D2.html">修订裁决</a></div><div class="version">概要 V5 不变 · 详细设计 V5D2</div><details class="toc-mobile"><summary>展开章节目录</summary><a href="#section-2">H01. 字段与序列化规则</a><a href="#section-6">H02. 一次研究需要的固定输入</a><a href="#section-10">H03. 因子包接口：公式待补，行为不能待补</a><a href="#section-14">H04. 日期规则、费用与清算输入</a><a href="#section-19">H05. 账户、行情与事件接口</a><a href="#section-23">H06. 规划与风险输出合同</a><a href="#section-27">H07. 事件顺序、晚到记录与恢复</a><a href="#section-32">H08. 回放、黄金结果与采用输出</a><a href="#section-36">H09. 需要由开发者实现、无需另作投资判断的校验顺序</a><a href="#section-37">H10. 开发边界</a><a href="#section-38">H11. Schema覆盖边界</a></details><article><h1 id="section-1">小市值周频策略｜接口与输入契约 V5D2</h1>
+<p><strong>本文件是《01_详细设计》的组成部分，不是另一套策略。</strong> 它固定字段、枚举、调用次序和外部输入缺失时的行为。配套<code>inputs/bundle.schema.json</code>负责结构校验，正文的跨字段与业务校验仍必须实现。</p>
+<h2 id="section-2">H01. 字段与序列化规则</h2>
+<h3 id="section-3">1.1 基本类型</h3>
+<div aria-label="可横向滚动的数据表" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>唯一表示</th>
+<th>校验</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>金额/价格/固定比率参数</td>
+<td>JSON十进制字符串，例如<code>"100000.00"</code>、<code>"0.60"</code></td>
+<td>按D02从有限十进制精确转换；实结到分与展示计算才在合同位置舍入</td>
+</tr>
+<tr>
+<td>股数</td>
+<td>JSON整数</td>
+<td>计划非负；事件用<code>side</code>表达方向，不用负申报量</td>
+</tr>
+<tr>
+<td>ExactRatio：排名、units、NAV/HWM/DD、硬比例</td>
+<td><code>{"num":"-1","den":"4"}</code>，分子分母均为十进制整数字符串</td>
+<td>任意精度、约分、den&gt;0；零为0/1，禁前导零/负零/浮点；比较交叉乘</td>
+</tr>
+<tr>
+<td>时间</td>
+<td>ISO8601含时区，例如<code>2026-10-16T20:00:00+08:00</code></td>
+<td>内部UTC；市场日期取Asia/Shanghai，禁无时区</td>
+</tr>
+<tr>
+<td>日期</td>
+<td><code>YYYY-MM-DD</code></td>
+<td>必须是合法自然日；交易日另查日历</td>
+</tr>
+<tr>
+<td>证券</td>
+<td>稳定<code>security_id</code>＋当时<code>trade_code</code>＋<code>exchange</code></td>
+<td>代码更改通过有效区间映射；不得让今天代码替代历史身份</td>
+</tr>
+<tr>
+<td>空值</td>
+<td>JSON null</td>
+<td>只表示明确不适用/待补；必须同时有status/reason，不能作0</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>可读固定前缀＋父对象ID＋单调序号</td>
+<td>不依赖市场收益，不使用全量源码哈希；重新尝试订单用新序号</td>
+</tr>
+</tbody>
+</table></div>
+<p>ID在本研究目录和账户内唯一即可。示例：<code>study-001/A1/S3/500000/B1</code>、<code>run-001/plan-0042</code>、<code>plan-0042/ord-0003</code>。实际证券成交ID以券商稳定键为准，不生成伪成交ID消重。</p>
+<h3 id="section-4">1.2 外部资料状态</h3>
+<p><code>NOT_PROVIDED</code>：缺资料；<code>DECLARED</code>：已经给出但未核验；<code>SAMPLE_CHECKED</code>：仅明确样本；<code>VERIFIED_FOR_SCOPE</code>：已经核对所声明范围。状态不表示盈利或交易授权。</p>
+<p>每个Profile必须有<code>profile_id, status, scope, source_refs, payload</code>。<code>scope</code>至少写用途、市场、日期和账户/数据范围。未提供时payload=null；不得把空payload配成已验证。样本通过不能自动扩大scope。</p>
+<h3 id="section-5">1.3 Result</h3>
+<pre><code class="language-text">Result:
+  status: OK | PARTIAL | UNKNOWN | INVALID | NOT_APPLICABLE
+  value: 对应对象或null
+  reasons: [{code, scope_type, scope_id, message, input_refs}]
+  produced_at: 审计生成时刻，不用于历史选股
+  effective_asof: 本次计算允许看到事实的截止
+  input_revision: 本次消费的账户/事实版本
+</code></pre>
+<p><code>status=OK</code>也不等于投资通过。<code>PARTIAL</code>只能交给明确接受部分资料的消费者；普通下单入口不能把部分账户当完整账户使用。异常值不得通过<code>get(...,0)</code>消失。</p>
+<h2 id="section-6">H02. 一次研究需要的固定输入</h2>
+<h3 id="section-7">2.1 唯一输入Bundle及StudyDefinition派生</h3>
+<p>只有<code>inputs/bundle.schema.json</code>规定的Bundle是外部输入：<code>bundle_version、baseline、execution_technical、study、profiles</code>。不接受扁平Study输入或旧枚举别名，不设置自动兼容层。</p>
+<p><code>bundle.study</code>必填且仅允许：<code>study_id, detail_version, end_date, capital_mode, capitals, start_years, roles, scenarios, execution_mode, fact_snapshot_id, purpose</code>。空的外部事实可用Schema许可的null表达，随后业务层明确阻断。<code>execution_mode</code>唯一序列化值为<code>REPLAY_DAILY_PROXY / REPLAY_MINUTE_WINDOW / FORWARD_MANUAL</code>；<code>DAILY_PROXY/MINUTE_WINDOW</code>不是可输入别名。</p>
+<p>加载先校验整个Bundle，再由纯函数<code>normalize_study(bundle)</code>一次生成内部<code>StudyDefinition</code>。内部对象是派生视图，不额外接受一份用户可编辑的JSON：</p>
+<div aria-label="可横向滚动的数据表" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>内部字段</th>
+<th>唯一来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>study的全部基础字段</td>
+<td><code>bundle.study</code>同名字段原值</td>
+</tr>
+<tr>
+<td><code>source_profile_id</code></td>
+<td><code>bundle.profiles.sources.profile_id</code></td>
+</tr>
+<tr>
+<td><code>universe_profile_id</code></td>
+<td><code>bundle.profiles.universe.profile_id</code></td>
+</tr>
+<tr>
+<td><code>rulebook_profile_id</code> / <code>rulebook_id</code></td>
+<td>rules外壳profile_id / <code>rules.payload.rulebook_id</code>，payload=null时后者null</td>
+</tr>
+<tr>
+<td><code>fee_profile_id</code></td>
+<td>fees外壳profile_id；有payload时其中fee_profile_id必须与外壳相等</td>
+</tr>
+<tr>
+<td><code>factor_profile_id</code> / <code>factor_package_id</code></td>
+<td>factor外壳profile_id / <code>factor.payload.package_id</code>，缺payload时后者null</td>
+</tr>
+<tr>
+<td><code>bootstrap_profile_id</code> / <code>bootstrap_id</code></td>
+<td>bootstrap外壳profile_id / payload.bootstrap_id（可空）</td>
+</tr>
+<tr>
+<td><code>benchmark_profile_id</code> / <code>benchmark_definition</code></td>
+<td>benchmark外壳profile_id / payload（可空且沿用外壳状态）</td>
+</tr>
+<tr>
+<td><code>baseline</code> / <code>execution_technical</code></td>
+<td>Bundle同名固定对象的只读引用，禁止复制后修改</td>
+</tr>
+</tbody>
+</table></div>
+<p>source payload中的<code>source_profile_id</code>也须与source外壳一致。其余领域ID（如universe_id、rulebook_id、package_id）与Profile ID是不同命名空间，不要求字面相等，但只能从对应payload取得。任何存在的重复引用须指向该Bundle唯一对应对象；不存在、冲突或伪造的引用返回PROFILE_REFERENCE_MISMATCH。所有Settlement/Fee/Factor依赖引用仍按其对象合同逐项核对，不由此自动通过外部能力。</p>
+<p>不允许在<code>bundle.study</code>加source_profile_id、fee_profile_id等派生字段；additionalProperties=false保持。恢复时固定的规范StudyDefinition若与从已绑定Bundle重建的结果不同，拒绝继续该run。Profile缺失仍能生成带外部不足状态的工程视图，不能通过补一个假ID获得投资资格。</p>
+<p>固定矩阵为B0/B1/B2、四起点、四情景；DEFAULT_TWO金额字符串为<code>["100000","500000"]</code>，实际金额ACTUAL_ONE独立检验。<code>DEPLOYMENT_CANDIDATE</code>只是评价用途，不授权交易。缺D或起点所需数据保留不足单元，不删格；B0不用因子覆盖筛经济池。</p>
+<h3 id="section-8">2.2 基线配置校验</h3>
+<p>固定常量全部由V5D2常量表提供；输入中的副本只作显式记录，必须与基线相等。可填写外部事实，不可在命令行临时把60%改70%。拒绝未知键，防止错误拼写被忽略。</p>
+<p>执行技术配置本版固定：tick向外对齐的30bp保护、3次委托上限、60秒等待/重试间隔、tick报价3秒、账户5秒。修改须建立有记录的详细配置修订和受影响测试，不由编码者为获得成交率而调参；不回写V5的固定投资参数。</p>
+<h3 id="section-9">2.3 UniverseProfile</h3>
+<p>必填：ETF允许证券集合、股票允许市场/板块、历史非金融分类标识、板块权限及核对范围。股票普通范围SH/SZ非金融普通A股；禁止以ETF的证券分类映射替代。</p>
+<p>证券互斥在启动和被动换股后校验。某板块权限UNKNOWN就不买该板块；不能先在含该板块宽池跑赢家，再剪去无权限股票而继承原结果。</p>
+<p>历史证券主表至少有<code>security_id, trade_code, exchange, board, valid_from/to, list_date, trading_end_date, legal_end_date, source_ref</code>。<code>trading_end_date</code>只在当时已公开事实或事后账户生命周期核账中使用，不能提前作预测过滤。状态区间左闭右开，不存在的结束日期不能擅自填成今天。</p>
+<h2 id="section-10">H03. 因子包接口：公式待补，行为不能待补</h2>
+<h3 id="section-11">3.1 FactorPackage</h3>
+<pre><code class="language-text">package_id, version, purpose(TEST_ONLY/INVESTMENT_CANDIDATE), factors:[FactorSpec]
+aggregation=EQUAL_WEIGHT
+preprocessing=AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1
+joint_rule=ALL_FACTORS_VALID
+neutralization=NONE
+</code></pre>
+<p>空因子包非法，重复factor_id非法。K为实际登记项数；不得为了保持旧五组结构补假因子。包通常2—3项，但超过3不由程序悄悄截断；必须是事前登记的固定包。</p>
+<h3 id="section-12">3.2 FactorSpec</h3>
+<div aria-label="可横向滚动的数据表" class="table-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>factor_id / implementation_id</code></td>
+<td>稳定公式号与已登记纯函数名；禁止eval输入公式</td>
+</tr>
+<tr>
+<td><code>direction</code></td>
+<td>HIGHER_BETTER / LOWER_BETTER，恰好应用一次</td>
+</tr>
+<tr>
+<td><code>inputs</code></td>
+<td>字段、单位、报表合并口径、期间、滚动窗口及依赖时点</td>
+</tr>
+<tr>
+<td><code>output_unit / output_quantum</code></td>
+<td>输出单位与显式数值量化，避免浮点并列不稳定</td>
+</tr>
+<tr>
+<td><code>validity_rules</code></td>
+<td>分母、非有限值、必要期间、可比性、最小有效样本</td>
+</tr>
+<tr>
+<td><code>freshness</code></td>
+<td>报告期最大自然月≤15；价格窗口不得缩短或用未来填充</td>
+</tr>
+<tr>
+<td><code>golden_examples</code></td>
+<td>输入、确切输出/原因码；含负数、缺失、修订与未来追加</td>
+</tr>
+<tr>
+<td><code>sources_scope</code></td>
+<td>当前可提供字段和历史语义，不仅是接口名</td>
+</tr>
+</tbody>
+</table></div>
+<p>公共层不推断“ROA到底用归母净利润还是合并净利润”。未给具体公式的因子实现返回<code>FACTOR_IMPLEMENTATION_MISSING</code>，可用TEST_ONLY夹具继续其他模块。投资包采用前必须提供公式号和以上全部内容。</p>
+<p>新增因子不得读取账户余额、交易结果、未来收益或当时尚不存在的证券分类；不允许自动选择方向或近期最佳窗口。更换包形成新的研究配置，并重新做联合覆盖、完整账户及采用评价。</p>
+<h3 id="section-13">3.3 FactorValue状态</h3>
+<p><code>VALID</code>：数学与经济解释成立、时点有效；<code>MODEL_INAPPLICABLE</code>：已确认分母非法、期间不可比等；<code>STALE</code>：已过明确有效期；<code>SOURCE_UNKNOWN</code>：未能确认来源；<code>SOURCE_CONFLICT</code>：未解决冲突。</p>
+<p>只有VALID进入J。健康周中MODEL_INAPPLICABLE/STALE触发普通退出；UNKNOWN/CONFLICT走两健康周规则。合法负利润是VALID，不因数值负而划入模型不适用。</p>
+<h2 id="section-14">H04. 日期规则、费用与清算输入</h2>
+<h3 id="section-15">4.1 TradeRule行</h3>
+<pre><code class="language-text">rule_id, market, board, security_scope, effective_from, effective_to,
+public_at, evidence_ref, verification_scope,
+price_tick,
+buy_min, buy_step, sell_min, sell_step, allow_full_odd_exit, max_order_quantity,
+limit_method(EXCHANGE_BOUNDS/PERCENT_REFERENCE/NONE),
+limit_up/down或limit_percent及除权参考价字段、取整规则,
+intraday_band_method, settlement_id, marketcap_floor或NOT_APPLICABLE
+</code></pre>
+<p>NONE与NOT_APPLICABLE都是已经确认“不适用”，不能表示没查到。对公式型价格限制按当期规则的参考价和tick舍入执行。公式方法从固定代码登记表读取，不接收自由脚本。未识别的新规则返回RULE_UNSUPPORTED，不调用宽松默认分支。</p>
+<h3 id="section-16">4.2 SettlementRule</h3>
+<p>明确以下相互独立的时间，不用一个“T+1”字段包办：</p>
+<ul>
+<li>买入股份经济确认时刻：真实成交确认；可卖释放的市场日/时刻。</li>
+<li>卖出现金交易可用时刻，与可转出/可提现时刻。</li>
+<li>送转/换股应收成为已到账股份时刻，新增股份可卖时刻。</li>
+<li>税务取得日和转让交割日如何从券商事件映射。</li>
+<li>手续费、税费何时计提，何时从券商现金实扣。</li>
+</ul>
+<p>标准账本<code>cash_book</code>表示已经确认归属的证券资金记账额，不等同可提现银行余额。确认卖出即按该清算合同增加对应现金资金余额；未到可交易时刻的部分同时形成非订单限制。若所用券商合同明确先记应收再转现金，则采用其固定<code>PROCEEDS_RECEIVABLE</code>模式，金额只在应收或现金一处出现；同一Fee/SettlementProfile内禁止临时切换。两种映射的标准E和交易可用时刻必须一致。</p>
+<p><strong>研究基线使用<code>TRADE_CASH_BOOK</code>：</strong> 卖出成交确认入cash_book，并按结算规则限制可交易/可转出时间。实际券商若需应收映射，由适配器先转为同一标准事件，不让账户核心维持第二模式。未知清算时点不能默认可用回款。</p>
+<h3 id="section-17">4.3 FeeRule行</h3>
+<p>必填：<code>fee_id, fee_kind, effective_from/to, market, side, base_kind, rate, minimum, maximum_or_null, included_in_commission, charge_unit, rounding, settlement_id, source_ref</code>。</p>
+<p><code>charge_unit</code>只允许ORDER_CUMULATIVE、FILL、ACCOUNT_DAY、ENTITLEMENT中的已实现类型。佣金固定ORDER_CUMULATIVE；税与其他法定费按真实取整粒度提供，不强行全部改成按成交。跨日期重新委托是新order；同order各次成交费累计减已计提，不能覆盖或重复扣。</p>
+<p>最终费用对账必须有<code>assessed_fee, already_accrued, already_paid, settlement_cash_change</code>：净值本次变化仅<code>assessed_fee−already_accrued</code>，现金按真实结算变化，应付结余等于已评未付。多退少补照实处理。</p>
+<h3 id="section-18">4.4 TaxProfile与FIFO算法</h3>
+<p><strong>规则选择日固定为股权登记日。</strong> <code>DividendTaxRule.selection_date_basis</code>为必填常量<code>EQUITY_RECORD_DATE</code>，其他值包括PAY_DATE、SELL_DATE均非法。<code>effective_from/to</code>是已经核验、正规化的登记日适用区间，统一左闭右开；不是政策发布日期或券商实扣日。按<code>security_class、dividend_type</code>精确匹配类别，再用<code>from &lt;= record_date &lt; to</code>筛选：恰一行绑定；0行TAX_RULE_MISSING、多行TAX_RULE_OVERLAP。未验证的历史端点保持外部缺口，不从自由文本猜生效等号。</p>
+<p>对每次分红先绑定<code>tax_profile_id、selected_rule_id、rule_selection_date=record_date、selection_date_basis</code>；转让时只在这个税制的tiers中按<code>acquisition_tax_date</code>到<code>transfer_delivery_date</code>分档，不按卖出日期重新挑今天税表。规则ID相同而内容变化必须走明确历史纠错与重投影；不能静默覆盖已登记税务绑定。</p>
+<p>选择税制、持有期分档、确认负债、实际支付分开：登记只保存权益；除息按原股息应收规则入账；适用规则要求初扣时按其实际阶段记已纳税及应收/现金；转让确定最终税负、仅差额入应付/退款；券商实际扣付结转应付与现金。未卖可能补税只预留购买力，不提前记成本。派息晚于转让不丢失已确定税负。</p>
+<p>2015年101号文用股权登记日划适用范围，2012年85号的结算说明也区分登记、持有期与扣缴。固定例为登记2015-09-07和2015-09-09、均在09-10派息，取得日2013-01-01、转让交割日2015-09-14、各100元应税股息：前者适用旧制长期实际税负5元，后者新制0元；不能因同派息日或卖出日在新政策后，就都选新制。此例不是全历史税表。机器边界黄金例另用明确标识的工程区间检验左闭右开；真实切换日的法定适用端点须按有效通知/实施记录填入，不能将工程端点当成VERIFIED事实。历史2011—2026缺一段，A0相应税务不能认证。</p>
+<p>FIFO税批次至少有<code>lot_id, acquisition_trade_id, acquisition_tax_date, original_qty, remaining_qty, economic_cost, corporate_parent_lot_id</code>。按<code>取得日期、实际成交次序、lot_id</code>排序。每笔卖出消耗数量q，从首批取min(q,lot剩余)，逐批形成<code>TaxLotDisposal</code>；数量之和必须等于实际卖股数。</p>
+<p>每个已登记分红事件保留<code>entitlement_id, action_id, lot_id, record_date, tax_profile_id, selected_rule_id, rule_selection_date, selection_date_basis, eligible_qty, unresolved_tax_qty, gross_per_share, tax_base_per_share, withheld_paid</code>。消耗一批股票时，对该批所有尚有补税关系的分红事件同步消耗相同的适用数量，不能只处理最近一次分红；买入发生在某次登记之后的批次不补该次税。</p>
+<p>最终应缴额按该slice的税基×适用税率，扣除已经实际纳税的对应份额，仅差額新增负债/退款应收。派息晚于卖出时，已确定税额和原分红应收关系继续保存；现金尚未收到也不能丢弃税基。未卖部分的预留采用<strong>当前若全部依法转让的税额</strong>，按自然时间逐日重新计算；仅限制购买力，不提前作为已发生税负影响NAV。税表要求预扣时按真实预扣另记，避免重复。</p>
+<p>税额舍入优先按券商规定的ENTITLEMENT/LOT/ACCOUNT_DAY粒度聚合后到分；需要把聚合税额分摊至slice时按未取整理论额比例分配，先向下到分，剩余分按小数余数降序、再按slice_id分配。各slice相加严格等于实扣总额，不让遍历顺序决定税费。</p>
+<p>送转后税批次用官方比例关联旧批。取整产生零碎权利时先按整个账户事件计算官方应得整数总数，再按条款分配批次；禁止每个lot单独四舍五入造成合计多股。股份来源的税务取得日、红股税基未知时输出TAX_UNKNOWN，真实股数仍入账。</p>
+<h2 id="section-19">H05. 账户、行情与事件接口</h2>
+<h3 id="section-20">5.1 QuoteSnapshot</h3>
+<p>必填<code>security_id, quote_time, received_time, last, best_bid/ask, tick, lower/upper_exchange_bound, reference_preclose, trading_status, basis_id, raw_flag, source_ref</code>。</p>
+<p>买单必须有有效ask、卖单必须有有效bid；last有效并不能替代缺少对手盘。tick模式时效3秒、账户5秒是技术上限。分钟代理显式使用MINUTE_PROXY，不把59秒前上一分钟收盘冒充3秒tick。</p>
+<p>对于持有但暂时无成交股票，<code>ValuationMark</code>另存price、basis、原时刻、NORMAL/PROVISIONAL/UNRELIABLE。估值可使用的价不自动可用于下单。</p>
+<h3 id="section-21">5.2 AccountView</h3>
+<pre><code class="language-text">account_id, strategy_id, asof, observed_revision, capital_revision,
+positions:{security_id:Position},
+cash_book, nonorder_cash_restrictions, trade_payables, contingent_tax_reserve,
+receivables, residuals, units, nav, hwm,
+open_order_ids, order_states_complete,
+reconciliation_status, limitation_reasons, run_state, retirement_triggered
+</code></pre>
+<p><code>Position</code>的quantity来自已确认成交及公司行动；mature_quantity不含尚未上市/未成熟部分；broker_can_sell是券商净可卖；本地预留分别标已反映与未反映券商冻结。不得把规范free_sell再减一遍券商冻结。</p>
+<p><code>units、nav、hwm</code>及日终dd均用H01的ExactRatio，规范缓存须与精确资产投影相等；不能用*_display恢复。NAV字段是由资产算出的缓存，不能作为手工输入覆盖股数现金；导入券商<code>total_asset</code>仅用于全账户对账。ETF视图可以通过人工归属表生成，但不能省略自己的现金承诺、委托终态和实际资金变化。</p>
+<h3 id="section-22">5.3 批次、订单和成交</h3>
+<p><code>Batch</code>：owner、普通/风险类型、固定计划ID、窗口、account_revision、资本修订、授权上限、SELL/BUY/RECONCILING阶段。</p>
+<p><code>Order</code>：ID、券商ID、side、数量、限价、首次提交时刻、尝试序号、累计量额、计提费用、终态、资源ID。原始数量及限价提交后不可直接改写；改价须撤销确认后发新单。</p>
+<p><code>Fill</code>：账户、交易日、市场、trade_id、order_id、证券、方向、成交时刻、收到时刻、数量、原价、金额、来源。独立trade_id相同价量不是重复；相同trade_id内容冲突不能吞掉。</p>
+<p>每证券同方向只可一张未结单；同证券买卖在同批不交叉未结。若有旧买单且风险要卖，先取消买单并核对最终成交；新收到股数受真实T+1限制，不假设立即可卖。</p>
+<p>订单转移唯一采用D09.3表，失效意图唯一采用D09.4；本节不定义另一套简化状态。Order另含<code>cancel_required, cancel_reason, cancel_request_id, last_control_revision, terminal_evidence, reconciled_filled_qty/value, applied_trade_keys</code>；终态证据保留来源版本/时刻/累计量额，不把它当Fill。BrokerEvent包括ACK、CANCEL_REQUEST、CANCEL_FAILED、TERMINAL、FILL；相同event_id同内容幂等，控制记录的新旧必须由已核验源版本确定，不能仅比较接收时刻。</p>
+<p>末成交使累计达到原量时直接FILLED，包含从ACKED、SENT_UNKNOWN和CANCEL_PENDING到FILLED。终态累计大于已记逐笔时进入RECONCILE_REQUIRED并补齐，不重复记整个累计。冲突终态保留真实账和最大可能未成占用；f=q时未成占用为0但对账阻断可继续。未知不是永久CANCEL_PENDING的兜底。FORWARD_MANUAL仅生成动作清单与导入确认。</p>
+<h2 id="section-23">H06. 规划与风险输出合同</h2>
+<h3 id="section-24">6.1 WeeklyPlan</h3>
+<p>必填固定名单<code>buy_candidates_ordered</code>、持有模式、每股<code>target_amount</code>或锁股数量基础、E_decision、cutoff、execute_day/window、capital_revision、source_refs。名单顺序属于决策结果，不得执行时重排按明天可买性。</p>
+<p><code>TARGET_AMOUNT</code>与<code>HOLD_SHARES</code>不同：前者固定金额、当前解析差量；后者保持股数，仅公司行动调整基础。风控可覆盖两者。<code>EXIT</code>目标0。<code>HOLD_NO_ADD</code>正常不买、不因未知补选，确定风险仍可覆盖。</p>
+<p>WeeklyPlan显式保留<code>score_status</code>和<code>ordinary_buy_allowed</code>。FLAT_SCORE批次buy_candidates_ordered为空、ordinary_buy_allowed=false；合格老仓截止权重&gt;2.5%时可产生TARGET_AMOUNT及prohibit_buy=true；2.6%老仓向原2%金额减持，1.4%老仓不补。全局不健康仍按D05.4暂停普通调权，不与“数据健康但评分恒定”混为同一状态。</p>
+<h3 id="section-25">6.2 RiskDecision与FinalIntent</h3>
+<p><code>RiskDecision</code>为同一account_revision/quote_revision上的只读裁决，包含<code>global_buy_blocks: [Reason]</code>、<code>security_buy_blocks: {security_id:[Reason]}</code>及活动目标。原因集合稳定排序后序列化；执行器必须先读取全局集合，再读取目标证券集合，不额外把SECURITY_EXIT升级成全局限制。FinalIntent中的prohibit_buy是该裁决与普通计划禁买的并集结果，不得另作不一致计算。</p>
+<pre><code class="language-text">security_id,
+ordinary_mode, ordinary_amount_or_quantity,
+max_remaining_shares_or_amount,
+risk_episode_ids, priority, prohibit_buy,
+valid_window, cap_reference_date,
+reason_codes, account_revision, quote_basis, plan_id
+</code></pre>
+<p>这里只表达经济目标。<code>size_order</code>负责把它与当前quote、RuleBook、费用和真实现金变成合法Order；普通目标不可扩，卖量不超free_sell。任何重新解析都返回新account_revision，旧预览不能直接用来报单。</p>
+<h3 id="section-26">6.3 资源所有权</h3>
+<p>每个可用资源只可处于FREE、PREAPPROVED、BROKER_FROZEN、CONSUMED、RELEASED中的一个状态；状态变迁事件带同一个resource_id。容量、现金、股数、槽位是不同单位，分别计数；不使用一个金额字段代表所有限制。</p>
+<p>真实证券槽=非零正常仓∪未结束新买证券。卖出部分未清不释放；确认没有股数且没有未结相关委托才移除。残余权益转出槽位必须有生命周期事件，仍占经济权益和风险。</p>
+<h2 id="section-27">H07. 事件顺序、晚到记录与恢复</h2>
+<h3 id="section-28">7.1 正常事件优先级</h3>
+<p>同一可见时刻先遵循来源已核验序号；无更细序号时：</p>
+<ol>
+<li>已有依据的除权/股份上市/可卖释放，使用此前锁定权益。</li>
+<li>该时刻之前已提交订单的成交与终态。</li>
+<li>实际现金到账、费用结算、明确资本转移。</li>
+<li>行情与其他事实更新。</li>
+<li>若处于日终，完成登记日权益快照（必须已经处理当日全部已确认成交），再计算日终NAV。</li>
+<li>风险状态/段更新、周度截止计划。</li>
+<li>本时刻的新授权、报单、撤单请求。</li>
+<li>提交事件序号与派生快照。</li>
+</ol>
+<p>登记权益不是第1项的盘前事件；不能先锁登记股数，再处理已经发生的收盘成交。10:01先看到[10:00,10:01)中原订单的撮合结果，后发到期撤单请求；同一10:01新单不能消耗此前一分钟行情量。</p>
+<h3 id="section-29">7.2 一条已确认事件只改变账本一次</h3>
+<p><code>apply_confirmed_event</code>依event_id检查：同ID同内容直接返回已经处理；同ID异内容RECONCILE_REQUIRED；新增事件先计算新股数/现金/税/资源，再一起校验并提交。券商实际已确认但超本地保护的成交仍入真实账，并新增违规原因。</p>
+<p>事件尚未提交而进程崩溃，重启不能假定未向券商发送；SENT_UNKNOWN仍先查。日志提交不等于券商受理；两个事实分别记录。</p>
+<h3 id="section-30">7.3 晚到公司行动和历史修正</h3>
+<p>若只是晚收到成交且真实顺序可重建，以不可变的已确认成交为事实重建账户投影，不重新生成过去订单。若新增公司行动生效早于已经记账的交易，暂停新增，查清股份基础和成交数量，<strong>使用全部实际成交与修正事件重新投影</strong>；产生新的account_revision及调整记录，不制造虚拟买卖对平。</p>
+<p>决策日志保留当时已知输入与已经发生的行为，不因为今日修复而声称昨日用了正确资料。会计重列净值与当时已报告净值分别标识；投研复验另run_id从最早影响事件前开始。错误数据造成停用只能按V5人工核正解除；真实风险触发不能因重列或重新入金抹去。</p>
+<p>若股份/费用差异仍无法定解，保留原始事件与冲突，输出UNKNOWN，不凭“更接近券商余额”的方案修复。这里是一个账本的可重建投影，不是维护两套择优净值。</p>
+<h3 id="section-31">7.4 跨资本流重投影与精确快照</h3>
+<p>以下字段是不可变事实：实际资本金额F及occurred_at/known_at、已确认真实成交/费用、来源事件原文、当时决策输入与操作日志。以下为派生量：每次发行/注销份额、流前NAV、日终NAV/HWM/DD、当前余额投影和缓存。事件可保留<code>units_delta_observed</code>作为当时审计读数，但重建绝不把它当作实际资金流的替代输入。</p>
+<p>固定链：初始1000份、100股×10元、E=1000；除息后股票900且应收100，但资料晚到，临时报告漏应收；此时真实转入900元，临时投影U=2000。补齐在转资前已生效的应收后，按事件经济顺序重建：转资前E=1000、U=1000、NAV=1；发行900份，最终现金900＋股票900＋应收100=1900，U=1900、NAV=1、HWM=1、DD=0。错误的1900/2000=0.95不是有效修正结果。</p>
+<p>账户只保留一份当前有效投影；旧2000份及0.9临时净值作为历史报告/决策审计保留并标SUPERSEDED。不得把当时未知分红写成当时已知，也不得倒造订单。重列发现的历史风险变化进入V5既定的数据纠错/人工核正与投研独立重放流程，不执行回溯订单，不自动清除真实停用标记。</p>
+<p>更正提交时增加projection_revision、标记最早受影响effective_at；早于该时点且数据版本适用的快照可作锚，之后快照一律失效重建。<code>ExactAccountSnapshot</code>仅是账户精确投影切片（完整账户仍按H05）；其detail_version、projection_revision、last_committed_seq、equity、units/nav/hwm/dd均须校验。不得使用旧快照中的派生份额跳过前面的资本流。崩溃后按同一纠正事件恢复，重复导入不再加100应收、不再加900资金；任一断点的最终精确结果均与全事件重建一致。</p>
+<p>D1近似份额快照不设静默兼容分支；缺原始资本流或可信初始状态而不能精确恢复时，输出EXACT_STATE_REPLAY_REQUIRED。只由确定历史输入生成的新D2精确快照才可恢复执行。</p>
+<h2 id="section-32">H08. 回放、黄金结果与采用输出</h2>
+<h3 id="section-33">8.1 行情投递</h3>
+<p>历史引擎只向决策模块暴露<code>available_at &lt;= engine_now</code>的事实。撮合模块可以读取正在结算区间的真实开高低收量以产生结果，但这些未来区间字段不能传回该区间起点的报价或因子对象。</p>
+<p>日线使用09:30代理，仅允许代理之前的事实；分钟订单10:00首次对应[10:00,10:01)。日线报告无论多好都有NOT_WINDOW_CERTIFIED。引擎不能为完成订单自动从日线切分钟或反过来。</p>
+<h3 id="section-34">8.2 单元输出记录</h3>
+<pre><code class="language-text">cell_key(role, capital, permission, package, start, scenario),
+input_versions, execution_mode, start_cutoff, end_D,
+startup_status, evidence_reasons,
+retirement_triggered, trigger_at, retired_at,
+ledger_path, event_path, plan_path,
+CAGR_decimal, MDD_exact, worst_peak/trough/recovery,
+healthy_week_count, assessed_week_count, unknown_week_count, longest_bad_streak,
+fee_total/by_kind, turnover, stock_ratio, frozen_exit_ratio,
+unfinished_orders, residual_rights,
+qualification_reasons
+</code></pre>
+<p>所有格都产记录，即使未启动或数据不足。不存在只输出净值成功的格。金额、参数或权限改变产生不同cell_key。</p>
+<h3 id="section-35">8.3 资格判定总函数</h3>
+<p>先收集所有已确认硬失败，再收集决定性未知；有硬失败返回REJECTED并仍展示未知，有未知无硬失败返回INSUFFICIENT_EVIDENCE；测试包只能ENGINEERING_ONLY。只有满足全部16格硬条件，才计算八格稳健年化和与B0/ETF比较。</p>
+<p>配置的语义身份由固定规则值、因子公式版本与参数、资金、权限、费用和执行配置的规范化内容确定，不以文件名、package_id或run_id代替。直接比较这些内容即可，无需全量哈希基础设施。重新申请时必须链接先前停用记录、列出实际变化或错误修复、完整复验及用户新决定；只是换名字的同内容配置仍被否决。</p>
+<p>相同稳健年化的成本次序明确用四起点S0/S1中<strong>最高年费用率</strong>，而不是任挑手续费较低的一格。B1仅风险更好但收益较低的取舍需要用户裁决；不能新增“风险加权分数”自动宣布获胜。</p>
+<h2 id="section-36">H09. 需要由开发者实现、无需另作投资判断的校验顺序</h2>
+<ol>
+<li>JSON结构与类型 → 版本/固定常量 → profile状态及scope → 日期区间唯一匹配。</li>
+<li>身份、单位、股份基础 → 源优先及冲突 → 历史可用性 → 经济池。</li>
+<li>包联合有效 → 精确排名 → 持仓/计数 → 普通固定计划。</li>
+<li>账户对账及单位净值 → 风险段 → 合并目标 → 费用后数量 → 双现金门/容量/槽。</li>
+<li>批次授权 → 预约 → 人工报单/模拟 → 成交与取消 → 单一账本 → 重新风险检查。</li>
+<li>日终记录与覆盖统计 → 四起点四情景完整矩阵 → 先资格后收益 → 人工采用。</li>
+</ol>
+<p>解析错误不运行；来源未知不默认为正常；业务阻断不抛成不可诊断的异常；已确认的真实交易违规照实入账并停止新增。</p>
+<h2 id="section-37">H10. 开发边界</h2>
+<p>JSON Schema是输入结构约束，不替代V5经济条件、外部来源核验或测试用例。模板中的UNKNOWN/null应当使相关功能返回清楚的阻断，不应妨碍纯数值、账户与回放骨架的合成开发。接入真实输入时只补事实，不重新选择主算法。</p>
+<p>本版不提供真实API凭据、账户ID、已批准因子或完整法定历史表。实现者不得把测试Profile复制成真实Profile，也不得把本轮数学oracle当作可用于实盘的账户模块。</p>
+<h2 id="section-38">H11. Schema覆盖边界</h2>
+<p><code>bundle.schema.json</code>校验外部Bundle；其中新增的ExactRatio、ExactAccountSnapshot、DividendEntitlementBinding定义同时由<code>inputs/runtime_contracts.schema.json</code>引用，供精确切片/税绑定交换与恢复检查使用。这不是完整生产账户状态Schema，也不把文档对象一律开放成任意JSON。<code>normalize_study</code>及Profile引用、Rat规范约分、缓存重算、税区间唯一匹配、订单累计一致性均是必做业务校验；结构通过不能代替这些检查。两份模板仍标TEST_ONLY/NOT_PROVIDED，不补造真实税表或账户能力。</p>
+<p>非日终精确状态切片允许当前NAV高于上一正式日终HWM；dd缓存保持<code>1−NAV/HWM</code>的有符号精确值。该切片不是新增的日内回撤触发器；正式日终按D12先更新HWM，再形成评价DD。</p>
+</article><div class="footer">此阅读版与同名 Markdown 同步。局部校核不等于生产实现、市场回放或真实账户验收。</div></main></div></body></html>
