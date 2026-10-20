@@ -1,0 +1,1646 @@
+{
+ "B1/100000/perm-default/P5_SIZE_EP_POSTHOC/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "CHINEXT",
+   "MAIN_SH",
+   "MAIN_SZ",
+   "STAR"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "100000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-cn-research-20261019",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "COMM",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2023-08-28",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-1",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2023-08-28",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-2",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.0005",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "SHARES",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SH-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SH",
+     "maximum": null,
+     "minimum": "1",
+     "rate": "0.0006",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SZ-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SZ",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2015-08-01",
+     "effective_to": "2022-04-29",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-2",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2022-04-29",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-3",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "RESEARCH",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "LOWER_BETTER",
+     "factor_id": "SIZE",
+     "formula_definition": "总市值（元）=当日有效总股本×未复权收盘价（QMT 历史股本×原价；Tushare daily_basic.total_mv 万元×10000 补充）；越小越好。",
+     "golden_case_ids": [
+      "FI-SIZE-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "SIZE_TOTAL_MV_V1",
+     "input_fields": [
+      "market_value_total"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "1",
+     "output_unit": "CNY",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "总市值>0，否则 MODEL_INAPPLICABLE",
+      "缺失或公开时刻晚于截止 → SOURCE_UNKNOWN"
+     ]
+    },
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "EP",
+     "formula_definition": "归母净利润TTM÷总市值。TTM=当期累计+上年全年−上年同期累计（Q4 用全年）；合并报表；同一报告期取首次披露版本；只有公告日期时自其后首个市场日 09:30 起可用；亏损保留为负值。",
+     "golden_case_ids": [
+      "FI-EP-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "EP_TTM_PARENT_V1",
+     "input_fields": [
+      "np_parent_ttm",
+      "market_value_total"
+     ],
+     "max_report_age_months": 15,
+     "output_quantum": "0.00000001",
+     "output_unit": "ratio",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "最新已公开报告期距截止超过 15 个自然月 → STALE",
+      "TTM 任一依赖缺失或尚未公开 → SOURCE_UNKNOWN",
+      "总市值≤0 → MODEL_INAPPLICABLE"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "INVESTMENT_CANDIDATE",
+   "version": "1"
+  },
+  "role": "B1"
+ },
+ "B1/500000/perm-default/P5_SIZE_EP_POSTHOC/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "CHINEXT",
+   "MAIN_SH",
+   "MAIN_SZ",
+   "STAR"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "500000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-cn-research-20261019",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "COMM",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2023-08-28",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-1",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2023-08-28",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-2",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.0005",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "SHARES",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SH-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SH",
+     "maximum": null,
+     "minimum": "1",
+     "rate": "0.0006",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SZ-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SZ",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2015-08-01",
+     "effective_to": "2022-04-29",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-2",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2022-04-29",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-3",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "RESEARCH",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "LOWER_BETTER",
+     "factor_id": "SIZE",
+     "formula_definition": "总市值（元）=当日有效总股本×未复权收盘价（QMT 历史股本×原价；Tushare daily_basic.total_mv 万元×10000 补充）；越小越好。",
+     "golden_case_ids": [
+      "FI-SIZE-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "SIZE_TOTAL_MV_V1",
+     "input_fields": [
+      "market_value_total"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "1",
+     "output_unit": "CNY",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "总市值>0，否则 MODEL_INAPPLICABLE",
+      "缺失或公开时刻晚于截止 → SOURCE_UNKNOWN"
+     ]
+    },
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "EP",
+     "formula_definition": "归母净利润TTM÷总市值。TTM=当期累计+上年全年−上年同期累计（Q4 用全年）；合并报表；同一报告期取首次披露版本；只有公告日期时自其后首个市场日 09:30 起可用；亏损保留为负值。",
+     "golden_case_ids": [
+      "FI-EP-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "EP_TTM_PARENT_V1",
+     "input_fields": [
+      "np_parent_ttm",
+      "market_value_total"
+     ],
+     "max_report_age_months": 15,
+     "output_quantum": "0.00000001",
+     "output_unit": "ratio",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "最新已公开报告期距截止超过 15 个自然月 → STALE",
+      "TTM 任一依赖缺失或尚未公开 → SOURCE_UNKNOWN",
+      "总市值≤0 → MODEL_INAPPLICABLE"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "INVESTMENT_CANDIDATE",
+   "version": "1"
+  },
+  "role": "B1"
+ },
+ "B2/100000/perm-default/P5_SIZE_EP_POSTHOC/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "CHINEXT",
+   "MAIN_SH",
+   "MAIN_SZ",
+   "STAR"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "100000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-cn-research-20261019",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "COMM",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2023-08-28",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-1",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2023-08-28",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-2",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.0005",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "SHARES",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SH-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SH",
+     "maximum": null,
+     "minimum": "1",
+     "rate": "0.0006",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SZ-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SZ",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2015-08-01",
+     "effective_to": "2022-04-29",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-2",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2022-04-29",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-3",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "RESEARCH",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "LOWER_BETTER",
+     "factor_id": "SIZE",
+     "formula_definition": "总市值（元）=当日有效总股本×未复权收盘价（QMT 历史股本×原价；Tushare daily_basic.total_mv 万元×10000 补充）；越小越好。",
+     "golden_case_ids": [
+      "FI-SIZE-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "SIZE_TOTAL_MV_V1",
+     "input_fields": [
+      "market_value_total"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "1",
+     "output_unit": "CNY",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "总市值>0，否则 MODEL_INAPPLICABLE",
+      "缺失或公开时刻晚于截止 → SOURCE_UNKNOWN"
+     ]
+    },
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "EP",
+     "formula_definition": "归母净利润TTM÷总市值。TTM=当期累计+上年全年−上年同期累计（Q4 用全年）；合并报表；同一报告期取首次披露版本；只有公告日期时自其后首个市场日 09:30 起可用；亏损保留为负值。",
+     "golden_case_ids": [
+      "FI-EP-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "EP_TTM_PARENT_V1",
+     "input_fields": [
+      "np_parent_ttm",
+      "market_value_total"
+     ],
+     "max_report_age_months": 15,
+     "output_quantum": "0.00000001",
+     "output_unit": "ratio",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "最新已公开报告期距截止超过 15 个自然月 → STALE",
+      "TTM 任一依赖缺失或尚未公开 → SOURCE_UNKNOWN",
+      "总市值≤0 → MODEL_INAPPLICABLE"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "INVESTMENT_CANDIDATE",
+   "version": "1"
+  },
+  "role": "B2"
+ },
+ "B2/500000/perm-default/P5_SIZE_EP_POSTHOC/REPLAY_DAILY_PROXY": {
+  "allowed_boards": [
+   "CHINEXT",
+   "MAIN_SH",
+   "MAIN_SZ",
+   "STAR"
+  ],
+  "baseline": {
+   "band_high": "0.025",
+   "band_low": "0.015",
+   "base_slippage": "0.001",
+   "blocked_exit_trigger": "0.10",
+   "center": "0.02",
+   "commission_rate": "0.00025",
+   "cutoff_time": "20:00:00",
+   "daily_capacity_ratio": "0.01",
+   "dd_limit": "0.30",
+   "dd_retire": "0.25",
+   "dd_warning": "0.20",
+   "financial_age_months": 15,
+   "high_slippage": "0.003",
+   "industry_limit": "0.20",
+   "joint_coverage": "0.80",
+   "listing_age_sessions": 250,
+   "max_consecutive_coverage_bad": 2,
+   "min_adv20": "10000000",
+   "min_raw_close": "2",
+   "minimum_commission": "5",
+   "package_healthy_ratio": "0.95",
+   "pool_limit": 400,
+   "retain_rank": 45,
+   "single_trigger": "0.05",
+   "slots": 30,
+   "startup_min_names": 24,
+   "startup_min_stock_ratio": "0.50",
+   "stock_target": "0.60",
+   "stock_trigger": "0.65",
+   "timezone": "Asia/Shanghai",
+   "unknown_healthy_weeks": 2,
+   "window_end": "10:30:00",
+   "window_start": "10:00:00"
+  },
+  "capital": "500000",
+  "detail_version": "V5D2",
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "execution_technical": {
+   "account_max_age_seconds": 5,
+   "max_new_orders_per_security_side_window": 3,
+   "order_wait_seconds": 60,
+   "price_protection_nominal": "0.003",
+   "protection_rounding": "OUTWARD_TICK",
+   "quote_max_age_seconds": 3,
+   "retry_min_seconds": 60
+  },
+  "fees": {
+   "broker_contract_ref": null,
+   "dividend_tax_rules": [
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "CASH",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-CASH",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股税前现金红利",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2005-06-13",
+     "effective_to": "2013-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.10",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2005-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.10"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2013-01-01",
+     "effective_to": "2015-09-08",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0.05",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2013-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0.05"
+      }
+     ]
+    },
+    {
+     "acquisition_inheritance_rule": "INHERIT_PARENT",
+     "dividend_type": "STOCK",
+     "effective_from": "2015-09-08",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+     "initial_withholding_rate": "0",
+     "rounding_unit": "ENTITLEMENT",
+     "rule_id": "T2015-STOCK",
+     "security_class": "INDIVIDUAL_A_SHARE",
+     "selection_date_basis": "EQUITY_RECORD_DATE",
+     "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+     "tiers": [
+      {
+       "max_calendar_months_inclusive": 1,
+       "rate": "0.20"
+      },
+      {
+       "max_calendar_months_inclusive": 12,
+       "rate": "0.10"
+      },
+      {
+       "max_calendar_months_inclusive": null,
+       "rate": "0"
+      }
+     ]
+    }
+   ],
+   "fee_profile_id": "fees-cn-research-20261019",
+   "fee_rules": [
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "COMM",
+     "fee_kind": "COMMISSION",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "5",
+     "rate": "0.00025",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2023-08-28",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-1",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2023-08-28",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-SELL-2",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.0005",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "SELL"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2008-09-19",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "STAMP-BUY",
+     "fee_kind": "STAMP",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BUY"
+    },
+    {
+     "base_kind": "SHARES",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SH-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SH",
+     "maximum": null,
+     "minimum": "1",
+     "rate": "0.0006",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2000-01-01",
+     "effective_to": "2015-08-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-SZ-1",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "SZ",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2015-08-01",
+     "effective_to": "2022-04-29",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-2",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00002",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    },
+    {
+     "base_kind": "NOTIONAL",
+     "charge_unit": "ORDER_CUMULATIVE",
+     "effective_from": "2022-04-29",
+     "effective_to": "2100-01-01",
+     "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED",
+     "fee_id": "TRANSFER-3",
+     "fee_kind": "TRANSFER",
+     "included_in_commission": false,
+     "market": "BOTH",
+     "maximum": null,
+     "minimum": "0",
+     "rate": "0.00001",
+     "round_mode": "HALF_UP",
+     "round_quantum": "0.01",
+     "settlement_id": "CN-A-T1",
+     "side": "BOTH"
+    }
+   ],
+   "purpose": "RESEARCH",
+   "research_commission_rate": "0.00025",
+   "research_minimum_commission": "5"
+  },
+  "package": {
+   "aggregation": "EQUAL_WEIGHT",
+   "factors": [
+    {
+     "direction": "LOWER_BETTER",
+     "factor_id": "SIZE",
+     "formula_definition": "总市值（元）=当日有效总股本×未复权收盘价（QMT 历史股本×原价；Tushare daily_basic.total_mv 万元×10000 补充）；越小越好。",
+     "golden_case_ids": [
+      "FI-SIZE-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "SIZE_TOTAL_MV_V1",
+     "input_fields": [
+      "market_value_total"
+     ],
+     "max_report_age_months": 0,
+     "output_quantum": "1",
+     "output_unit": "CNY",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "总市值>0，否则 MODEL_INAPPLICABLE",
+      "缺失或公开时刻晚于截止 → SOURCE_UNKNOWN"
+     ]
+    },
+    {
+     "direction": "HIGHER_BETTER",
+     "factor_id": "EP",
+     "formula_definition": "归母净利润TTM÷总市值。TTM=当期累计+上年全年−上年同期累计（Q4 用全年）；合并报表；同一报告期取首次披露版本；只有公告日期时自其后首个市场日 09:30 起可用；亏损保留为负值。",
+     "golden_case_ids": [
+      "FI-EP-01",
+      "FI-PKG-01"
+     ],
+     "implementation_id": "EP_TTM_PARENT_V1",
+     "input_fields": [
+      "np_parent_ttm",
+      "market_value_total"
+     ],
+     "max_report_age_months": 15,
+     "output_quantum": "0.00000001",
+     "output_unit": "ratio",
+     "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED",
+     "validity_rules": [
+      "最新已公开报告期距截止超过 15 个自然月 → STALE",
+      "TTM 任一依赖缺失或尚未公开 → SOURCE_UNKNOWN",
+      "总市值≤0 → MODEL_INAPPLICABLE"
+     ]
+    }
+   ],
+   "joint_rule": "ALL_FACTORS_VALID",
+   "neutralization": "NONE",
+   "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+   "purpose": "INVESTMENT_CANDIDATE",
+   "version": "1"
+  },
+  "role": "B2"
+ }
+}

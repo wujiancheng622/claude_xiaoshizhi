@@ -1,0 +1,95 @@
+{
+ "profile_id": "factor-p1_size_ep_vol-v1",
+ "status": "DECLARED",
+ "scope": {
+  "purpose": "HISTORICAL_RESEARCH",
+  "start_date": "2011-01-01",
+  "end_date": "2026-10-14",
+  "markets": [
+   "SH",
+   "SZ"
+  ],
+  "account_ref": null,
+  "description": "2026-10-19 预登记候选因子包（research/factor_study/00_预登记…md）；数据为临时 Tushare 研究来源，QMT 主源与历史语义未核验。"
+ },
+ "source_refs": [
+  "research/factor_study/00_预登记_候选因子与判定规则_20261019.md"
+ ],
+ "payload": {
+  "package_id": "P1_SIZE_EP_VOL",
+  "version": "1",
+  "purpose": "INVESTMENT_CANDIDATE",
+  "factors": [
+   {
+    "factor_id": "SIZE",
+    "implementation_id": "SIZE_TOTAL_MV_V1",
+    "direction": "LOWER_BETTER",
+    "output_unit": "CNY",
+    "output_quantum": "1",
+    "input_fields": [
+     "market_value_total"
+    ],
+    "formula_definition": "总市值（元）=当日有效总股本×未复权收盘价（QMT 历史股本×原价；Tushare daily_basic.total_mv 万元×10000 补充）；越小越好。",
+    "validity_rules": [
+     "总市值>0，否则 MODEL_INAPPLICABLE",
+     "缺失或公开时刻晚于截止 → SOURCE_UNKNOWN"
+    ],
+    "max_report_age_months": 0,
+    "golden_case_ids": [
+     "FI-SIZE-01",
+     "FI-PKG-01"
+    ],
+    "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED"
+   },
+   {
+    "factor_id": "EP",
+    "implementation_id": "EP_TTM_PARENT_V1",
+    "direction": "HIGHER_BETTER",
+    "output_unit": "ratio",
+    "output_quantum": "0.00000001",
+    "input_fields": [
+     "np_parent_ttm",
+     "market_value_total"
+    ],
+    "formula_definition": "归母净利润TTM÷总市值。TTM=当期累计+上年全年−上年同期累计（Q4 用全年）；合并报表；同一报告期取首次披露版本；只有公告日期时自其后首个市场日 09:30 起可用；亏损保留为负值。",
+    "validity_rules": [
+     "最新已公开报告期距截止超过 15 个自然月 → STALE",
+     "TTM 任一依赖缺失或尚未公开 → SOURCE_UNKNOWN",
+     "总市值≤0 → MODEL_INAPPLICABLE"
+    ],
+    "max_report_age_months": 15,
+    "golden_case_ids": [
+     "FI-EP-01",
+     "FI-PKG-01"
+    ],
+    "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED"
+   },
+   {
+    "factor_id": "VOL60",
+    "implementation_id": "VOL60_DAILY_RETURN_STD_V1",
+    "direction": "LOWER_BETTER",
+    "output_unit": "ratio",
+    "output_quantum": "0.00000001",
+    "input_fields": [
+     "daily_return_window_60"
+    ],
+    "formula_definition": "截止日在内的最近 60 个市场日中，各有效交易日日收益 r=未复权收盘÷交易所除权参考昨收−1 的样本标准差（除以 n−1）；停牌日不计入。",
+    "validity_rules": [
+     "有效交易日<40 → MODEL_INAPPLICABLE",
+     "价格≤0 → MODEL_INAPPLICABLE",
+     "窗口内非确认停牌的缺数据 → SOURCE_UNKNOWN"
+    ],
+    "max_report_age_months": 0,
+    "golden_case_ids": [
+     "FI-VOL-01",
+     "FI-PKG-01"
+    ],
+    "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED"
+   }
+  ],
+  "aggregation": "EQUAL_WEIGHT",
+  "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+  "joint_rule": "ALL_FACTORS_VALID",
+  "neutralization": "NONE"
+ }
+}

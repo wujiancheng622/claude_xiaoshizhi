@@ -80,9 +80,12 @@ def cell_preflight(bundle: LoadedBundle, spec: CellSpec, market, start_day: date
         return out
     fc = fee_coverage(bundle.payload("fees"), start_day, spec.end_date)
     out += [f"{r.code}:{r.scope_id}" for r in fc.reasons]
-    boards = sorted({(m["exchange"], m["board"]) for m in market.master.values()
-                     if m["board"] in spec.allowed_boards})
-    rc = rule_coverage(bundle.payload("rules"), start_day, spec.end_date, boards)
+    first: dict = {}
+    for m in market.master.values():
+        if m["board"] in spec.allowed_boards:
+            k = (m["exchange"], m["board"])
+            first[k] = min(first.get(k, m["list_date"]), m["list_date"])
+    rc = rule_coverage(bundle.payload("rules"), start_day, spec.end_date, sorted(first), first)
     out += [f"{r.code}:{r.scope_id}" for r in rc.reasons]
     return out
 
@@ -202,8 +205,34 @@ def blocked_records(bundle: LoadedBundle, specs, blocks: list[str]) -> list[dict
     return recs
 
 
+def warm_caches(bundle: LoadedBundle, specs, market) -> int:
+    """多进程前在父进程预算各周经济池与因子值（只读、与账户无关），fork 后各单元共享；返回预算周数。
+    只对声明了 cache_token 的只读市场生效。"""
+    if getattr(market, "cache_token", None) is None or not specs:
+        return 0
+    from datetime import time as _time
+    from .contracts import sh_dt
+    rb, fees = RuleBook(bundle.payload("rules")), FeeSchedule(bundle.payload("fees"))
+    starts = [market.calendar.first_week_end_in_year(sp.start_year, market.data_end) for sp in specs]
+    first = min(x for x in starts if x is not None) if any(starts) else None
+    if first is None:
+        return 0
+    done = 0
+    for sp in {(s.role != "B0", s.allowed_boards, s.financial_codes): s for s in specs}.values():
+        r = CellRunner(sp, market, rb, fees)
+        for d in market.calendar.week_ends(market.data_end):
+            if d < first or d > sp.end_date:
+                continue
+            at = sh_dt(d, _time(20, 0))
+            pool = r.pool_for(d, at)
+            if sp.role != "B0" and pool["health"] == "OK":
+                r.factor_values(d, at, pool)
+            done += 1
+    return done
+
+
 def run_matrix(bundle: LoadedBundle, market=None, market_factory=None, workers: int = 1, out_dir: str | None = None,
-               permission_id: str = "perm-default", persist_events: bool = False) -> dict:
+               permission_id: str = "perm-default", persist_events: bool = False, only_roles=None) -> dict:
     s = bundle.study
     uni = bundle.payload("universe") or {}
     allowed = {p["board"] for p in uni.get("permissions", []) if p["status"] == "ALLOWED"}
@@ -211,12 +240,15 @@ def run_matrix(bundle: LoadedBundle, market=None, market_factory=None, workers: 
     m0 = market if market is not None else (market_factory() if market_factory else None)
     fin = getattr(m0, "financial_codes", None)          # 金融业分类代码须由历史行业来源提供
     specs = matrix_specs(s, pkg, allowed, set(fin or ()), uni.get("etf_security_ids", []), permission_id)
+    if only_roles:
+        specs = [sp for sp in specs if sp.role in set(only_roles)]       # 研究便利：只跑指定角色（不改研究身份）
     blocks = preflight(bundle, m0)
     if m0 is not None and not fin:
         blocks.append("FINANCIAL_CLASSIFICATION_NOT_PROVIDED")
     if blocks:
         records = blocked_records(bundle, specs, blocks)
     elif workers > 1 and market_factory is not None:
+        warm_caches(bundle, specs, m0)
         with mp.get_context("fork").Pool(workers) as pool:
             records = pool.map(_run_one, [(sp, bundle.raw, market_factory, out_dir, persist_events) for sp in specs])
     else:

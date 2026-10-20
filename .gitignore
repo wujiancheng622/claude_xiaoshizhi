@@ -3,3 +3,6 @@ __pycache__/
 runs/*/cells/
 runs/*.log
 runs/*.time
+.venv/
+data/
+research_out/

@@ -757,6 +757,10 @@ class Ledger:
             total = Fraction(ent["eligible_qty"]) * ratio(t["shares_per_share"])
             if total.denominator == 1:
                 n = int(total)
+            elif t.get("rounding") == "FLOOR_ODD_LOT_LOTTERY":
+                # 中登规则：零碎股按尾数排序依次发放，单个账户可能得 0 或 1 股；保守按向下取整、不补偿，记录观察
+                n = total.numerator // total.denominator
+                ent["fraction_dropped"] = str(total - n)
             elif t.get("rounding") == "FLOOR_CASH_IN_LIEU":
                 n = total.numerator // total.denominator
                 cil = p.get("cash_in_lieu_per_share", t.get("cash_in_lieu_per_share"))

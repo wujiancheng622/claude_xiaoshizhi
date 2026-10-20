@@ -1,0 +1,1808 @@
+{
+ "bundle_version": "V5D2",
+ "baseline": {
+  "pool_limit": 400,
+  "slots": 30,
+  "retain_rank": 45,
+  "listing_age_sessions": 250,
+  "min_raw_close": "2",
+  "min_adv20": "10000000",
+  "joint_coverage": "0.80",
+  "package_healthy_ratio": "0.95",
+  "max_consecutive_coverage_bad": 2,
+  "unknown_healthy_weeks": 2,
+  "financial_age_months": 15,
+  "stock_target": "0.60",
+  "stock_trigger": "0.65",
+  "center": "0.02",
+  "band_low": "0.015",
+  "band_high": "0.025",
+  "single_trigger": "0.05",
+  "industry_limit": "0.20",
+  "blocked_exit_trigger": "0.10",
+  "dd_warning": "0.20",
+  "dd_retire": "0.25",
+  "dd_limit": "0.30",
+  "startup_min_names": 24,
+  "startup_min_stock_ratio": "0.50",
+  "daily_capacity_ratio": "0.01",
+  "commission_rate": "0.00025",
+  "minimum_commission": "5",
+  "base_slippage": "0.001",
+  "high_slippage": "0.003",
+  "cutoff_time": "20:00:00",
+  "window_start": "10:00:00",
+  "window_end": "10:30:00",
+  "timezone": "Asia/Shanghai"
+ },
+ "execution_technical": {
+  "max_new_orders_per_security_side_window": 3,
+  "order_wait_seconds": 60,
+  "retry_min_seconds": 60,
+  "quote_max_age_seconds": 3,
+  "account_max_age_seconds": 5,
+  "price_protection_nominal": "0.003",
+  "protection_rounding": "OUTWARD_TICK"
+ },
+ "study": {
+  "study_id": "tushare-research-20261019-P1_SIZE_EP_VOL",
+  "detail_version": "V5D2",
+  "end_date": "2026-10-14",
+  "capital_mode": "DEFAULT_TWO",
+  "capitals": [
+   "100000",
+   "500000"
+  ],
+  "start_years": [
+   2011,
+   2016,
+   2021,
+   2024
+  ],
+  "roles": [
+   "B0",
+   "B1",
+   "B2"
+  ],
+  "scenarios": [
+   "S0",
+   "S1",
+   "S2",
+   "S3"
+  ],
+  "execution_mode": "REPLAY_DAILY_PROXY",
+  "fact_snapshot_id": "TUSHARE_STORE_20261019",
+  "purpose": "RESEARCH"
+ },
+ "profiles": {
+  "factor": {
+   "profile_id": "factor-p1_size_ep_vol-v1",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2011-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 预登记候选因子包（research/factor_study/00_预登记…md）；数据为临时 Tushare 研究来源，QMT 主源与历史语义未核验。"
+   },
+   "source_refs": [
+    "research/factor_study/00_预登记_候选因子与判定规则_20261019.md"
+   ],
+   "payload": {
+    "package_id": "P1_SIZE_EP_VOL",
+    "version": "1",
+    "purpose": "INVESTMENT_CANDIDATE",
+    "factors": [
+     {
+      "factor_id": "SIZE",
+      "implementation_id": "SIZE_TOTAL_MV_V1",
+      "direction": "LOWER_BETTER",
+      "output_unit": "CNY",
+      "output_quantum": "1",
+      "input_fields": [
+       "market_value_total"
+      ],
+      "formula_definition": "总市值（元）=当日有效总股本×未复权收盘价（QMT 历史股本×原价；Tushare daily_basic.total_mv 万元×10000 补充）；越小越好。",
+      "validity_rules": [
+       "总市值>0，否则 MODEL_INAPPLICABLE",
+       "缺失或公开时刻晚于截止 → SOURCE_UNKNOWN"
+      ],
+      "max_report_age_months": 0,
+      "golden_case_ids": [
+       "FI-SIZE-01",
+       "FI-PKG-01"
+      ],
+      "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED"
+     },
+     {
+      "factor_id": "EP",
+      "implementation_id": "EP_TTM_PARENT_V1",
+      "direction": "HIGHER_BETTER",
+      "output_unit": "ratio",
+      "output_quantum": "0.00000001",
+      "input_fields": [
+       "np_parent_ttm",
+       "market_value_total"
+      ],
+      "formula_definition": "归母净利润TTM÷总市值。TTM=当期累计+上年全年−上年同期累计（Q4 用全年）；合并报表；同一报告期取首次披露版本；只有公告日期时自其后首个市场日 09:30 起可用；亏损保留为负值。",
+      "validity_rules": [
+       "最新已公开报告期距截止超过 15 个自然月 → STALE",
+       "TTM 任一依赖缺失或尚未公开 → SOURCE_UNKNOWN",
+       "总市值≤0 → MODEL_INAPPLICABLE"
+      ],
+      "max_report_age_months": 15,
+      "golden_case_ids": [
+       "FI-EP-01",
+       "FI-PKG-01"
+      ],
+      "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED"
+     },
+     {
+      "factor_id": "VOL60",
+      "implementation_id": "VOL60_DAILY_RETURN_STD_V1",
+      "direction": "LOWER_BETTER",
+      "output_unit": "ratio",
+      "output_quantum": "0.00000001",
+      "input_fields": [
+       "daily_return_window_60"
+      ],
+      "formula_definition": "截止日在内的最近 60 个市场日中，各有效交易日日收益 r=未复权收盘÷交易所除权参考昨收−1 的样本标准差（除以 n−1）；停牌日不计入。",
+      "validity_rules": [
+       "有效交易日<40 → MODEL_INAPPLICABLE",
+       "价格≤0 → MODEL_INAPPLICABLE",
+       "窗口内非确认停牌的缺数据 → SOURCE_UNKNOWN"
+      ],
+      "max_report_age_months": 0,
+      "golden_case_ids": [
+       "FI-VOL-01",
+       "FI-PKG-01"
+      ],
+      "source_scope_ref": "QMT_PRIMARY_TUSHARE_SUBSTITUTE_UNVERIFIED"
+     }
+    ],
+    "aggregation": "EQUAL_WEIGHT",
+    "preprocessing": "AVERAGE_TIE_PERCENTILE_MINUS1_PLUS1",
+    "joint_rule": "ALL_FACTORS_VALID",
+    "neutralization": "NONE"
+   }
+  },
+  "universe": {
+   "profile_id": "universe-cn-main-research",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2009-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 研究用（临时 Tushare 研究快照）。公开政策整理，未经用户核验；不得升级为 VERIFIED_FOR_SCOPE。"
+   },
+   "source_refs": [
+    "TUSHARE_STOCK_BASIC",
+    "TUSHARE_NAMECHANGE",
+    "TUSHARE_SW2021_MEMBERS"
+   ],
+   "payload": {
+    "universe_id": "cn-a-allboards-research",
+    "stock_markets": [
+     "SH",
+     "SZ"
+    ],
+    "exclude_financial": true,
+    "etf_security_ids": [],
+    "stock_scope_ref": "沪深主板（含原中小板）、创业板、科创板普通A股",
+    "identity_history_ref": "TUSHARE_STOCK_BASIC_INCL_DELISTED",
+    "industry_history_ref": "TUSHARE_SW2021_L1_APPROX_HISTORY",
+    "permissions": [
+     {
+      "board": "MAIN_SH",
+      "status": "ALLOWED",
+      "evidence_ref": "用户 2026-10-19 确认"
+     },
+     {
+      "board": "MAIN_SZ",
+      "status": "ALLOWED",
+      "evidence_ref": "用户 2026-10-19 确认"
+     },
+     {
+      "board": "CHINEXT",
+      "status": "ALLOWED",
+      "evidence_ref": "用户 2026-10-19 确认有权限"
+     },
+     {
+      "board": "STAR",
+      "status": "ALLOWED",
+      "evidence_ref": "用户 2026-10-19 确认有权限"
+     }
+    ],
+    "mutual_exclusivity_checked": true
+   }
+  },
+  "rules": {
+   "profile_id": "rules-cn-main-research",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2009-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 研究用（临时 Tushare 研究快照）。公开政策整理，未经用户核验；不得升级为 VERIFIED_FOR_SCOPE。"
+   },
+   "source_refs": [
+    "PUBLIC_POLICY"
+   ],
+   "payload": {
+    "rulebook_id": "CN-A-ALLBOARDS-RESEARCH-20261019",
+    "rules": [
+     {
+      "rule_id": "MAIN_SH-NORMAL-0",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2009-01-01",
+      "effective_to": "2020-12-31",
+      "public_at": "2009-01-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-RW-0",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2009-01-01",
+      "effective_to": "2020-12-31",
+      "public_at": "2009-01-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-DA-0",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2009-01-01",
+      "effective_to": "2020-12-31",
+      "public_at": "2009-01-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-NORMAL-1",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2020-12-31",
+      "effective_to": "2024-10-30",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-RW-1",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2020-12-31",
+      "effective_to": "2024-10-30",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-DA-1",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2020-12-31",
+      "effective_to": "2024-10-30",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-NORMAL-2",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2024-10-30",
+      "effective_to": "2026-07-06",
+      "public_at": "2024-04-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-RW-2",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2024-10-30",
+      "effective_to": "2026-07-06",
+      "public_at": "2024-04-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-DA-2",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2024-10-30",
+      "effective_to": "2026-07-06",
+      "public_at": "2024-04-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-NORMAL-3",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2026-07-06",
+      "effective_to": "2027-01-01",
+      "public_at": "2026-06-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-RW-3",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2026-07-06",
+      "effective_to": "2027-01-01",
+      "public_at": "2026-06-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SH-DA-3",
+      "market": "SH",
+      "board": "MAIN_SH",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2026-07-06",
+      "effective_to": "2027-01-01",
+      "public_at": "2026-06-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-NORMAL-0",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2009-01-01",
+      "effective_to": "2020-12-31",
+      "public_at": "2009-01-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-RW-0",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2009-01-01",
+      "effective_to": "2020-12-31",
+      "public_at": "2009-01-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-DA-0",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2009-01-01",
+      "effective_to": "2020-12-31",
+      "public_at": "2009-01-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-NORMAL-1",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2020-12-31",
+      "effective_to": "2024-10-30",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-RW-1",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2020-12-31",
+      "effective_to": "2024-10-30",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-DA-1",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2020-12-31",
+      "effective_to": "2024-10-30",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-NORMAL-2",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2024-10-30",
+      "effective_to": "2026-07-06",
+      "public_at": "2024-04-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-RW-2",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2024-10-30",
+      "effective_to": "2026-07-06",
+      "public_at": "2024-04-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-DA-2",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2024-10-30",
+      "effective_to": "2026-07-06",
+      "public_at": "2024-04-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-NORMAL-3",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2026-07-06",
+      "effective_to": "2027-01-01",
+      "public_at": "2026-06-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-RW-3",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2026-07-06",
+      "effective_to": "2027-01-01",
+      "public_at": "2026-06-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "MAIN_SZ-DA-3",
+      "market": "SZ",
+      "board": "MAIN_SZ",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2026-07-06",
+      "effective_to": "2027-01-01",
+      "public_at": "2026-06-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 1000000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "500000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-NORMAL-0",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2009-10-30",
+      "effective_to": "2020-08-24",
+      "public_at": "2009-10-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-RISK_WARNING-0",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2009-10-30",
+      "effective_to": "2020-08-24",
+      "public_at": "2009-10-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.05",
+       "down_percent": "0.05",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-DELISTING_ARRANGEMENT-0",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2009-10-30",
+      "effective_to": "2020-08-24",
+      "public_at": "2009-10-30T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.10",
+       "down_percent": "0.10",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-NORMAL-1",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2020-08-24",
+      "effective_to": "2020-12-31",
+      "public_at": "2020-06-12T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-RISK_WARNING-1",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2020-08-24",
+      "effective_to": "2020-12-31",
+      "public_at": "2020-06-12T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-DELISTING_ARRANGEMENT-1",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2020-08-24",
+      "effective_to": "2020-12-31",
+      "public_at": "2020-06-12T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": null,
+      "marketcap_floor_status": "NOT_APPLICABLE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-NORMAL-2",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2020-12-31",
+      "effective_to": "2027-01-01",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-RISK_WARNING-2",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2020-12-31",
+      "effective_to": "2027-01-01",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "CHINEXT-DELISTING_ARRANGEMENT-2",
+      "market": "SZ",
+      "board": "CHINEXT",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2020-12-31",
+      "effective_to": "2027-01-01",
+      "public_at": "2020-12-31T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 100,
+       "buy_step": 100,
+       "sell_min": 100,
+       "sell_step": 100,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 300000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "STAR-NORMAL",
+      "market": "SH",
+      "board": "STAR",
+      "security_scope_ref": "NORMAL",
+      "effective_from": "2019-07-22",
+      "effective_to": "2027-01-01",
+      "public_at": "2019-03-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 200,
+       "buy_step": 1,
+       "sell_min": 200,
+       "sell_step": 1,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 100000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "STAR-RISK_WARNING",
+      "market": "SH",
+      "board": "STAR",
+      "security_scope_ref": "RISK_WARNING",
+      "effective_from": "2019-07-22",
+      "effective_to": "2027-01-01",
+      "public_at": "2019-03-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 200,
+       "buy_step": 1,
+       "sell_min": 200,
+       "sell_step": 1,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 100000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "rule_id": "STAR-DELISTING_ARRANGEMENT",
+      "market": "SH",
+      "board": "STAR",
+      "security_scope_ref": "DELISTING_ARRANGEMENT",
+      "effective_from": "2019-07-22",
+      "effective_to": "2027-01-01",
+      "public_at": "2019-03-01T00:00:00+08:00",
+      "quantity_grid": {
+       "buy_min": 200,
+       "buy_step": 1,
+       "sell_min": 200,
+       "sell_step": 1,
+       "allow_full_odd_exit": true,
+       "max_order_quantity": 100000
+      },
+      "price_rule": {
+       "tick": "0.01",
+       "method": "PERCENT_REFERENCE",
+       "reference_field": "reference_preclose",
+       "up_percent": "0.20",
+       "down_percent": "0.20",
+       "bound_data_ref": null,
+       "bound_rounding": "HALF_UP_TICK",
+       "intraday_band_id": null
+      },
+      "settlement_id": "CN-A-T1",
+      "marketcap_floor": "300000000",
+      "marketcap_floor_status": "VALUE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     }
+    ],
+    "settlements": [
+     {
+      "settlement_id": "CN-A-T1",
+      "cash_core_mode": "TRADE_CASH_BOOK",
+      "buy_sellable_delay_sessions": 1,
+      "buy_sellable_release_time": "09:15:00",
+      "sell_proceeds_trade_delay_sessions": 0,
+      "sell_proceeds_withdraw_delay_sessions": 1,
+      "sell_proceeds_release_time": "15:00:00",
+      "tax_acquisition_date_field": "TRADE_DATE",
+      "tax_delivery_date_field": "TRADE_DATE",
+      "fee_settlement_timing": "WITH_TRADE",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     }
+    ]
+   }
+  },
+  "fees": {
+   "profile_id": "fees-cn-research-20261019",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2009-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 研究用（临时 Tushare 研究快照）。公开政策整理，未经用户核验；不得升级为 VERIFIED_FOR_SCOPE。"
+   },
+   "source_refs": [
+    "PUBLIC_POLICY"
+   ],
+   "payload": {
+    "fee_profile_id": "fees-cn-research-20261019",
+    "purpose": "RESEARCH",
+    "fee_rules": [
+     {
+      "fee_id": "COMM",
+      "fee_kind": "COMMISSION",
+      "effective_from": "2000-01-01",
+      "effective_to": "2100-01-01",
+      "market": "BOTH",
+      "side": "BOTH",
+      "base_kind": "NOTIONAL",
+      "rate": "0.00025",
+      "minimum": "5",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "STAMP-SELL-1",
+      "fee_kind": "STAMP",
+      "effective_from": "2008-09-19",
+      "effective_to": "2023-08-28",
+      "market": "BOTH",
+      "side": "SELL",
+      "base_kind": "NOTIONAL",
+      "rate": "0.001",
+      "minimum": "0",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "STAMP-SELL-2",
+      "fee_kind": "STAMP",
+      "effective_from": "2023-08-28",
+      "effective_to": "2100-01-01",
+      "market": "BOTH",
+      "side": "SELL",
+      "base_kind": "NOTIONAL",
+      "rate": "0.0005",
+      "minimum": "0",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "STAMP-BUY",
+      "fee_kind": "STAMP",
+      "effective_from": "2008-09-19",
+      "effective_to": "2100-01-01",
+      "market": "BOTH",
+      "side": "BUY",
+      "base_kind": "NOTIONAL",
+      "rate": "0",
+      "minimum": "0",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "TRANSFER-SH-1",
+      "fee_kind": "TRANSFER",
+      "effective_from": "2000-01-01",
+      "effective_to": "2015-08-01",
+      "market": "SH",
+      "side": "BOTH",
+      "base_kind": "SHARES",
+      "rate": "0.0006",
+      "minimum": "1",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "TRANSFER-SZ-1",
+      "fee_kind": "TRANSFER",
+      "effective_from": "2000-01-01",
+      "effective_to": "2015-08-01",
+      "market": "SZ",
+      "side": "BOTH",
+      "base_kind": "NOTIONAL",
+      "rate": "0",
+      "minimum": "0",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "TRANSFER-2",
+      "fee_kind": "TRANSFER",
+      "effective_from": "2015-08-01",
+      "effective_to": "2022-04-29",
+      "market": "BOTH",
+      "side": "BOTH",
+      "base_kind": "NOTIONAL",
+      "rate": "0.00002",
+      "minimum": "0",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     },
+     {
+      "fee_id": "TRANSFER-3",
+      "fee_kind": "TRANSFER",
+      "effective_from": "2022-04-29",
+      "effective_to": "2100-01-01",
+      "market": "BOTH",
+      "side": "BOTH",
+      "base_kind": "NOTIONAL",
+      "rate": "0.00001",
+      "minimum": "0",
+      "maximum": null,
+      "included_in_commission": false,
+      "charge_unit": "ORDER_CUMULATIVE",
+      "round_quantum": "0.01",
+      "round_mode": "HALF_UP",
+      "settlement_id": "CN-A-T1",
+      "evidence_ref": "PUBLIC_POLICY_DECLARED_UNVERIFIED"
+     }
+    ],
+    "dividend_tax_rules": [
+     {
+      "rule_id": "T2005-CASH",
+      "effective_from": "2005-06-13",
+      "effective_to": "2013-01-01",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0.10",
+      "tiers": [
+       {
+        "max_calendar_months_inclusive": null,
+        "rate": "0.10"
+       }
+      ],
+      "tax_base_definition": "每股税前现金红利",
+      "acquisition_inheritance_rule": "INHERIT_PARENT",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+     },
+     {
+      "rule_id": "T2013-CASH",
+      "effective_from": "2013-01-01",
+      "effective_to": "2015-09-08",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0.05",
+      "tiers": [
+       {
+        "max_calendar_months_inclusive": 1,
+        "rate": "0.20"
+       },
+       {
+        "max_calendar_months_inclusive": 12,
+        "rate": "0.10"
+       },
+       {
+        "max_calendar_months_inclusive": null,
+        "rate": "0.05"
+       }
+      ],
+      "tax_base_definition": "每股税前现金红利",
+      "acquisition_inheritance_rule": "INHERIT_PARENT",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+     },
+     {
+      "rule_id": "T2015-CASH",
+      "effective_from": "2015-09-08",
+      "effective_to": "2100-01-01",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "CASH",
+      "initial_withholding_rate": "0",
+      "tiers": [
+       {
+        "max_calendar_months_inclusive": 1,
+        "rate": "0.20"
+       },
+       {
+        "max_calendar_months_inclusive": 12,
+        "rate": "0.10"
+       },
+       {
+        "max_calendar_months_inclusive": null,
+        "rate": "0"
+       }
+      ],
+      "tax_base_definition": "每股税前现金红利",
+      "acquisition_inheritance_rule": "INHERIT_PARENT",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+     },
+     {
+      "rule_id": "T2005-STOCK",
+      "effective_from": "2005-06-13",
+      "effective_to": "2013-01-01",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "STOCK",
+      "initial_withholding_rate": "0.10",
+      "tiers": [
+       {
+        "max_calendar_months_inclusive": null,
+        "rate": "0.10"
+       }
+      ],
+      "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+      "acquisition_inheritance_rule": "INHERIT_PARENT",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+     },
+     {
+      "rule_id": "T2013-STOCK",
+      "effective_from": "2013-01-01",
+      "effective_to": "2015-09-08",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "STOCK",
+      "initial_withholding_rate": "0.05",
+      "tiers": [
+       {
+        "max_calendar_months_inclusive": 1,
+        "rate": "0.20"
+       },
+       {
+        "max_calendar_months_inclusive": 12,
+        "rate": "0.10"
+       },
+       {
+        "max_calendar_months_inclusive": null,
+        "rate": "0.05"
+       }
+      ],
+      "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+      "acquisition_inheritance_rule": "INHERIT_PARENT",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+     },
+     {
+      "rule_id": "T2015-STOCK",
+      "effective_from": "2015-09-08",
+      "effective_to": "2100-01-01",
+      "security_class": "INDIVIDUAL_A_SHARE",
+      "dividend_type": "STOCK",
+      "initial_withholding_rate": "0",
+      "tiers": [
+       {
+        "max_calendar_months_inclusive": 1,
+        "rate": "0.20"
+       },
+       {
+        "max_calendar_months_inclusive": 12,
+        "rate": "0.10"
+       },
+       {
+        "max_calendar_months_inclusive": null,
+        "rate": "0"
+       }
+      ],
+      "tax_base_definition": "每股送红股面值（1 元/股×送股比例）",
+      "acquisition_inheritance_rule": "INHERIT_PARENT",
+      "rounding_unit": "ENTITLEMENT",
+      "evidence_ref": "财税[2005]102号/[2012]85号/[2015]101号（公开政策整理，未核验）",
+      "selection_date_basis": "EQUITY_RECORD_DATE"
+     }
+    ],
+    "research_commission_rate": "0.00025",
+    "research_minimum_commission": "5",
+    "broker_contract_ref": null
+   }
+  },
+  "sources": {
+   "profile_id": "sources-tushare-temp-research",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2009-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 研究用（临时 Tushare 研究快照）。公开政策整理，未经用户核验；不得升级为 VERIFIED_FOR_SCOPE。"
+   },
+   "source_refs": [
+    "TUSHARE_PROXY_20261015_20261019"
+   ],
+   "payload": {
+    "source_profile_id": "sources-tushare-temp-research",
+    "priority": [
+     "QMT",
+     "TUSHARE"
+    ],
+    "qmt_maintenance_research": true,
+    "account_source": "BROKER_CONFIRMED_ONLY",
+    "mappings": [
+     {
+      "canonical_field": "raw_close",
+      "provider": "TUSHARE",
+      "endpoint": "daily",
+      "source_field": "close",
+      "source_unit": "CNY",
+      "canonical_unit": "CNY",
+      "multiply": "1",
+      "basis_id": "RAW",
+      "historical_semantics": "HISTORICAL",
+      "scope_ref": "TUSHARE_TEMP_RESEARCH",
+      "evidence_ref": "D03.4"
+     }
+    ],
+    "substitution_policy": "EXPLICIT_SAME_BASIS_ONLY"
+   }
+  },
+  "bootstrap": {
+   "profile_id": "bootstrap-replay-all-cash",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2009-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 研究用（临时 Tushare 研究快照）。公开政策整理，未经用户核验；不得升级为 VERIFIED_FOR_SCOPE。"
+   },
+   "source_refs": [
+    "V5D2_D16"
+   ],
+   "payload": {
+    "bootstrap_id": "replay-all-cash",
+    "mode": "REPLAY_ALL_CASH",
+    "cash_amount": null,
+    "positions_ref": null,
+    "cash_ownership_ref": null,
+    "broker_snapshot_ref": null,
+    "open_orders_ref": null,
+    "tax_lots_ref": null,
+    "corporate_entitlements_ref": null,
+    "previous_state_ref": null,
+    "retirement_history_checked": true
+   }
+  },
+  "benchmark": {
+   "profile_id": "benchmark-csi2000-etf-563300",
+   "status": "DECLARED",
+   "scope": {
+    "purpose": "HISTORICAL_RESEARCH",
+    "start_date": "2009-01-01",
+    "end_date": "2026-10-14",
+    "markets": [
+     "SH",
+     "SZ"
+    ],
+    "account_ref": null,
+    "description": "2026-10-19 研究用（临时 Tushare 研究快照）。公开政策整理，未经用户核验；不得升级为 VERIFIED_FOR_SCOPE。"
+   },
+   "source_refs": [
+    "TUSHARE_FUND_BASIC",
+    "TUSHARE_FUND_DAILY"
+   ],
+   "payload": {
+    "benchmark_id": "ETF-563300-CSI2000",
+    "selection_reason": "替代方案：不自建、直接买小微盘宽基ETF。选中证2000（风格最接近微盘400池的可交易宽基），563300 规模与成交最活跃；159907 广发国证2000（2011-08 上市）作长窗口补充对照。用户可改。",
+    "selected_before_results_at": "2026-10-19T20:30:00+08:00",
+    "securities": [
+     "563300.SH"
+    ],
+    "cash_policy_ref": "同仓位对照：60% ETF + 40% 现金（与策略股票目标一致），另报 100% ETF",
+    "fee_profile_ref": "fees-cn-research-20261019（ETF 免印花税；管理费0.50%/托管0.10%已在净值中）",
+    "listing_history_ref": "TUSHARE_FUND_BASIC list_date=2023-09-14",
+    "price_basis_ref": "fund_daily × fund_adj 复权总收益",
+    "window_policy": "COMMON_ACTUAL_LIFETIME"
+   }
+  }
+ }
+}

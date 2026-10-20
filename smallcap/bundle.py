@@ -241,14 +241,15 @@ def fee_coverage(fees: dict | None, start: date, end: date, markets=("SH", "SZ")
     return Result(OK if not gaps else UNKNOWN, None, gaps)
 
 
-def rule_coverage(rb: dict | None, start: date, end: date, boards: list[tuple[str, str]]) -> Result:
+def rule_coverage(rb: dict | None, start: date, end: date, boards: list, board_start: dict | None = None) -> Result:
+    """boards 内每个板块在 [max(start, 该板块最早上市日), end] 须连续有规则；板块尚不存在的时期不要求规则。"""
     if rb is None:
         return Result(UNKNOWN, None, [reason("RULE_UNKNOWN", "PROFILE", "rules", "未提供RuleBook")])
     gaps = []
     for market, board in boards:
         iv = sorted((parse_date(r["effective_from"]), parse_date(r["effective_to"])) for r in rb["rules"]
                     if r["market"] == market and r["board"] == board)
-        cur = start
+        cur = max(start, (board_start or {}).get((market, board), start))
         for f, t in iv:
             if f > cur:
                 break

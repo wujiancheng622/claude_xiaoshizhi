@@ -84,12 +84,20 @@ def cmd_replay(a) -> int:
         _print({"status": "REFUSED", "reasons": [r.to_json() for r in mode.reasons]})
         return 2
     factory = None
-    if a.synthetic_engineering:
+    if a.research_store:
+        if b.study["purpose"] == "DEPLOYMENT_CANDIDATE":
+            _print({"status": "REFUSED", "reason": "临时 Tushare 研究数据仓不能用于部署候选研究"})
+            return 2
+        import functools
+        from .research_market import ResearchMarket
+        factory = functools.partial(ResearchMarket, a.research_store)
+    elif a.synthetic_engineering:
         if b.study["purpose"] != "ENGINEERING_ONLY":
             _print({"status": "REFUSED", "reason": "合成市场只允许 ENGINEERING_ONLY 研究"})
             return 2
         factory = _synthetic_factory(a.seed, b.study["end_date"] or "2026-10-16")
-    out = run_matrix(b, market_factory=factory, workers=a.workers, out_dir=a.out, persist_events=a.persist_events)
+    out = run_matrix(b, market_factory=factory, workers=a.workers, out_dir=a.out, persist_events=a.persist_events,
+                     only_roles=a.roles.split(",") if a.roles else None)
     out.pop("records", None)
     _print(out)
     return 0
@@ -225,6 +233,8 @@ def main(argv=None) -> int:
     p.add_argument("--synthetic-engineering", action="store_true",
                    help="使用 TEST_ONLY 合成市场做工程联调（结果不构成投资证据）")
     p.add_argument("--persist-events", action="store_true", help="逐格写出完整事件 events.jsonl.gz")
+    p.add_argument("--research-store", help="研究数据仓目录（临时 Tushare 来源，research/data_prep/build_store.py 生成）")
+    p.add_argument("--roles", help="只跑指定角色，逗号分隔（研究便利，如 B1,B2）")
     p.set_defaults(fn=cmd_replay)
     p = sub.add_parser("plan")
     p.add_argument("--bundle", required=True)

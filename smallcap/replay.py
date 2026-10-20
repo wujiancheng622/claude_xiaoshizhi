@@ -16,7 +16,8 @@ import json
 
 from .account import Ledger, canon
 from .clock import TradingCalendar
-from .contracts import (BASE_SLIPPAGE, CENTER, DETAIL_VERSION, HIGH_SLIPPAGE, PROXY_TIME, SLOTS, START_IDS, WINDOW_END,
+from .contracts import (BASE_SLIPPAGE, CENTER, DETAIL_VERSION, HIGH_SLIPPAGE, POOL_LIMIT, PROXY_TIME, SLOTS, START_IDS,
+                        WINDOW_END,
                         WINDOW_START,
                         ContractError, dec_str, money, sh_dt, ts_str, unwire_ratio, wire_ratio, MAX_ORDERS_PER_SIDE_WINDOW,
                         ORDER_WAIT_SECONDS, RETRY_MIN_SECONDS)
@@ -31,6 +32,9 @@ from .risk import (RiskView, SellLeg, SellPlanner, active, blocked_exit_value, d
 from .rules import RuleBook
 
 PHASES = {"INIT": 0, "PREOPEN": 1, "EXEC": 2, "CLOSE": 3, "CUTOFF": 4}
+# 进程内只读缓存：经济池与因子值只取决于市场事实与截止时刻，同一矩阵各单元共享（不共享账户状态）
+_POOL_CACHE: dict = {}
+_FACTOR_CACHE: dict = {}
 BAD_RISK = ("ST", "DELISTING_ARRANGEMENT", "TERMINATED")
 
 
@@ -88,6 +92,40 @@ class CellRunner:
             if spec.package is None:
                 raise ContractError("FACTOR_PACKAGE_MISSING", spec.cell_key)
             validate_package(spec.package)
+        self._index_key = None
+        self._act_idx: dict = {}
+        self._life_idx: dict = {}
+
+    # ================================================================ 公司行动/生命周期索引
+    def _indexes(self):
+        """按日期索引（真实数据有数万条，不能每个相位全表扫描）；事件表增减时重建。"""
+        acts, life = getattr(self.m, "actions", ()), getattr(self.m, "lifecycle_events", ())
+        key = (id(acts), len(acts), id(life), len(life))
+        if key != self._index_key:
+            self._act_idx = {"record_date": {}, "ex_date": {}, "pay_date": {}, "credit_date": {}}
+            for a in acts:
+                for k, idx in self._act_idx.items():
+                    if a.get(k) is not None:
+                        idx.setdefault(a[k], []).append(a)
+            self._life_idx = {}
+            for ev in life:
+                self._life_idx.setdefault(ev["date"], []).append(ev)
+                if ev["recovery_date"] != ev["date"]:
+                    self._life_idx.setdefault(ev["recovery_date"], []).append(ev)
+            self._index_key = key
+        return self._act_idx, self._life_idx
+
+    @property
+    def _act(self):
+        return self._indexes()[0]
+
+    @property
+    def _life(self):
+        return self._indexes()[1]
+
+    def _cache_key(self):
+        """只有声明了稳定身份（cache_token）的只读市场才在进程内共享池/因子缓存。"""
+        return getattr(self.m, "cache_token", None)
 
     # ================================================================ 事件
     def emit(self, kind: str, payload: dict, at: datetime) -> None:
@@ -173,13 +211,16 @@ class CellRunner:
         mm = self.m.master[sid]
         bar = self.m.bar(sid, d)
         listed = d >= mm["list_date"] and bar is not None
-        amounts = []
-        for x in self.cal.last_n_sessions(d, 20):
-            b = self.m.bar(sid, x)
-            if b is None:
-                amounts.append((x, None, "MISSING"))
-            else:
-                amounts.append((x, b["amount"], "SUSPENDED" if b["status"] == "SUSPENDED" else "TRADING"))
+        if hasattr(self.m, "amount_history"):
+            amounts = self.m.amount_history(sid, d, 20)
+        else:
+            amounts = []
+            for x in self.cal.last_n_sessions(d, 20):
+                b = self.m.bar(sid, x)
+                if b is None:
+                    amounts.append((x, None, "MISSING"))
+                else:
+                    amounts.append((x, b["amount"], "SUSPENDED" if b["status"] == "SUSPENDED" else "TRADING"))
         return SecurityFacts(sid, mm["trade_code"], mm["exchange"], mm["board"], mm["security_type"], listed,
                              mm["list_date"], self.m.industry(sid, d), self.m.risk_status(sid, d, asof) if listed else None,
                              bar["close"] if bar else None, amounts, bar["mv"] if bar else None,
@@ -260,19 +301,22 @@ class CellRunner:
     def _phase_preopen(self, d: date) -> None:
         at = sh_dt(d, time(9, 0))
         L = self.ledger
-        for a in self.m.actions:
+        ex_today = [a for a in self._act["ex_date"].get(d, ()) if a["action_id"] in L.entitlements]
+        for a in ex_today:
             sid = a["security_id"]
-            if a["ex_date"] == d and a["action_id"] in L.entitlements:
-                b = self.m.bar(sid, d)
-                payload = {"action_id": a["action_id"], "ex_date": d.isoformat()}
-                if b is not None:
-                    payload["reference_price"] = dec_str(b["ref_preclose"])
-                    if a["kind"] == "STOCK_DIVIDEND" and a.get("cash_in_lieu") == "AT_EX_REFERENCE":
-                        payload["cash_in_lieu_per_share"] = dec_str(b["ref_preclose"])
-                self.emit("CA_EX", payload, at)
-            if a.get("pay_date") == d and a["action_id"] in L.entitlements and a["kind"] == "CASH_DIVIDEND":
+            b = self.m.bar(sid, d)
+            payload = {"action_id": a["action_id"], "ex_date": d.isoformat()}
+            ref = self._ex_reference(sid, d, b, ex_today)
+            if ref is not None:
+                payload["reference_price"] = dec_str(ref)
+                if a["kind"] == "STOCK_DIVIDEND" and a.get("cash_in_lieu") == "AT_EX_REFERENCE":
+                    payload["cash_in_lieu_per_share"] = dec_str(ref)
+            self.emit("CA_EX", payload, at)
+        for a in self._act["pay_date"].get(d, ()):
+            if a["action_id"] in L.entitlements and a["kind"] == "CASH_DIVIDEND":
                 self.emit("CA_PAY", {"action_id": a["action_id"], "withheld": self._withholding(a)}, at)
-            if a.get("credit_date") == d and a["action_id"] in L.entitlements:
+        for a in self._act["credit_date"].get(d, ()):
+            if a["action_id"] in L.entitlements:
                 self.emit("CA_SHARE_CREDIT", {"action_id": a["action_id"], "sellable_from": a["listing_date"].isoformat(),
                                               "acquisition_inheritance": "INHERIT_PARENT"}, at)
                 frac = L.receivables.get(f"FRAC:{a['action_id']}")
@@ -294,7 +338,7 @@ class CellRunner:
                                              "already_accrued": dec_str(accrued),
                                              "already_paid": dec_str(accrued - payable),
                                              "settlement_cash_change": dec_str(payable)}, at)
-        for ev in self.m.lifecycle_events:
+        for ev in self._life.get(d, ()):
             sid = ev["security_id"]
             p = L.positions.get(sid)
             if p is None or p.quantity == 0:
@@ -310,6 +354,27 @@ class CellRunner:
                                                 "cash": dec_str(Decimal(ev["recovery_per_share_cents"]) * p.quantity / 100)}, at)
         # 09:30 前已可得的确认风险事实
         self._security_exit_facts(d, sh_dt(d, time(9, 29, 59)), at)
+
+    def _ex_reference(self, sid: str, d: date, b: dict | None, ex_today: list) -> Decimal | None:
+        """除权除息参考价：当日有交易用交易所参考昨收；停牌时按条款显式换算
+        (最近收盘−每股派现合计)÷(1+每股送转合计)（D12.3“明确转换能对齐基础”），并标暂估；无法换算返回 None（UNRELIABLE）。"""
+        if b is None:
+            return None
+        if b["status"] == "TRADING":
+            return b["ref_preclose"]
+        cash, ratio = Decimal(0), Decimal(0)
+        for a in ex_today:
+            if a["security_id"] != sid:
+                continue
+            if a["kind"] == "CASH_DIVIDEND":
+                cash += Decimal(a.get("cash_per_share_cents", 0)) / 100
+            else:
+                ratio += Decimal(a["shares_per_share"])
+        last = b["close"]
+        if last is None or last - cash <= 0:
+            return None
+        from .contracts import cents
+        return cents((last - cash) / (1 + ratio))
 
     def _withholding(self, a: dict) -> str:
         ent = self.ledger.entitlements[a["action_id"]]
@@ -381,14 +446,18 @@ class CellRunner:
             elif b["status"] == "TRADING":
                 marks[sid] = {"price": dec_str(b["close"]), "mark_date": d.isoformat(), "status": "NORMAL",
                               "industry": self.m.industry(sid, d)}
+            elif p.mark_status == "PROVISIONAL_REFERENCE" and p.mark is not None:
+                # 停牌期间已按除权参考换算的暂估不被旧收盘覆盖（旧价×新股数会重复计价）
+                marks[sid] = {"price": dec_str(p.mark), "mark_date": p.mark_date, "status": "PROVISIONAL_REFERENCE",
+                              "industry": self.m.industry(sid, d)}
             else:
                 marks[sid] = {"price": dec_str(b["close"]), "mark_date": p.mark_date if p.mark_status != "NORMAL"
                               else (p.mark_date or d.isoformat()), "status": "PROVISIONAL_SUSPENDED",
                               "industry": self.m.industry(sid, d)}
         if marks:
             self.emit("MARKS", {"marks": marks}, at)
-        for a in self.m.actions:
-            if a["record_date"] == d:
+        for a in self._act["record_date"].get(d, ()):
+            if True:
                 sid = a["security_id"]
                 p = L.positions.get(sid)
                 if p is None or p.quantity == 0:
@@ -401,9 +470,23 @@ class CellRunner:
                     cps = Decimal(a.get("cash_per_share_cents", 0)) / 100
                     payload.update(cash_per_share=dec_str(cps), tax_base_per_share=dec_str(cps))
                 else:
-                    payload.update(shares_per_share=a["shares_per_share"], rounding="FLOOR_CASH_IN_LIEU",
-                                   tax_treatment=a.get("tax_treatment"))
+                    payload.update(shares_per_share=a["shares_per_share"],
+                                   rounding=a.get("rounding", "FLOOR_CASH_IN_LIEU"), tax_treatment=a.get("tax_treatment"))
+                    if a.get("tax_base_per_share") is not None:
+                        payload["tax_base_per_share"] = a["tax_base_per_share"]
                 self.emit("CA_RECORD", payload, at)
+                if a.get("terms_status") == "INCONSISTENT_WITH_EXCHANGE_REFERENCE":
+                    # 研究数据核账：条款推算参考价与交易所参考价不一致（重整转增/漏记送转等），权益影响不可信
+                    self.emit("LIMITATION", {"code": f"CA_TERMS_UNKNOWN:{a['action_id']}",
+                                             "detail": f"sid={sid};implied {a.get('implied_reference')} vs exchange "
+                                                       f"{a.get('exchange_reference')}"}, at)
+        # 研究核账打标的权益不可信限制：该证券已无持仓与应收时解除（影响已随持仓了结）
+        for code, detail in sorted(L.limitations.items()):
+            if code.startswith("CA_TERMS_UNKNOWN:") and str(detail).startswith("sid="):
+                sid_ = str(detail)[4:].split(";")[0]
+                p_ = L.positions.get(sid_)
+                if p_ is None or p_.quantity + p_.share_receivable == 0:
+                    self.emit("LIMITATION", {"code": code, "detail": "POSITION_CLOSED", "clear": True}, at)
         self.emit("EOD", {"date": d.isoformat(), "frozen_exit_value": wire_ratio(self._frozen_exit_value())}, at)
         self._eod_risk(d, at)
 
@@ -507,23 +590,11 @@ class CellRunner:
     def _weekly(self, d: date, at: datetime, first: bool) -> dict | None:
         L = self.ledger
         asof = at
-        facts = [self.security_facts(sid, d, asof) for sid in self.m.universe()]
-        pool = build_pool(f"{d.isoformat()}", d, facts, self.cal, self.rb, set(self.spec.allowed_boards),
-                          set(self.spec.financial_codes), used_at=asof)
+        pool = self.pool_for(d, asof)
         if self.spec.role == "B0":
             score = b0_ranking(pool)
         else:
-            fv_facts = {}
-            for sid in pool["security_ids"]:
-                v = self.m.factor_value(sid, d)
-                if v is None:
-                    fv_facts[sid] = {"fixture_value": (None, "SOURCE_UNKNOWN", sh_dt(d, time(18, 0)))}
-                elif v[0] == "MISSING":
-                    fv_facts[sid] = {"fixture_value": (None, "SOURCE_UNKNOWN", sh_dt(d, time(18, 0)))}
-                else:
-                    fv_facts[sid] = {"fixture_value": (dec_str(v[1]), "VALID", sh_dt(d, time(18, 0)))}
-            fvals = {f["factor_id"]: compute_factor(f, pool["security_ids"], at, fv_facts)
-                     for f in self.spec.package["factors"]}
+            fvals = self.factor_values(d, at, pool)
             score = score_package(self.spec.package, pool, fvals, pool["codes"])
         status = "UNASSESSED" if pool["health"] == "POOL_UNCERTAIN" else ("HEALTHY" if score["healthy"] else "BAD")
         self.emit("WEEK_STAT", {"cutoff": d.isoformat(), "status": status, "pool_health": pool["health"],
@@ -605,6 +676,75 @@ class CellRunner:
         if total > 0:
             out["industry_weights"] = {k: wire_ratio(v / total) for k, v in sorted(ind.items())}
             out["unknown_industry_weight"] = wire_ratio(unknown_ind / total)
+        return out
+
+    def pool_for(self, d: date, asof: datetime) -> dict:
+        """经济 400 池（D04）。有 mv_order 的市场按 (市值, 代码) 升序惰性评估：确认合格满 400 后，
+        其后已知市值的证券都在边界之后（合格也排不进、未知亦属无关未知），与全量评估结果相同；
+        市值未知者与当前持仓始终评估。同一进程内按截止时刻缓存（池与账户无关）。"""
+        tok = self._cache_key()
+        key = (tok, d, asof, frozenset(self.spec.allowed_boards), frozenset(self.spec.financial_codes))
+        hit = _POOL_CACHE.get(key) if tok is not None else None
+        if hit is not None:
+            return hit
+        boards, fin = set(self.spec.allowed_boards), set(self.spec.financial_codes)
+        if hasattr(self.m, "mv_order"):
+            from .pool import TRUE, eligibility
+            ordered, unknown = self.m.mv_order(d)
+            facts, n_true = [], 0
+            for sid in ordered:
+                sf = self.security_facts(sid, d, asof)
+                facts.append(sf)
+                if eligibility(sf, d, self.cal, self.rb, boards, fin, asof)[0] == TRUE:
+                    n_true += 1
+                    if n_true >= POOL_LIMIT:
+                        break
+            seen = {sf.security_id for sf in facts}
+            extra = [sid for sid in unknown if sid not in seen]
+            facts += [self.security_facts(sid, d, asof) for sid in extra]
+        else:
+            facts = [self.security_facts(sid, d, asof) for sid in self.m.universe()]
+        pool = build_pool(f"{d.isoformat()}", d, facts, self.cal, self.rb, boards, fin, limit=POOL_LIMIT, used_at=asof)
+        if tok is not None:
+            if len(_POOL_CACHE) > 4096:
+                _POOL_CACHE.clear()
+            _POOL_CACHE[key] = pool
+        return pool
+
+    def factor_values(self, d: date, at: datetime, pool: dict) -> dict:
+        """按包内各因子的已登记实现计算（输入由市场适配器按截止时刻提供）；同一进程内按截止时刻与池缓存。"""
+        from .factor_impl import INPUT_FIELDS
+        ids = pool["security_ids"]
+        tok = self._cache_key()
+        out, need = {}, []
+        for f in self.spec.package["factors"]:
+            key = (tok, f["factor_id"], f["implementation_id"], f["output_quantum"], at, tuple(ids))
+            if tok is not None and key in _FACTOR_CACHE:
+                out[f["factor_id"]] = _FACTOR_CACHE[key]
+            else:
+                need.append((f, key))
+        if not need:
+            return out
+        if hasattr(self.m, "factor_inputs"):
+            fields = set()
+            for f, _ in need:
+                fields |= set(INPUT_FIELDS.get(f["implementation_id"], ()))
+            facts = {sid: self.m.factor_inputs(sid, d, at, fields) for sid in ids}
+        else:
+            facts = {}
+            for sid in ids:
+                v = self.m.factor_value(sid, d)
+                if v is None or v[0] == "MISSING":
+                    facts[sid] = {"fixture_value": (None, "SOURCE_UNKNOWN", sh_dt(d, time(18, 0)))}
+                else:
+                    facts[sid] = {"fixture_value": (dec_str(v[1]), "VALID", sh_dt(d, time(18, 0)))}
+        for f, key in need:
+            vals = compute_factor(f, ids, at, facts)
+            if tok is not None:
+                if len(_FACTOR_CACHE) > 65536:
+                    _FACTOR_CACHE.clear()
+                _FACTOR_CACHE[key] = vals
+            out[f["factor_id"]] = vals
         return out
 
     # ---------------------------------------------------------------- 执行
